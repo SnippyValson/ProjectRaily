@@ -13,7 +13,7 @@
  */
 var AlexaSkill = require('./AlexaSkill');
 var Functions = require('./functions');
-var Config = require('./config');
+var Config = require('./configs');
 var IntentHandlers = require('./handlers/intentHandlers');
 var EventHandlers = require('./handlers/eventHandlers');
 var Raily = require('./raily');
