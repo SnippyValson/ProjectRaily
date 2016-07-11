@@ -4,6 +4,7 @@
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
+
 var AlexaSkill = require('./AlexaSkill');
 
 var Raily = function () {
@@ -13,9 +14,7 @@ var Raily = function () {
 Raily.prototype = Object.create(AlexaSkill.prototype);
 Raily.prototype.constructor = Raily;
 
+var intentHandlers = require('./handlers/intentHandlers')(Raily);
+var eventHandlers = require('./handlers/eventHandlers')(Raily);
 
-var intentHandlers = require('./handlers/intentHandlers');
-var eventHandlers = require('./handlers/eventHandlers');
-
-
-module.exports = Raily;
+module.exports.Raily = Raily;

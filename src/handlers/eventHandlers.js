@@ -1,3 +1,6 @@
+
+module.exports = function(Raily) {
+  
 Raily.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
     console.log("Raily onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
@@ -16,4 +19,6 @@ Raily.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, se
     console.log("Raily onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
+};
+
 };
