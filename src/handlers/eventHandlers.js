@@ -1,4 +1,6 @@
 
+var handle1=require('./functions/handleTrainStatusRequest');
+
 module.exports = function(Raily) {
   
 Raily.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
@@ -9,7 +11,7 @@ Raily.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest
 
 Raily.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("Raily onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    handleNewFactRequest(response);
+    handle1.handleTrainStatusRequest("GetTrainDetailsIntent",session,response);
 };
 
 /**

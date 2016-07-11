@@ -9,7 +9,6 @@
  * The AlexaSkill prototype and helper functions
  */
 var Raily = require('./Raily');
-var functions = require('./functionsController');
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {

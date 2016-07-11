@@ -1,9 +1,12 @@
 
+var handle1=require('./functions/handleTrainStatusRequest');
+
+
 module.exports = function(Raily) {
   
 Raily.prototype.intentHandlers = {
     "GetTrainDetailsIntent": function (intent, session, response) {
-        handleTrainStatusRequest(intent, session, response);
+        handle1.handleTrainStatusRequest(intent, session, response);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
