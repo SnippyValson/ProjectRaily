@@ -12,6 +12,6 @@ It includes :
   - 5 Trains available between two stations can be asked.
   - 6 Train booking status can be known through PRN.
   
-This project depends on api provided by railwayapi.com
+This project depends on api provided by railwayapi.com 
 
 
