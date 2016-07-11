@@ -91,7 +91,7 @@ Raily.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, se
 
 Raily.prototype.intentHandlers = {
     "GetTrainDetailsIntent": function (intent, session, response) {
-        handleNewTrainRequest(response);
+        handleNewTrainRequest(intent, session, response);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
@@ -112,7 +112,7 @@ Raily.prototype.intentHandlers = {
 /**
  * Gets a random new fact from the list and returns to the user.
  */
-function handleNewTrainRequest(response) {
+function handleNewTrainRequest(intent, session, response) {
     // Get a random space fact from the space facts list
     var keyIndex = Math.floor(Math.random() * API_KEYS.length);
     var apiKey = API_KEYS[keyIndex];
