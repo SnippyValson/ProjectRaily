@@ -19,4 +19,3 @@ Raily.prototype.intentHandlers = {
     }
 };
 
-module.exports=Raily.prototype.intentHandlers;

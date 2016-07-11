@@ -4,12 +4,14 @@
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
+var AlexaSkill = require('./AlexaSkill');
+
 var Raily = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
 Raily.prototype = Object.create(AlexaSkill.prototype);
-Raily.prototype.constructor = SpaceGeek;
+Raily.prototype.constructor = Raily;
 
 module.exports = Raily;

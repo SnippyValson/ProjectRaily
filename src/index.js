@@ -5,25 +5,21 @@
 
     or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 */
-
-
-
 /**
  * The AlexaSkill prototype and helper functions
  */
-var AlexaSkill = require('./AlexaSkill');
+var Raily = require('./Raily');
 var functions = require('./functionsController');
 var config = require('./configs');
 var intentHandlers = require('./handlers/intentHandlers');
 var eventHandlers = require('./handlers/eventHandlers');
-var Raily = require('./Raily');
-
 
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
-    // Create an instance of the SpaceGeek skill.
-    var raily = new Raily();
+    // Create an instance of the Raily skill.
+    console.log('Handler started');
+    var Raily = new Raily();
     Raily.execute(event, context);
 };
 
