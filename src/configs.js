@@ -37,3 +37,6 @@ exports.getAPIKeys=function(){
 exports.getTrains=function(){
 	return trains;
 };
+exports.getAPPID=function(){
+	return APP_ID;
+};

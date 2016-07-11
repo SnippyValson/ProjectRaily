@@ -6,9 +6,10 @@
  */
 
 var AlexaSkill = require('./AlexaSkill');
+var config = require('./configs');
 
 var Raily = function () {
-    AlexaSkill.call(this, APP_ID);
+    AlexaSkill.call(this, config.getAPPID());
 };
 // Extend AlexaSkill
 Raily.prototype = Object.create(AlexaSkill.prototype);
@@ -17,4 +18,4 @@ Raily.prototype.constructor = Raily;
 var intentHandlers = require('./handlers/intentHandlers')(Raily);
 var eventHandlers = require('./handlers/eventHandlers')(Raily);
 
-module.exports.Raily = Raily;
+module.exports = Raily;
