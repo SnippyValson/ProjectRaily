@@ -8,15 +8,14 @@
 /**
  * The AlexaSkill prototype and helper functions
  */
+
 var Raily = require('./Raily');
 var functions = require('./functionsController');
-var config = require('./configs');
-
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
     // Create an instance of the Raily skill.
-    console.log('Handler started');
+    //console.log("Yo "+config.getAPIKeys()[2]);
     var Raily = new Raily();
     Raily.execute(event, context);
 };

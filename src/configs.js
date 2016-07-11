@@ -1,5 +1,6 @@
 var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 
+
 var BASE_URL="http://api.railwayapi.com/";
 var trains=[
 	{
@@ -27,7 +28,15 @@ var API_KEYS = [
     "mdtzh6188"
     ];
 
-
-module.exports=BASE_URL;
-//module.exports=trains;
-module.exports=API_KEYS;
+exports.getBaseUrl=function(){
+	return BASE_URL;
+};
+exports.getAPIKeys=function(){
+	return API_KEYS;
+};
+exports.getTrains=function(){
+	return trains;
+};
+exports.getAPPID=function(){
+	return APP_ID;
+};

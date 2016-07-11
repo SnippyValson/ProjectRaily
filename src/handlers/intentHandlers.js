@@ -1,4 +1,6 @@
 
+module.exports = function(Raily) {
+  
 Raily.prototype.intentHandlers = {
     "GetTrainDetailsIntent": function (intent, session, response) {
         handleTrainStatusRequest(intent, session, response);
@@ -17,5 +19,7 @@ Raily.prototype.intentHandlers = {
         var speechOutput = "Goodbye";
         response.tell(speechOutput);
     }
+};
+
 };
 
