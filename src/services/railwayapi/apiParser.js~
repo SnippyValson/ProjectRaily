@@ -8,8 +8,13 @@ var apiKey="bfzhr4575";
 var AlexaSkill = require('./AlexaSkill');
 var config = require('../../configs');
 
+
+/**
+ * This function will return the train status as a string.
+ * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
+ */
 function getJsonLiveStatus(train_no,doj, eventCallback){
-    var url ="http://api.railwayapi.com/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+    var url =baseUrl+"/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     http.get(url, function(res) {
         var body = '';
 
@@ -35,6 +40,8 @@ function getJsonLiveStatus(train_no,doj, eventCallback){
     });
 }
 
+
+
 function getJsonTrainRoute(train_no, eventCallback){
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
@@ -53,6 +60,11 @@ function getJsonTrainRoute(train_no, eventCallback){
     });
 }
 
+/**
+ * This function will return the seat availability as string.
+ * Sample output : AVAILABLE 11  
+ */
+
 function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eventCallback){
     var url =baseUrl +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+class+'/quota/'+quota+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
@@ -63,8 +75,18 @@ function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eve
         });
 
         res.on('end', function () {
-            var stringResult = parseJson(body);
-            eventCallback(stringResult);
+            var stringResult = JSON.stringify(body);
+           
+            var index=0;
+            var index2=0
+            var train_numbers=[];
+            var train_string="";
+            var index=stringResult.indexOf("status")
+            var index1=stringResult.indexOf("\\",index+12)
+            var status =stringResult.substring(index+12,index1);
+            eventCallBack(status);
+            
+
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
@@ -90,8 +112,14 @@ function getJsonFare(train_no, source, dest, age, quota, doj, eventCallback){
     });
 }
 
+
+/**
+ * This function will return the train numbers of trains between stations as a string.
+ * Sample output : 12617  16382  16346  19577  16334  
+ */
+
 function getJsonTrainBtw(source, dest, date, eventCallback){
-        var url="http://api.railwayapi.com/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/bfzhr4575/";
+        var url=baseUrl+"/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
 
         http.get(url, function(res) {
         var body = '';
