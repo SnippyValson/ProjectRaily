@@ -18,37 +18,6 @@
  *  Alexa: "Here's your space fact: ..."
  */
 
-/**
- * App ID for the skill
- */
-var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
-
-var BASE_URL="http://api.railwayapi.com/";
-var trains={
-	[
-	"name":"SOLAPUR MIRAJ SPECIAL",
-	"id":"1413",
-	"from":"SOLAPUR",
-	"to":"MIRAJ"],
-	[
-	"name":"MIRAJ SOLAPUR SPECIAL",
-	"id":"1414",
-	"from":"MIRAJ",
-	"to":"SOLAPUR"]
-};
-/**
- * Array containing API keys
- */
-var API_KEYS = [
-    "bfzhr4575",
-    "puzgi7810",
-    "xtjxm1892",
-    "adieg3070",
-    "bkxel1825",
-    "bkjjv3426",
-    "euhuq6862",
-    "mdtzh6188"
-];
 
 /**
  * The AlexaSkill prototype and helper functions
@@ -109,19 +78,7 @@ Raily.prototype.intentHandlers = {
     }
 };
 
-/**
- * Gets a random new fact from the list and returns to the user.
- */
-function handleNewTrainRequest(intent, session, response) {
-    // Get a random space fact from the space facts list
-    var keyIndex = Math.floor(Math.random() * API_KEYS.length);
-    var apiKey = API_KEYS[keyIndex];
 
-    // Create speech output
-    var speechOutput = "Here's your train details fact: " + "put details here";
-
-    response.tellWithCard(speechOutput, "Raily- Indian Railways", speechOutput);
-}
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
