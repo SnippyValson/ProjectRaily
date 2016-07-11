@@ -11,8 +11,6 @@
 var Raily = require('./Raily');
 var functions = require('./functionsController');
 var config = require('./configs');
-var intentHandlers = require('./handlers/intentHandlers');
-var eventHandlers = require('./handlers/eventHandlers');
 
 
 // Create the handler that responds to the Alexa Request.
