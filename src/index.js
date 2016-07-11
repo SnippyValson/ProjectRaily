@@ -8,7 +8,6 @@
 /**
  * The AlexaSkill prototype and helper functions
  */
-
 var Raily = require('./Raily');
 var functions = require('./functionsController');
 
@@ -16,7 +15,7 @@ var functions = require('./functionsController');
 exports.handler = function (event, context) {
     // Create an instance of the Raily skill.
     //console.log("Yo "+config.getAPIKeys()[2]);
-    var Raily = new Raily();
-    Raily.execute(event, context);
+    var raily = new Raily();
+    raily.execute(event, context);
 };
 
