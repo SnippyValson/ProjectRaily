@@ -12,11 +12,11 @@
  * The AlexaSkill prototype and helper functions
  */
 var AlexaSkill = require('./AlexaSkill');
-var Functions = require('./functions');
-var Config = require('./configs');
+var Functions = require('./Functions');
+var Config = require('./Configs');
 var IntentHandlers = require('./handlers/intentHandlers');
 var EventHandlers = require('./handlers/eventHandlers');
-var Raily = require('./raily');
+var Raily = require('./Raily');
 
 
 
