@@ -12,6 +12,8 @@
  * The AlexaSkill prototype and helper functions
  */
 var AlexaSkill = require('./AlexaSkill');
+var Functions = require('./functions');
+var Config = require('./config');
 
 /**
  * SpaceGeek is a child of AlexaSkill.
