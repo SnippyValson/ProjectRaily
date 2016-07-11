@@ -52,7 +52,7 @@ function getJsonTrainRoute(train_no, eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = parseJson(body);
+            var stringResult = JSON.stringify(body);
             eventCallback(stringResult);
         });
     }).on('error', function (e) {
@@ -81,8 +81,8 @@ function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eve
             var index2=0
             var train_numbers=[];
             var train_string="";
-            var index=stringResult.indexOf("status")
-            var index1=stringResult.indexOf("\\",index+12)
+            var index=stringResult.indexOf("status");
+            var index1=stringResult.indexOf("\\",index+12);
             var status =stringResult.substring(index+12,index1);
             eventCallBack(status);
             
