@@ -4,11 +4,12 @@ var http = require('http');
 /**
  * The AlexaSkill Module that has the AlexaSkill prototype and helper functions
  */
+var apiKey="bfzhr4575";
 var AlexaSkill = require('./AlexaSkill');
 var config = require('../../configs');
 
-function getJsonLiveStatus(tain_no,doj, eventCallback){
-    var url =baseUrl +'/live/train/'+train_no+'/doj/'+doj+'/apikey/'+ apikey+'/';
+function getJsonLiveStatus(train_no,doj, eventCallback){
+    var url ="http://api.railwayapi.com/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     http.get(url, function(res) {
         var body = '';
 
@@ -17,8 +18,17 @@ function getJsonLiveStatus(tain_no,doj, eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = parseJson(body);
-            eventCallback(stringResult);
+            var stringResult = JSON.stringify(body);
+           
+            var index=0;
+            var index2=0
+            var train_numbers=[];
+            var train_string="";
+            var index=stringResult.indexOf("position")
+            var index1=stringResult.indexOf(".",index)
+            var status =stringResult.substring(index+14,index1+1);
+            eventCallback(status);
+
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
@@ -81,9 +91,9 @@ function getJsonFare(train_no, source, dest, age, quota, doj, eventCallback){
 }
 
 function getJsonTrainBtw(source, dest, date, eventCallback){
-   var url="http://api.railwayapi.com/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/bfzhr4575/";
+        var url="http://api.railwayapi.com/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
 
-http.get(url, function(res) {
+        http.get(url, function(res) {
         var body = '';
 
         res.on('data', function (chunk) {
@@ -92,7 +102,6 @@ http.get(url, function(res) {
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            //console.log(stringResult);
             var index=0;
             var index2=0
             var train_numbers=[];
