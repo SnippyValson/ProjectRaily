@@ -14,22 +14,10 @@
 var AlexaSkill = require('./AlexaSkill');
 var Functions = require('./functions');
 var Config = require('./config');
-var Intent_handlers = require('./handlers/intent_handlers');
-var Event_handlers = require('./handlers/event_handlers');
+var IntentHandlers = require('./handlers/intentHandlers');
+var EventHandlers = require('./handlers/eventHandlers');
+var Raily = require('./raily');
 
-/**
- * SpaceGeek is a child of AlexaSkill.
- * To read more about inheritance in JavaScript, see the link below.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
- */
-var Raily = function () {
-    AlexaSkill.call(this, APP_ID);
-};
-
-// Extend AlexaSkill
-Raily.prototype = Object.create(AlexaSkill.prototype);
-Raily.prototype.constructor = SpaceGeek;
 
 
 // Create the handler that responds to the Alexa Request.
