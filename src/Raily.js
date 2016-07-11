@@ -11,3 +11,5 @@ var Raily = function () {
 // Extend AlexaSkill
 Raily.prototype = Object.create(AlexaSkill.prototype);
 Raily.prototype.constructor = SpaceGeek;
+
+module.exports = Raily;

@@ -1,7 +1,7 @@
 
 Raily.prototype.intentHandlers = {
     "GetTrainDetailsIntent": function (intent, session, response) {
-        handleNewTrainRequest(intent, session, response);
+        handleTrainStatusRequest(intent, session, response);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
@@ -18,3 +18,5 @@ Raily.prototype.intentHandlers = {
         response.tell(speechOutput);
     }
 };
+
+module.exports=Raily.prototype.intentHandlers;

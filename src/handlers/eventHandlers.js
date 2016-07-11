@@ -17,3 +17,7 @@ Raily.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, se
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
+
+module.exports=Raily.prototype.eventHandlers.onSessionStarted;
+module.exports=Raily.prototype.eventHandlers.onLaunch;
+module.exports=Raily.prototype.eventHandlers.onSessionEnded;
