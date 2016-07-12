@@ -17,8 +17,13 @@ exports.getJsonLiveStatus= function (train_no,doj){
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
-exports.getJsonLiveStatus= function (train_no,doj){
-    var url =config.getBaseUrl()+"/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
+
+
+     var train_name="Hi";
+     numberToName(train_no,function(events){ train_name=events});
+
+    var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
     var status= "";
     http.get(url, function(res) {
@@ -30,24 +35,27 @@ exports.getJsonLiveStatus= function (train_no,doj){
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            var train_name=numberToName(train_no);
+            //var train_name=numberToName(train_no);
             var index=0;
             var index2=0
             var train_numbers=[];
             var train_string="";
             var index=stringResult.indexOf("position")
             var index1=stringResult.indexOf(".",index)
-            status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+           status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+           // status = stringResult.substring(index+14,index1+1);
             if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
             else
                  state = "success";
+            eventCallback(status);
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        state= "error";
+        status= "Sorry, we could not process your request.";
+        eventCallback(status);
     });
   /* return {
            0:state,
@@ -336,9 +344,9 @@ function getJsonPNRstatus(pnr_no){
                 {
                  var index1=stringResult.indexOf("booking_status",index+1);
                  index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
+                 var index3=stringResult.indexOf("\",\\",index+1);
                  if(index!=-1)
-                 booking_status[index2++]=stringResult.substring(index+20,index3-2);
+                 booking_status[index2++]=stringResult.substring(index+20,index3-1);
                 }
               index=0;
               index2=0;
@@ -361,9 +369,11 @@ function getJsonPNRstatus(pnr_no){
                  coach_position[index2++]=stringResult.substring(index+20,index3-2);
                 }
 
-              result= result+ train_no+','+doj+','+Class+','+chart_prepared+','+total_passengers+",";
+             result= result+ train_no+", Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", "
+             result= result+"Total number of passengers "+total_passengers+", \nDetails of each passengers\n";              
              for(i=0;i<index2;i++)
-                   result=result+booking_status[i]+","+current_status[i]+","+coach_position[i]+",  ";
+                  result=result+" Booking status "+booking_status[i]+", Current status "+current_status[i]+", "
+                  result = result +"Coach position "+coach_position[i]+",  ";
             control.log(result);
              
            if(stringResult.indexOf("error") > -1) {
@@ -430,10 +440,12 @@ exports.getJsonTrainName = function (train_no){
 
 */
 
-function numberToName(train_no){
+function numberToName(train_no,eventCallback){
+    var baseURL="http://api.railwayapi.com";
+    var apiKey="bkxel1825";
     var state="";
     var result="";
-    var url =baseUrl +'/name_number/train/'+train_no+'/apikey/'+ apikey+'/';
+    var url =baseURL +'/name_number/train/'+train_no+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
         var body = '';
 
@@ -443,7 +455,6 @@ function numberToName(train_no){
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            //console.log(stringResult);
             var index=0;
             var index2=0
             var train_numbers=[];
@@ -452,17 +463,19 @@ function numberToName(train_no){
             var index1=stringResult.indexOf("}",index)
             var name =stringResult.substring(index+10,index1-8);
             result=name;
+             
             if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
             else
                  state = "success";
+           eventCallback(result);
 
         });
     }).on('error', function (e) {
         state = "error";
     });
-  return result;
 }
+
 
 

@@ -18,6 +18,11 @@ exports.getJsonLiveStatus= function (train_no,doj){
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
 exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
+
+
+     var train_name="Hi";
+     numberToName(train_no,function(events){ train_name=events});
+
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
     var status= "";
@@ -37,8 +42,8 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
             var train_string="";
             var index=stringResult.indexOf("position")
             var index1=stringResult.indexOf(".",index)
-           // status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
-            status = stringResult.substring(index+14,index1+1);
+           status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+           // status = stringResult.substring(index+14,index1+1);
             if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
@@ -435,10 +440,12 @@ exports.getJsonTrainName = function (train_no){
 
 */
 
-function numberToName(train_no){
+function numberToName(train_no,eventCallback){
+    var baseURL="http://api.railwayapi.com";
+    var apiKey="bkxel1825";
     var state="";
     var result="";
-    var url =baseUrl +'/name_number/train/'+train_no+'/apikey/'+ apikey+'/';
+    var url =baseURL +'/name_number/train/'+train_no+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
         var body = '';
 
@@ -448,7 +455,6 @@ function numberToName(train_no){
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            //console.log(stringResult);
             var index=0;
             var index2=0
             var train_numbers=[];
@@ -457,17 +463,19 @@ function numberToName(train_no){
             var index1=stringResult.indexOf("}",index)
             var name =stringResult.substring(index+10,index1-8);
             result=name;
+             
             if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
             else
                  state = "success";
+           eventCallback(result);
 
         });
     }).on('error', function (e) {
         state = "error";
     });
-  return result;
 }
+
 
 
