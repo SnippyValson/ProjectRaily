@@ -1,3 +1,5 @@
+'use strict';
+
 var config=require('../../configs');
 
 exports.handleTrainStatusRequest=function(intent, session, response) {

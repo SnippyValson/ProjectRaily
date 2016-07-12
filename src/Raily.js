@@ -5,6 +5,8 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
 
+'use strict';
+
 var AlexaSkill = require('./AlexaSkill');
 var config = require('./configs');
 var skillContext = {};

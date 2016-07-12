@@ -8,6 +8,8 @@
 /**
  * The AlexaSkill prototype and helper functions
  */
+'use strict';
+
 var Raily = require('./Raily');
 var config = require('./configs');
 

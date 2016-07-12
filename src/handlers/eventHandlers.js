@@ -1,3 +1,4 @@
+'use strict';
 
 var handle1=require('./functions/handleTrainStatusRequest');
 
