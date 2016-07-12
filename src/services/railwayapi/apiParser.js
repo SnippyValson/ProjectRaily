@@ -41,7 +41,10 @@ function getJsonLiveStatus(train_no,doj, eventCallback){
 }
 
 
-
+/**
+ * This function will return the stations in a route as a string.
+ * Sample output : 12617  16382  16346  19577  16334  
+ */
 function getJsonTrainRoute(train_no, eventCallback){
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
