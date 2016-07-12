@@ -11,6 +11,9 @@ var config = require('../../configs');
 
 
 /**
+exports.getJsonLiveStatus= function (train_no,doj){
+  //the function content here  
+};
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
