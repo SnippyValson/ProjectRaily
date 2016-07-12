@@ -60,7 +60,7 @@ exports.getJsonLiveStatus= function (train_no,doj){
 /**
  * This function will return the stations in a route as a string.
  * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
- */
+ 
 function getJsonTrainRoute(train_no){
 
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
@@ -151,7 +151,7 @@ function getJsonTrainRoute(train_no){
 /**
  * This function will return the seat availability as string.
  * Sample output : AVAILABLE 11  
- */
+ 
 
 function getJsonSeatAvailability(train_no, source, dest, date, _class, quota){
     var url =baseUrl +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apikey+'/';
@@ -205,7 +205,7 @@ function getJsonSeatAvailability(train_no, source, dest, date, _class, quota){
 /**
  * This function will return the train numbers of trains between stations as a string.
  * Sample output : 12617  16382  16346  19577  16334  
- */
+ 
 
 function getJsonTrainBtw(source, dest, date){
          var url=baseUrl+"/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
@@ -427,7 +427,7 @@ exports.getJsonTrainName = function (train_no){
 
 
 
-
+*/
 
 function numberToName(train_no){
     var state="";

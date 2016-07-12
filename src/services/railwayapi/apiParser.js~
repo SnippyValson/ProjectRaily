@@ -153,8 +153,8 @@ function getJsonTrainRoute(train_no){
  * Sample output : AVAILABLE 11  
  */
 
-function getJsonSeatAvailability(train_no, source, dest, date, class, quota){
-    var url =baseUrl +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+class+'/quota/'+quota+'/apikey/'+ apikey+'/';
+function getJsonSeatAvailability(train_no, source, dest, date, _class, quota){
+    var url =baseUrl +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apikey+'/';
     var state = "";
     var status = ""; 
       http.get(url, function(res) {
