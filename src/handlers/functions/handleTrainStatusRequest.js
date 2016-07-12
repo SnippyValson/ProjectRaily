@@ -8,7 +8,7 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
     
     var resultString=railways.getJsonLiveStatus('12046','20160712');
     // Create speech output
-    var speechOutput = intent.slots.Train.value; 
+    var speechOutput = resultString; 
     //"The correct train name recieved: " + intent.slots.Train.value;
     	
    	 response.tellWithCard(speechOutput, "Raily- Indian Railways" , speechOutput);
