@@ -267,18 +267,115 @@ function getJsonPNRstatus(pnr_no){
         });
 
         res.on('end', function () {
+            var train_no;
+            var doj="";
+            var Class="";
+            var chart_prepared="";
+            var total_passengers;
+            var booking_status=[];
+            var current_status=[];
+            var coach_position =[];
             var stringResult = JSON.stringify(body);
+            var index=0;
+            var index1=0;
+            var index2=0;
+            var index3=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("train_num",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 train_no=stringResult.substring(index+15,index3-2);
+                }
+               index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("doj",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 doj=stringResult.substring(index+9,index3-2);
+                }
+             index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("total_passengers",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 total_passengers=stringResult.substring(index+22,index3-2);
+                }
+             index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("class",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 Class=stringResult.substring(index+11,index3-2);
+                }
+               index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("chart_prepared",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 chart_prepared=stringResult.substring(index+20,index3-2);
+                }
+
+              index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("booking_status",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 booking_status[index2++]=stringResult.substring(index+20,index3-2);
+                }
+              index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("current_status",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 current_status[index2++]=stringResult.substring(index+20,index3-2);
+                }
+              index=0;
+              index2=0;
+             while(index!=-1)
+                {
+                 var index1=stringResult.indexOf("coach_position",index+1);
+                 index=index1;
+                 var index3=stringResult.indexOf("\,",index+1);
+                 if(index!=-1)
+                 coach_position[index2++]=stringResult.substring(index+20,index3-2);
+                }
+
+              result= result+ train_no+','+doj+','+Class+','+chart_prepared+','+total_passengers+",";
+             for(i=0;i<index2;i++)
+                   result=result+booking_status[i]+","+current_status[i]+","+coach_position[i]+",  ";
+            control.log(result);
+             
            if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
             else
-                 state = "success";
-
+                state = "success";
+         
             
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        state ="error";
+          state ="error";
     });
   return {
            0:state,
