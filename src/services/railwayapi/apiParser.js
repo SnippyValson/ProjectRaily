@@ -6,16 +6,18 @@ var http = require('http');
 /**
  * The AlexaSkill Module that has the AlexaSkill prototype and helper functions
  */
-var apiKey="bfzhr4575";
-var AlexaSkill = require('./AlexaSkill');
-var config = require('../../configs');
 
+var config = require('../../configs');
+var apiKey=config.getAPIKey();
 
 /**
+exports.getJsonLiveStatus= function (train_no,doj){
+  //the function content here  
+};
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
-function getJsonLiveStatus(train_no,doj){
+exports.getJsonLiveStatus= function (train_no,doj){
     var url =baseUrl+"/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
      var state="";
     var status= "";
