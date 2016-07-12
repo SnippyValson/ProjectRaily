@@ -1,0 +1,22 @@
+{
+  "intents": [
+    {
+      "intent": "handleTrainStatusIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+ }

@@ -4,7 +4,7 @@ var handle1=require('./functions/handleTrainStatusRequest');
 
 var registerIntentHandlers = function (intentHandlers, skillContext) {
   
-intentHandlers.NewGameIntent = function (intent, session, response) {
+intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
         handle1.handleTrainStatusRequest(intent, session, response);
     };
 
