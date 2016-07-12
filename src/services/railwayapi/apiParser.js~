@@ -84,13 +84,6 @@ function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eve
             var index=stringResult.indexOf("status");
             var index1=stringResult.indexOf("\\",index+12);
             var status =stringResult.substring(index+12,index1);
-            if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
-               {
-                 index3=status.indexOf("/WL");
-                 index4=status.indexOf("\n",index3);
-                 var waiting=status.substring(index3+3,index3+8);
-                 var status=waiting+" seats are in waiting list."; 
-                }
             eventCallBack(status);
             
 
