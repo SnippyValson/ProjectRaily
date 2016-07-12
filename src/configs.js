@@ -18,7 +18,6 @@ var trains=[
  * Array containing API keys
  */
 var API_KEYS = [
-    "bfzhr4575",
     "puzgi7810",
     "xtjxm1892",
     "adieg3070",
@@ -27,6 +26,8 @@ var API_KEYS = [
     "euhuq6862",
     "mdtzh6188"
     ];
+
+    //exhausted today "bfzhr4575"
 
 exports.getBaseUrl=function(){
 	return BASE_URL;
