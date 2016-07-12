@@ -13,8 +13,10 @@ var config = require('../../configs');
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
-function getJsonLiveStatus(train_no,doj, eventCallback){
+function getJsonLiveStatus(train_no,doj){
     var url =baseUrl+"/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+     var state="";
+    var status= "";
     http.get(url, function(res) {
         var body = '';
 
@@ -31,22 +33,35 @@ function getJsonLiveStatus(train_no,doj, eventCallback){
             var train_string="";
             var index=stringResult.indexOf("position")
             var index1=stringResult.indexOf(".",index)
-            var status =stringResult.substring(index+14,index1+1);
-            eventCallback(status);
+            status =stringResult.substring(index+14,index1+1);
+            if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
+        state= "error";
     });
+   return {
+           0:state,
+           1:status
+         };
 }
+
 
 
 /**
  * This function will return the stations in a route as a string.
  * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
  */
-function getJsonTrainRoute(train_no, eventCallback){
+function getJsonTrainRoute(train_no){
+
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
+       var station_string="";
+    var state = "";
     http.get(url, function(res) {
         var body = '';
 
@@ -63,7 +78,7 @@ function getJsonTrainRoute(train_no, eventCallback){
             var station_arrival=[];
             var station_dep=[];
             var day=[];
-            var station_string="";
+           
             while(index!=-1)
           {
              var index1=stringResult.indexOf("fullname",index+1);
@@ -112,13 +127,21 @@ function getJsonTrainRoute(train_no, eventCallback){
           } 
          for(i=0;i<index2;i++)
             station_string=station_string+station_names[i]+","+station_arrival[i]+","+station_dep[i]+","+day[i] +",  ";
-            eventCallBacbk(station_string);
+           if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
+        state = "error";
     });
-
+   return {
+           0:state,
+           1:station_string
+         };
 }
 
 /**
@@ -126,9 +149,11 @@ function getJsonTrainRoute(train_no, eventCallback){
  * Sample output : AVAILABLE 11  
  */
 
-function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eventCallback){
+function getJsonSeatAvailability(train_no, source, dest, date, class, quota){
     var url =baseUrl +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+class+'/quota/'+quota+'/apikey/'+ apikey+'/';
-    http.get(url, function(res) {
+    var state = "";
+    var status = ""; 
+      http.get(url, function(res) {
         var body = '';
 
         res.on('data', function (chunk) {
@@ -152,33 +177,25 @@ function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eve
                  var waiting=status.substring(index3+3,index3+8);
                  var status=waiting+" seats are in waiting list."; 
                 }
-            eventCallBack(status);
+            if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
+
             
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
+        state = "error";
     });
+  return {
+           0:state,
+           1:status
+         };
 }
 
-
-function getJsonFare(train_no, source, dest, age, quota, doj, eventCallback){
-    var url =baseUrl +'/fare/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/age/'+ age+'/quota/'+quota+'/doj/'+doj+'/apikey/'+ apikey+'/';
-    http.get(url, function(res) {
-        var body = '';
-
-        res.on('data', function (chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function () {
-            var stringResult = parseJson(body);
-            eventCallback(stringResult);
-        });
-    }).on('error', function (e) {
-        console.log("Got error: ", e);
-    });
-}
 
 
 /**
@@ -186,8 +203,10 @@ function getJsonFare(train_no, source, dest, age, quota, doj, eventCallback){
  * Sample output : 12617  16382  16346  19577  16334  
  */
 
-function getJsonTrainBtw(source, dest, date, eventCallback){
+function getJsonTrainBtw(source, dest, date){
         var url=baseUrl+"/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
+        var state ="";
+         var train_string="";
 
         http.get(url, function(res) {
         var body = '';
@@ -201,7 +220,7 @@ function getJsonTrainBtw(source, dest, date, eventCallback){
             var index=0;
             var index2=0
             var train_numbers=[];
-            var train_string="";
+       
             while(index!=-1)
           {
              var index1=stringResult.indexOf("number",index+1);
@@ -214,15 +233,27 @@ function getJsonTrainBtw(source, dest, date, eventCallback){
            {
                train_string=train_string+train_numbers[i]+"  ";
             }
-            eventCallback(train_string);
+         if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
+
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
+        state ="error";
     });
+    return {
+           0:state,
+           1:train_string
+         };
 }
 
-function getJsonPNRstatus(pnr_no, eventCallback){
+function getJsonPNRstatus(pnr_no){
+    var state="";
+    var result="";
     var url =baseUrl +'/pnr_status/pnr/'+pnr_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
         var body = '';
@@ -232,12 +263,23 @@ function getJsonPNRstatus(pnr_no, eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = parseJson(body);
-            eventCallback(stringResult);
+            var stringResult = JSON.stringify(body);
+           if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
+
+            
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
+        state ="error";
     });
+  return {
+           0:state,
+           1:result
+         };
 }
   
 
