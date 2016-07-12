@@ -18,7 +18,7 @@ exports.getJsonLiveStatus= function (train_no,doj){
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
 exports.getJsonLiveStatus= function (train_no,doj){
-    var url =config.getBaseUrl()+"/live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+    var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
     var status= "";
     http.get(url, function(res) {
