@@ -13,7 +13,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
 
 	eventHandlers.onLaunch = function (launchRequest, session, response) {
 	    console.log("Raily onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-	    //handle1.handleTrainStatusRequest("GetTrainDetailsIntent",session,response);
+	    handle1.handleTrainStatusRequest("GetTrainDetailsIntent",session,response);
 	};
 
 	/**

@@ -17,7 +17,7 @@ exports.getJsonLiveStatus= function (train_no,doj){
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
-exports.getJsonLiveStatus= function (train_no,doj){
+exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
     var status= "";
@@ -30,24 +30,27 @@ exports.getJsonLiveStatus= function (train_no,doj){
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            var train_name=numberToName(train_no);
+            //var train_name=numberToName(train_no);
             var index=0;
             var index2=0
             var train_numbers=[];
             var train_string="";
             var index=stringResult.indexOf("position")
             var index1=stringResult.indexOf(".",index)
-            status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+           // status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+            status = stringResult.substring(index+14,index1+1);
             if(stringResult.indexOf("error") > -1) {
                  state = "error";
                 }
             else
                  state = "success";
+            eventCallback(status);
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
+        eventCallback(status);
     });
   /* return {
            0:state,
