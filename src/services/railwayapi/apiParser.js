@@ -7,7 +7,6 @@ var http = require('http');
  * The AlexaSkill Module that has the AlexaSkill prototype and helper functions
  */
 var apiKey="bfzhr4575";
-var AlexaSkill = require('./AlexaSkill');
 var config = require('../../configs');
 
 
