@@ -41,7 +41,10 @@ function getJsonLiveStatus(train_no,doj, eventCallback){
 }
 
 
-
+/**
+ * This function will return the stations in a route as a string.
+ * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
+ */
 function getJsonTrainRoute(train_no, eventCallback){
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
@@ -53,11 +56,69 @@ function getJsonTrainRoute(train_no, eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.stringify(body);
-            eventCallback(stringResult);
+            //console.log(stringResult);
+            var index=0;
+            var index2=0
+            var station_names=[];
+            var station_arrival=[];
+            var station_dep=[];
+            var day=[];
+            var station_string="";
+            while(index!=-1)
+          {
+             var index1=stringResult.indexOf("fullname",index+1);
+             index=index1;
+             var index3=stringResult.indexOf("\,",index+1);
+             if(index!=-1)
+             station_names[index2++]=stringResult.substring(index+14,index3-2);
+              
+          } 
+           index=0;
+           index2=0;
+           while(index!=-1)
+          {
+             var index1=stringResult.indexOf("schdep",index+1);
+             index=index1;
+             var index3=stringResult.indexOf("\,",index+1);
+             if(index!=-1)
+             station_dep[index2++]=stringResult.substring(index+12,index3-2);
+              
+          }
+           index=0;
+           index2=0;
+           while(index!=-1)
+          {
+             var index1=stringResult.indexOf("scharr",index+1);
+             index=index1;
+             var index3=stringResult.indexOf("\,",index+1);
+             if(index!=-1)
+             station_arrival[index2++]=stringResult.substring(index+12,index3-2);
+              
+          } 
+
+            var index4=stringResult.indexOf("route");
+           
+            index=0;
+            index2=0;
+           while(index!=-1)
+          {
+             var index1=stringResult.indexOf("day",index4+1);
+             index4=index1;
+             index=index1;
+             var index3=stringResult.indexOf("\,",index+1);
+             if(index!=-1)
+             day[index2++]=stringResult.substring(index+8,index3-1);
+              
+          } 
+         for(i=0;i<index2;i++)
+            station_string=station_string+station_names[i]+","+station_arrival[i]+","+station_dep[i]+","+day[i] +",  ";
+            eventCallBacbk(station_string);
+
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
     });
+
 }
 
 /**
@@ -84,6 +145,13 @@ function getJsonSeatAvailability(train_no, source, dest, date, class, quota, eve
             var index=stringResult.indexOf("status");
             var index1=stringResult.indexOf("\\",index+12);
             var status =stringResult.substring(index+12,index1);
+            if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
+               {
+                 index3=status.indexOf("/WL");
+                 index4=status.indexOf("\n",index3);
+                 var waiting=status.substring(index3+3,index3+8);
+                 var status=waiting+" seats are in waiting list."; 
+                }
             eventCallBack(status);
             
 
