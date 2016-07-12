@@ -336,9 +336,9 @@ function getJsonPNRstatus(pnr_no){
                 {
                  var index1=stringResult.indexOf("booking_status",index+1);
                  index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
+                 var index3=stringResult.indexOf("\",\\",index+1);
                  if(index!=-1)
-                 booking_status[index2++]=stringResult.substring(index+20,index3+3);
+                 booking_status[index2++]=stringResult.substring(index+20,index3-1);
                 }
               index=0;
               index2=0;
