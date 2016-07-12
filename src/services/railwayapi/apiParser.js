@@ -338,7 +338,7 @@ function getJsonPNRstatus(pnr_no){
                  index=index1;
                  var index3=stringResult.indexOf("\,",index+1);
                  if(index!=-1)
-                 booking_status[index2++]=stringResult.substring(index+20,index3-2);
+                 booking_status[index2++]=stringResult.substring(index+20,index3+3);
                 }
               index=0;
               index2=0;
@@ -361,7 +361,7 @@ function getJsonPNRstatus(pnr_no){
                  coach_position[index2++]=stringResult.substring(index+20,index3-2);
                 }
 
-              result= result+ train_no+','+doj+','+Class+','+chart_prepared+','+total_passengers+",";
+              result= result+ train_no+","+doj+","+Class+','+chart_prepared+','+total_passengers+",";
              for(i=0;i<index2;i++)
                    result=result+booking_status[i]+","+current_status[i]+","+coach_position[i]+",  ";
             control.log(result);
