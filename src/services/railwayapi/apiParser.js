@@ -43,7 +43,7 @@ function getJsonLiveStatus(train_no,doj, eventCallback){
 
 /**
  * This function will return the stations in a route as a string.
- * Sample output : 12617  16382  16346  19577  16334  
+ * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
  */
 function getJsonTrainRoute(train_no, eventCallback){
     var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
