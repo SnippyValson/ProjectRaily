@@ -1,7 +1,7 @@
 
 'use strict';
 
-var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
+var APP_ID = 'amzn1.echo-sdk-ams.app.32454c52-92db-4707-82b5-8239b8ac38ca'; //replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 
 
 var BASE_URL="http://api.railwayapi.com/";

@@ -1,6 +1,5 @@
 handleTrainStatusIntent get details of {Train}
 handleTrainStatusIntent {Train} details
-handleTrainStatusIntent {Train}
 handleTrainStatusIntent what's the status of {Train}
 handleTrainStatusIntent what is the status of {Train}
 handleTrainStatusIntent what's the location of {Train}

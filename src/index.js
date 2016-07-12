@@ -16,7 +16,7 @@ var config = require('./configs');
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
     // Create an instance of the Raily skill.
-    console.log("Yo "+config.getAPIKey());
+    //console.log("Yo "+config.getAPIKey());
     var raily = new Raily();
     raily.execute(event, context);
 };
