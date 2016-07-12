@@ -47,7 +47,7 @@ exports.getJsonLiveStatus= function (train_no,doj){
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        state= "error";
+        status= "Sorry, we could not process your request.";
     });
   /* return {
            0:state,
