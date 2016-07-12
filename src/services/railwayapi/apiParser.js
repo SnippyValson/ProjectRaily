@@ -49,10 +49,11 @@ exports.getJsonLiveStatus= function (train_no,doj){
         console.log("Got error: ", e);
         state= "error";
     });
-   return {
+  /* return {
            0:state,
            1:status
-         };
+         };*/
+   return status;
 }
 
 
