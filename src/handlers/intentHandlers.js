@@ -2,27 +2,26 @@
 var handle1=require('./functions/handleTrainStatusRequest');
 
 
-module.exports = function(Raily) {
+var registerIntentHandlers = function (intentHandlers, skillContext) {
   
-Raily.prototype.intentHandlers = {
-    "GetTrainDetailsIntent": function (intent, session, response) {
+intentHandlers.NewGameIntent = function (intent, session, response) {
         handle1.handleTrainStatusRequest(intent, session, response);
-    },
+    };
 
-    "AMAZON.HelpIntent": function (intent, session, response) {
+    intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
         response.ask("You can ask Indian Railways tell me the details of a train, or, you can say exit... What can I help you with?", "What can I help you with?");
-    },
+    };
 
-    "AMAZON.StopIntent": function (intent, session, response) {
+    intentHandlers['AMAZON.StopIntent'] = function (intent, session, response) {
         var speechOutput = "Goodbye";
         response.tell(speechOutput);
-    },
-
-    "AMAZON.CancelIntent": function (intent, session, response) {
+    };
+    intentHandlers['AMAZON.CancelIntent'] = function (intent, session, response) {
         var speechOutput = "Goodbye";
         response.tell(speechOutput);
-    }
-};
+    };
 
 };
+
+exports.register = registerIntentHandlers;
 
