@@ -31,8 +31,10 @@ var API_KEYS = [
 exports.getBaseUrl=function(){
 	return BASE_URL;
 };
-exports.getAPIKeys=function(){
-	return API_KEYS;
+exports.getAPIKey=function(){
+    var keyIndex = Math.floor(Math.random() * API_KEYS.length);
+    var apiKey = API_KEYS[keyIndex];
+	return apiKey;
 };
 exports.getTrains=function(){
 	return trains;
