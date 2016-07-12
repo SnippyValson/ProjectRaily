@@ -361,9 +361,11 @@ function getJsonPNRstatus(pnr_no){
                  coach_position[index2++]=stringResult.substring(index+20,index3-2);
                 }
 
-              result= result+ train_no+","+doj+","+Class+','+chart_prepared+','+total_passengers+",";
+             result= result+ train_no+", Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", "
+             result= result+"Total number of passengers "+total_passengers+", \nDetails of each passengers\n";              
              for(i=0;i<index2;i++)
-                   result=result+booking_status[i]+","+current_status[i]+","+coach_position[i]+",  ";
+                  result=result+" Booking status "+booking_status[i]+", Current status "+current_status[i]+", "
+                  result = result +"Coach position "+coach_position[i]+",  ";
             control.log(result);
              
            if(stringResult.indexOf("error") > -1) {
