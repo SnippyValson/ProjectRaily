@@ -7,6 +7,28 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
     // Get a random space fact from the space facts list
     var speechOutput="<p>"+intent.slots.Train.value+" Status</p> ";
     var date_ = new Date().getDate();
+    switch(date_)
+     {
+      case 1:date_='01';
+             break;
+      case 2:date_='02';
+             break;
+      case 3:date_='03';
+             break;
+      case 4:date_='04';
+             break;
+      case 5:date_='05';
+             break;
+      case 6:date_='06';
+             break;
+      case 7:date_='07';
+             break;
+      case 8:date_='08';
+             break;
+      case 9:date_='09';
+             break;
+
+     }
     var month_ = new Date().getMonth(); 
     month_= month_+1;
     switch(month_)
