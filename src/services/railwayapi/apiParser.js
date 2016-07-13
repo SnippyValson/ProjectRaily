@@ -35,7 +35,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.parse(body);
-            var status="The status of the train "+train_name+" is "+ stringResult.position;
+            var status="<p>The status of the train "+train_name+"</p> "+ stringResult.position;
             eventCallback(status);
 
         });

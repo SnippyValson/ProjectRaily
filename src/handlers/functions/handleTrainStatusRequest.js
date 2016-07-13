@@ -5,7 +5,7 @@ var railways=require('../../services/railwayapi/apiParser');
 
 exports.handleTrainStatusRequest=function(intent, session, response) {
     // Get a random space fact from the space facts list
-    var speechOutput="<p>"+intent.slots.Train.value+" Status</p> ";
+    //var speechOutput="<p>"+intent.slots.Train.value+" Status</p> ";
     var date_ = new Date().getDate();
     switch(date_)
      {
@@ -59,7 +59,7 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
   
     railways.getJsonLiveStatus('12163',result, function (events){
     	// Create speech output
-	    speechOutput = speechOutput+ events; 
+	    var speechOutput =  events; 
 	    //"The correct train name recieved: " + intent.slots.Train.value;
 	    	
 	   	 response.tellWithCard(speechOutput, "Raily- Indian Railways" , speechOutput);
