@@ -247,8 +247,8 @@ function getJsonTrainBtw(source, dest, date){
          };
 }
 
-function getJsonPNRstatus(pnr_no){
-    var state="";
+function getJsonPNRstatus(pnr_no, eventCallback){
+    //var state="";
     var result="";
     var url =baseUrl +'/pnr_status/pnr/'+pnr_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
@@ -259,7 +259,7 @@ function getJsonPNRstatus(pnr_no){
         });
 
         res.on('end', function () {
-            var train_no;
+           var train_name;
             var doj="";
             var Class="";
             var chart_prepared="";
@@ -267,114 +267,37 @@ function getJsonPNRstatus(pnr_no){
             var booking_status=[];
             var current_status=[];
             var coach_position =[];
-            var stringResult = JSON.stringify(body);
-            var index=0;
-            var index1=0;
-            var index2=0;
-            var index3=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("train_num",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 train_no=stringResult.substring(index+15,index3-2);
-                }
-               index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("doj",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 doj=stringResult.substring(index+9,index3-2);
-                }
-             index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("total_passengers",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 total_passengers=stringResult.substring(index+22,index3-2);
-                }
-             index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("class",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 Class=stringResult.substring(index+11,index3-2);
-                }
-               index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("chart_prepared",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 chart_prepared=stringResult.substring(index+20,index3-2);
-                }
-
-              index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("booking_status",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\",\\",index+1);
-                 if(index!=-1)
-                 booking_status[index2++]=stringResult.substring(index+20,index3-1);
-                }
-              index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("current_status",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 current_status[index2++]=stringResult.substring(index+20,index3-2);
-                }
-              index=0;
-              index2=0;
-             while(index!=-1)
-                {
-                 var index1=stringResult.indexOf("coach_position",index+1);
-                 index=index1;
-                 var index3=stringResult.indexOf("\,",index+1);
-                 if(index!=-1)
-                 coach_position[index2++]=stringResult.substring(index+20,index3-2);
-                }
-
-             result= result+ train_no+", Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", "
-             result= result+"Total number of passengers "+total_passengers+", \nDetails of each passengers\n";              
-             for(i=0;i<index2;i++)
-                  result=result+" Booking status "+booking_status[i]+", Current status "+current_status[i]+", "
-                  result = result +"Coach position "+coach_position[i]+",  ";
-            control.log(result);
-             
-           if(stringResult.indexOf("error") > -1) {
-                 state = "error";
-                }
-            else
-                state = "success";
-         
+            var stringResult = JSON.parse(body);
+           
+            train_no= stringResult.train_name;
+            doj= stringResult.doj;
+            Class= stringResult.class;
+            chart_prepared= stringResult.chart_prepared; 
+            total_passengers= stringResult.total_passengers; 
+            result= result+ train_name+", Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", Total number of passengers "+total_passengers+". Details of each passengers.";
+            for (var i=0; i<stringResult["passengers"].length; i++){
+               //result = result + "passenger "+i+ '\n';
+               booking_status[i]=stringResult["passengers"][i].booking_status;
+               current_status[i]=stringResult["passengers"][i].current_status;
+               coach_position[i]=stringResult["passengers"][i].coach_position;
+                                  
+              } 
+             var m=0;
+            for (var j=0; j<i; j++){
+               m=j+1;
+               result = result + "passenger "+m+ '.';
+               result=result+" Booking status "+booking_status[j]+", Current status "+current_status[j]+", Coach position "+coach_position[j]+".";
+               }
+            //console.log(result);
+            eventCallback(result);             
+              
             
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-          state ="error";
+         result = "sorry, we could not process your request.";
     });
-  return {
-           0:state,
-           1:result
-         };
+  return result;
 }
 
 exports.getJsonTrainName = function (train_no){
