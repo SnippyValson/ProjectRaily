@@ -13,10 +13,16 @@ var trains=[
 	"from":"SOLAPUR",
 	"to":"MIRAJ"},
 	{
-	"name":"MIRAJ SOLAPUR SPECIAL",
-	"id":"1414",
-	"from":"MIRAJ",
-	"to":"SOLAPUR"}
+	"name":"LUCKNOW RAJADHANI EXPRESS",
+	"id":"12429",
+	"from":"LUCKNOW",
+	"to":"NEW DELHI"},
+	{
+	"name":"CHENNAI EXPRESS",
+	"id":"12163",
+	"from":"DADAR",
+	"to":"CHENNAI"}
+
 ];
 /**
  * Array containing API keys
