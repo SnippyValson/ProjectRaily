@@ -34,21 +34,8 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = JSON.stringify(body);
-            //var train_name=numberToName(train_no);
-            var index=0;
-            var index2=0
-            var train_numbers=[];
-            var train_string="";
-            var index=stringResult.indexOf("position")
-            var index1=stringResult.indexOf(".",index)
-           
-           // status = stringResult.substring(index+14,index1+1);
-            if(stringResult.indexOf("error") > -1) {
-                 status = "error";
-                }
-            else
-                status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+            var stringResult = JSON.parse(body);
+            var status="The status of the train "+train_name+" is "+ stringResult.position;
             eventCallback(status);
 
         });
@@ -450,22 +437,8 @@ function numberToName(train_no,eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = JSON.stringify(body);
-            var index=0;
-            var index2=0
-            var train_numbers=[];
-            var train_string="";
-            var index=stringResult.indexOf("name")
-            var index1=stringResult.indexOf("}",index)
-            var name =stringResult.substring(index+10,index1-8);
-            result=name;
-             
-            if(stringResult.indexOf("error") > -1) {
-                 state = "error";
-                }
-            else
-                 state = "success";
-           eventCallback(result);
+            var stringResult = JSON.parse(body);
+            eventCallback(stringResult.train.name);
 
         });
     }).on('error', function (e) {
