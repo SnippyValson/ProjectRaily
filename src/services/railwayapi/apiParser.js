@@ -157,11 +157,11 @@ function getJsonSeatAvailability(train_no, source, dest, date, _class, quota){
  * Sample output : 12617  16382  16346  19577  16334  
  
 
-function getJsonTrainBtw(source, dest, date){
-         var url=baseUrl+"/between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
-         var state ="";
+exports.function getJsonTrainBtw(source, dest, date, eventCallback){
+         var url=config.getBaseUrl+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
+        // var state ="";
          var train_string="";
-
+         var train_name=[];
         http.get(url, function(res) {
         var body = '';
 
@@ -170,39 +170,41 @@ function getJsonTrainBtw(source, dest, date){
         });
 
         res.on('end', function () {
-            var stringResult = JSON.stringify(body);
+            var stringResult = JSON.parse(body);
+            var train_no=[];
+            var src_departure_time=[];
+            var dest_arrival_time=[];
+            var days=[];
             var index=0;
-            var index2=0
-            var train_numbers=[];
-       
-            while(index!=-1)
-          {
-             var index1=stringResult.indexOf("number",index+1);
-             index=index1;
-             if(index!=-1)
-             
-             train_numbers[index2++]=stringResult.substring(index+12,index+17);
-          } 
-         for(i=0;i<index2;i++)
-           {
-               train_string=train_string+train_numbers[i]+"  ";
-            }
-         if(stringResult.indexOf("error") > -1) {
-                 state = "error";
-                }
-            else
-                 state = "success";
+            or (var i=0; i<stringResult["train"].length; i++){
+                days[i]="";
+                train_no[i]=stringResult["train"][i].number;
+                numberToName(train_no[i],function(events){ train_name[i]=events});
+                src_departure_time[i]=stringResult["train"][i].src_departure_time;
+                dest_arrival_time[i]=stringResult["train"][i].dest_arrival_time;
+                for  (var j=0; j<stringResult["train"]["days"].length; j++){
+                        if(stringResult["train"]["days"][j].runs=='Y')
+                          {
+                            days[i]=days[i]+stringResult["train"]["days"][j].day_code+',';
+                           }
+                     }
+              }
+             var m=0;
+            for (j=0; j<i; j++){
+               m=j+1;
+               train_string = train_string + "Train "+m+ '.';
+               train_string =train_string+train_name[j]+", Source departure time "+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
 
-
+               }
+            //console.log(train_string);
+            eventCallback(train_string);
+        
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        state ="error";
+        train_string = "sorry, we could not process your request.";
     });
-    return {
-           0:state,
-           1:train_string
-         };
+    return train_string;
 }
 
 exports.function getJsonPNRstatus(pnr_no, eventCallback){
