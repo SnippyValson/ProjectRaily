@@ -53,9 +53,9 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
  * This function will return the stations in a route as a string.
  * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
  
-function getJsonTrainRoute(train_no){
+ecports.function getJsonTrainRoute(train_no,eventCallback){
 
-    var url =baseUrl +'/route/train/'+train_no+'/apikey/'+ apikey+'/';
+    var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apikey+'/';
        var station_string="";
     var state = "";
     http.get(url, function(res) {
@@ -66,78 +66,36 @@ function getJsonTrainRoute(train_no){
         });
 
         res.on('end', function () {
-            var stringResult = JSON.stringify(body);
+            var stringResult = JSON.parse(body);
             //console.log(stringResult);
-            var index=0;
-            var index2=0
+            
             var station_names=[];
             var station_arrival=[];
             var station_dep=[];
             var day=[];
-           
-            while(index!=-1)
-          {
-             var index1=stringResult.indexOf("fullname",index+1);
-             index=index1;
-             var index3=stringResult.indexOf("\,",index+1);
-             if(index!=-1)
-             station_names[index2++]=stringResult.substring(index+14,index3-2);
-              
-          } 
-           index=0;
-           index2=0;
-           while(index!=-1)
-          {
-             var index1=stringResult.indexOf("schdep",index+1);
-             index=index1;
-             var index3=stringResult.indexOf("\,",index+1);
-             if(index!=-1)
-             station_dep[index2++]=stringResult.substring(index+12,index3-2);
-              
-          }
-           index=0;
-           index2=0;
-           while(index!=-1)
-          {
-             var index1=stringResult.indexOf("scharr",index+1);
-             index=index1;
-             var index3=stringResult.indexOf("\,",index+1);
-             if(index!=-1)
-             station_arrival[index2++]=stringResult.substring(index+12,index3-2);
-              
-          } 
-
-            var index4=stringResult.indexOf("route");
-           
-            index=0;
-            index2=0;
-           while(index!=-1)
-          {
-             var index1=stringResult.indexOf("day",index4+1);
-             index4=index1;
-             index=index1;
-             var index3=stringResult.indexOf("\,",index+1);
-             if(index!=-1)
-             day[index2++]=stringResult.substring(index+8,index3-1);
-              
-          } 
-         for(i=0;i<index2;i++)
-            station_string=station_string+station_names[i]+","+station_arrival[i]+","+station_dep[i]+","+day[i] +",  ";
-           if(stringResult.indexOf("error") > -1) {
-                 state = "error";
+            for (var i=0; i<stringResult["route"].length; i++){
+                station_names[i]=stringResult["route"][i].fullname;
+                station_arrival[i]=stringResult["route"][i].scharr;
+                station_dep[i]=stringResult["route"][i].schdep;
+                day[i]=stringResult["route"][i].day;
                 }
-            else
-                 state = "success";
+             var m=0;
+            for (var j=0; j<i; j++){
+               m=j+1;
+               station_string = station_string + "Route "+m+ '.';
+               station_string=station_string+station_names[i]+","+station_arrival[i]+","+station_dep[i]+","+day[i] +".  ";
 
+               }
+            //console.log(station_string);
+            eventCallback(station_string);
+              
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        state = "error";
+        status= "Sorry, we could not process your request.";
+        eventCallback(station_string);
     });
-   return {
-           0:state,
-           1:station_string
-         };
+   return station_string;
 }
 
 /**
