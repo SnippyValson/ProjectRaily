@@ -156,11 +156,26 @@ exports.function getJsonTrainBtw(source, dest, date, eventCallback){
                 train_no[i]=stringResult["train"][i].number;
                 src_departure_time[i]=stringResult["train"][i].src_departure_time;
                 dest_arrival_time[i]=stringResult["train"][i].dest_arrival_time;
-                for  (var j=0; j<stringResult["train"]["days"].length; j++){
-                        if(stringResult["train"]["days"][j].runs=='Y')
-                          {
-                            days[i]=days[i]+stringResult["train"]["days"][j].day_code+',';
-                           }
+                for  (var j=0; j<stringResult["train"][i]["days"].length; j++){
+                        if(stringResult["train"][i]["days"][j].runs==="Y")
+                          { 
+                            switch(j){
+                               case 0: days[i]=days[i]+"monday, ";
+                                       break;
+                               case 1: days[i]=days[i]+"tuesday, ";
+                                       break;
+                               case 2: days[i]=days[i]+"wednesday, ";
+                                       break;
+                               case 3: days[i]=days[i]+"thursday, ";
+                                       break;
+                               case 4: days[i]=days[i]+"friday, ";
+                                       break;
+                               case 5: days[i]=days[i]+"saturday, ";
+                                       break;
+                               case 6: days[i]=days[i]+"sunday, ";
+                                       break; 
+                              }
+                            }
                      }
               }
              var m=0;
