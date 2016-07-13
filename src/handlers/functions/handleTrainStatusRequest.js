@@ -71,26 +71,6 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
 
 exports.nameToId=function  (name)
 {
-
-var trains=[
-{
-"name":"SOLAPUR MIRAJ SPECIAL",
-"id":"1413",
-"from":"SOLAPUR",
-"to":"MIRAJ"},
-{
-"name":"LUCKNOW RAJADHANI EXPRESS",
-"id":"12429",
-"from":"LUCKNOW",
-"to":"NEW DELHI"},
-{
-"name":"CHENNAI EXPRESS",
-"id":"12163",
-"from":"DADAR",
-"to":"CHENNAI"}
-
-];
-
 var temp=JSON.stringify(trains);
 var index= temp.indexOf(name);
 var index2=temp.indexOf(":",index+1);
