@@ -247,10 +247,11 @@ function getJsonTrainBtw(source, dest, date){
          };
 }
 
-function getJsonPNRstatus(pnr_no, eventCallback){
+exports.function getJsonPNRstatus(pnr_no, eventCallback){
     //var state="";
     var result="";
-    var url =baseUrl +'/pnr_status/pnr/'+pnr_no+'/apikey/'+ apikey+'/';
+      var train_name="Hi";
+     var url =config.getBaseUrl() +'pnr_status/pnr/'+pnr_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
         var body = '';
 
@@ -259,7 +260,7 @@ function getJsonPNRstatus(pnr_no, eventCallback){
         });
 
         res.on('end', function () {
-           var train_name;
+           var train_no;
             var doj="";
             var Class="";
             var chart_prepared="";
@@ -269,7 +270,8 @@ function getJsonPNRstatus(pnr_no, eventCallback){
             var coach_position =[];
             var stringResult = JSON.parse(body);
            
-            train_no= stringResult.train_name;
+            train_no= stringResult.train_no;
+            numberToName(train_no,function(events){ train_name=events});
             doj= stringResult.doj;
             Class= stringResult.class;
             chart_prepared= stringResult.chart_prepared; 
@@ -299,6 +301,55 @@ function getJsonPNRstatus(pnr_no, eventCallback){
     });
   return result;
 }
+
+exports.function getJsonTrainArrivals(station_code,hrs, eventCallback){
+    //var state="";
+    var result="";
+     var train_name=[];
+    var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apikey+'/';
+    http.get(url, function(res) {
+        var body = '';
+
+        res.on('data', function (chunk) {
+            body += chunk;
+        });
+
+        res.on('end', function () {
+           var train_no=[];
+            var actdep=[];
+            var delaydep=[];
+            var scharr=[];
+            var delayarr=[];
+            var schdep =[];
+            var stringResult = JSON.parse(body);
+             for (var i=0; i<stringResult["train"].length; i++){
+                train_no[i]=stringResult["train"][i].number;
+                numberToName(train_no[i],function(events){ train_name[i]=events});
+                scharr[i]=stringResult["train"][i].scharr;
+                delayarr[i]=stringResult["train"][i].delayarr;
+                schdep[i]=stringResult["train"][i].schdep;
+                actdep[i]=stringResult["train"][i].actdep;
+                delaydep[i]=stringResult["train"][i].delaydep;
+
+              }
+             var m=0;
+            for (var j=0; j<i; j++){
+               m=j+1;
+               result = result + "Train "+m+ '.';
+               result=result+train_name[j]+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+
+               }
+            //console.log(result);
+            eventCallback(result);
+
+        });
+    }).on('error', function (e) {
+        console.log("Got error: ", e);
+         result = "sorry, we could not process your request.";
+    });
+  return result;
+}
+
 
 exports.getJsonTrainName = function (train_no){
     var state="";
