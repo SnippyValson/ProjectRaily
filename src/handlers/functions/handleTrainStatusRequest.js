@@ -57,7 +57,7 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
     var result = "";
     result= result + year_+month_+date_;
   
-    railways.getJsonLiveStatus('12163',result, function (events){
+    railways.getJsonLiveStatus('12429',result, function (events){
     	// Create speech output
 	    var speechOutput =  events; 
 	    //"The correct train name recieved: " + intent.slots.Train.value;
