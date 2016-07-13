@@ -42,13 +42,13 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
             var train_string="";
             var index=stringResult.indexOf("position")
             var index1=stringResult.indexOf(".",index)
-           status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
+           
            // status = stringResult.substring(index+14,index1+1);
             if(stringResult.indexOf("error") > -1) {
-                 state = "error";
+                 status = "error";
                 }
             else
-                 state = "success";
+                status = "The status of "+train_name+"is"+stringResult.substring(index+14,index1+1);
             eventCallback(status);
 
         });
@@ -57,10 +57,6 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
         status= "Sorry, we could not process your request.";
         eventCallback(status);
     });
-  /* return {
-           0:state,
-           1:status
-         };*/
    return status;
 }
 
