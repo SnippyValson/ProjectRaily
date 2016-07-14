@@ -1,6 +1,5 @@
 'use strict';
 
-var handle1=require('./functions/handleTrainStatusRequest');
 
 var registerEventHandlers = function (eventHandlers, skillContext) {
 	  
@@ -13,7 +12,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
 
 	eventHandlers.onLaunch = function (launchRequest, session, response) {
 	    console.log("Raily onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-	    handle1.handleTrainStatusRequest("GetTrainDetailsIntent",session,response);
+	   	response.ask("Hi, welcome to Raily, helping you commute in Indian Railways.");
 	};
 
 	/**

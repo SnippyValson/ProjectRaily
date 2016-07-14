@@ -12,3 +12,5 @@ handleTrainStatusIntent Has {Train} departed
 handleTrainStatusIntent {Train} status
 handleTrainStatusIntent whether {Train} delayed
 handleTrainStatusIntent is {Train} late
+
+AMAZON.StartOverIntent start
