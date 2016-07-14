@@ -25,12 +25,12 @@ handleTrainRouteIntent list of stations in the route of the {Train}
 handleTrainRouteIntent Give the list of stations in the route of the {Train}
 handleTrainRouteIntent Provide the list of stations in the route of the {Train}
 
-handleSeatAvailabiltyIntent seat availability of {Train}
-handleSeatAvailabiltyIntent get the seat availability of {Train}
-handleSeatAvailabiltyIntent Provide the seat availability of {Train}
-handleSeatAvailabiltyIntent details of seat availability of {Train}
-handleSeatAvailabiltyIntent give details of seat availability of {Train}
-handleSeatAvailabiltyIntent provide with the details of seat availability of {Train}
+handleSeatAvailabilityIntent seat availability of {Train}
+handleSeatAvailabilityIntent get the seat availability of {Train}
+handleSeatAvailabilityIntent Provide the seat availability of {Train}
+handleSeatAvailabilityIntent details of seat availability of {Train}
+handleSeatAvailabilityIntent give details of seat availability of {Train}
+handleSeatAvailabilityIntent provide with the details of seat availability of {Train}
 
 handleTrainArrivalsIntent list of trains arriving at the {Station} within the duration of {duration} hours
 handleTrainArrivalsIntent get the list of trains arriving at the {Station} within the duration of {duration} hours
