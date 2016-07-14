@@ -14,19 +14,19 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
         handle1.handleTrainStatusRequest(intent, session, response);
     };
     intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
-        handle1.handleTrainRouteRequest(intent, session, response);
+        handle2.handleTrainRouteRequest(intent, session, response);
     };
     intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
-        handle1.handleSeatAvailabilityRequest(intent, session, response);
+        handle3.handleSeatAvailabilityRequest(intent, session, response);
     };
     intentHandlers.handleTrainArrivalsIntent = function (intent, session, response) {
-        handle1.handleTrainArrivalsRequest(intent, session, response);
+        handle4.handleTrainArrivalsRequest(intent, session, response);
     };
     intentHandlers.handleTrainBtwIntent = function (intent, session, response) {
-        handle1.handleTrainBtwRequest(intent, session, response);
+        handle5.handleTrainBtwRequest(intent, session, response);
     };
     intentHandlers.handlePNRStatusIntent = function (intent, session, response) {
-        handle1.handlePNRStatusRequest(intent, session, response);
+        handle6.handlePNRStatusRequest(intent, session, response);
     };
 
     intentHandlers['AMAZON.StartOverIntent'] = function (intent, session, response) {
