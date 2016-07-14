@@ -62,7 +62,7 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
 	    var speechOutput =  events; 
 	    //"The correct train name recieved: " + intent.slots.Train.value;
 	    	
-	   	 response.tellWithCard(speechOutput, "Raily- Indian Railways" , speechOutput);
+	   	 response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
     });
     
 
