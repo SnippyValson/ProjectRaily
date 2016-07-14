@@ -141,7 +141,7 @@ Response.prototype = (function () {
         }
         if (options.cardTitle && options.cardContent) {
             alexaResponse.card = {
-                type: "Standard",
+                type: "Simple",
                 title: options.cardTitle,
                 content: options.cardContent
             };

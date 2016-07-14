@@ -29,7 +29,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.parse(body);
-            var status="<p>The status of the train </p> "+ stringResult.position;
+            var status=stringResult.position;
             var result={speech:status,status:stringResult.position};
             eventCallback(result);
 
