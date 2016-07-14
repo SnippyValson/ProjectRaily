@@ -60,6 +60,13 @@ handleSeatAvailabilityIntent details of seat availability of {Train}
 handleSeatAvailabilityIntent give details of seat availability of {Train}
 handleSeatAvailabilityIntent provide with the details of seat availability of {Train}
 
+handleSeatAvailabilityNumberIntent seat availability of {TrainNumber}
+handleSeatAvailabilityNumberIntent get the seat availability of {TrainNumber}
+handleSeatAvailabilityNumberIntent Provide the seat availability of {TrainNumber}
+handleSeatAvailabilityNumberIntent details of seat availability of {TrainNumber}
+handleSeatAvailabilityNumberIntent give details of seat availability of {TrainNumber}
+handleSeatAvailabilityNumberIntent provide with the details of seat availability of {TrainNumber} 
+
 handleTrainArrivalsIntent list of trains arriving at the {Station} within the duration of {duration} hours
 handleTrainArrivalsIntent get the list of trains arriving at the {Station} within the duration of {duration} hours
 handleTrainArrivalsIntent give the list of trains arriving at the {Station} within the duration of {duration} hours
