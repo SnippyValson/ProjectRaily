@@ -253,7 +253,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
 
-               stat=stat+" For details see the card.";
+               stat=stat+" For further details see the result card.";
                 if(stringResult.response_code=='410'){
                     result="PNR does not exist.";
                     stat=result;
