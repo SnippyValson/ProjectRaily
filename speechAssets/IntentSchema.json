@@ -49,7 +49,7 @@
       "intent": "handlePNRStatusIntent",
       "slots": [
         {
-          "name": "Pnr_no",
+          "name": "pnrNumber",
           "type": "AMAZON.NUMBER"
         }
       ]
