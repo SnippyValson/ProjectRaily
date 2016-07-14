@@ -30,14 +30,14 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
         res.on('end', function () {
             var stringResult = JSON.parse(body);
             var status=stringResult.position;
-            var result={speech:status,status:stringResult.position};
+            var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
             eventCallback(result);
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
-        var result={speech:status,status:status};
+        var result={speech:status,status:status,heading:null};
         eventCallback(result);
     });
    return status;

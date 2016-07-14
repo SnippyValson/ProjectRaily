@@ -69,8 +69,11 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
 		    }
 		    speechOutput['speech']=""+speechOutput['speech'];
 		    //"The correct train name recieved: " + intent.slots.Train.value;
-		    	
-		   	response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
+		    
+		    if(speechOutput['heading']!=null)	
+		   		{
+		   			response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+	    		}
 	    	});
 	}
 	else
