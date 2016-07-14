@@ -241,7 +241,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result=result+" Booking status "+booking_status[j]+", Current status "+current_status[j]+", Coach position "+coach_position[j]+".";
                }
                 if(stringResult.response_code=='410')
-                    result="PNR not yet generated."
+                    result="PNR not yet generated.";
             var result1={speech:result,status:result,heading:"PNR status of: "+pnr_no};
             eventCallback(result1);          
               
