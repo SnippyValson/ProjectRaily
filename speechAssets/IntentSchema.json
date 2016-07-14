@@ -10,6 +10,51 @@
       ]
     },
     {
+      "intent": "handleTrainRouteIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+    {
+      "intent": "handleSeatAvailabityIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+    {
+      "intent": "handleTrainArrivalsIntent",
+      "slots": [
+        {
+          "name": "Station",
+          "type": "LIST_OF_STATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "handleTrainBtwIntent",
+      "slots": [
+        {
+          "name": "Station",
+          "type": "LIST_OF_STATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "handlePNRStatusIntent",
+      "slots": [
+        {
+          "name": "Pnr_no",
+          "type": "LIST_OF_PNR_NO"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
