@@ -52,6 +52,10 @@
           "name": "pnrNumber",
           "type": "AMAZON.NUMBER"
         }
+         {
+          "name": "duration",
+          "type": "AMAZON.DURATION"
+        }
       ]
     },
     {
