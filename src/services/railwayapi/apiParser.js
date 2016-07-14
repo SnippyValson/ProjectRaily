@@ -30,6 +30,8 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
         res.on('end', function () {
             var stringResult = JSON.parse(body);
             var status=stringResult.position;
+            if(stringResult.response_code!='200')
+                    status="There was an error processing your request.";
             var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
             eventCallback(result);
 
@@ -37,6 +39,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
+        
         var result={speech:status,status:status,heading:null};
         eventCallback(result);
     });
@@ -80,6 +83,8 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                station_string=station_string+station_names[j]+",Arrives at : "+station_arrival[j]+",Departs at :"+station_dep[j]+",on day "+day[j] +".  ";
 
                }
+               if(stringResult.response_code!='200')
+                    station_string="There was an error processing your request.";
             var result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
             eventCallback(result);
               
@@ -119,6 +124,8 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
                  var waiting=status.substring(index3+3,index3+8);
                  var status=waiting+" seats are in waiting list."; 
                 }
+                if(stringResult.response_code!='200')
+                    status="There was an error processing your request.";
              var result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
              eventCallback(result);       
         });
@@ -187,6 +194,8 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                train_string =train_string+" Source departure time "+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
 
                }
+               if(stringResult.response_code!='200')
+                    train_string="There was an error processing your request.";
             
              var result={speech:train_string,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
@@ -290,6 +299,8 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result=result+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
 
                }
+               if(stringResult.response_code!='200')
+                    result="There was an error processing your request.";
             var result1={speech:result,status:result,heading:"Train arrivals at station: "+station_code};
             eventCallback(result1);    
 
