@@ -30,6 +30,8 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
         res.on('end', function () {
             var stringResult = JSON.parse(body);
             var status=stringResult.position;
+            if(stringResult.response_code!='200')
+                    status="There was an error processing your request.";
             var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
             eventCallback(result);
 
@@ -37,6 +39,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
+        
         var result={speech:status,status:status,heading:null};
         eventCallback(result);
     });
@@ -80,6 +83,8 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                station_string=station_string+station_names[j]+",Arrives at : "+station_arrival[j]+",Departs at :"+station_dep[j]+",on day "+day[j] +".  ";
 
                }
+               if(stringResult.response_code!='200')
+                    station_string="There was an error processing your request.";
             var result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
             eventCallback(result);
               
@@ -119,6 +124,8 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
                  var waiting=status.substring(index3+3,index3+8);
                  var status=waiting+" seats are in waiting list."; 
                 }
+                if(stringResult.response_code!='200')
+                    status="There was an error processing your request.";
              var result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
              eventCallback(result);       
         });
@@ -187,6 +194,8 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                train_string =train_string+" Source departure time "+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
 
                }
+               if(stringResult.response_code!='200')
+                    train_string="There was an error processing your request.";
             
              var result={speech:train_string,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
@@ -228,7 +237,11 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             Class= stringResult.class;
             chart_prepared= stringResult.chart_prepared; 
             total_passengers= stringResult.total_passengers; 
+<<<<<<< HEAD
             result= result+", Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
+=======
+            result= result+"Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", Total number of passengers "+total_passengers+". Details of each passengers.";
+>>>>>>> 44e6127e7487a3179afc05e43c26ea03a1d4169c
             for ( i=0; i<stringResult["passengers"].length; i++){
                booking_status[i]=stringResult["passengers"][i].booking_status;
                current_status[i]=stringResult["passengers"][i].current_status;
@@ -242,12 +255,18 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n Coach position "+coach_position[j]+"\n";
                stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
+<<<<<<< HEAD
                stat=stat+" For details see the card.";
                 if(stringResult.response_code=='410'){
                     result="PNR not yet generated.";
                     stat=result;
                    }
             var result1={speech:stat,status:result,heading:"PNR status of: "+pnr_no};
+=======
+                if(stringResult.response_code=='410')
+                    result="PNR does not exist.";
+            var result1={speech:result,status:result,heading:"PNR status of: "+pnr_no};
+>>>>>>> 44e6127e7487a3179afc05e43c26ea03a1d4169c
             eventCallback(result1);          
               
             
@@ -295,6 +314,8 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result=result+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
 
                }
+               if(stringResult.response_code!='200')
+                    result="There was an error processing your request.";
             var result1={speech:result,status:result,heading:"Train arrivals at station: "+station_code};
             eventCallback(result1);    
 
