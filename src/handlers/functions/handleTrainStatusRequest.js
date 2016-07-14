@@ -71,9 +71,13 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
 		    //"The correct train name recieved: " + intent.slots.Train.value;
 		    
 		    if(speechOutput['heading']!=null)	
-		   		{
-		   			response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
-	    		}
+		   	{
+		   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+	    	}
+	    	else
+	    	{
+	    		response.tell(speechOutput['speech']);
+	    	}
 	    	});
 	}
 	else
