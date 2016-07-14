@@ -1,12 +1,36 @@
 'use strict';
 
 var handle1=require('./functions/handleTrainStatusRequest');
-
+var handle2=require('./functions/handleTrainRouteRequest');
+var handle3=require('./functions/handleSeatAvailabilityRequest');
+var handle4=require('./functions/handleTrainArrivalsRequest');
+var handle5=require('./functions/handleTrainBtwRequest');
+var handle6=require('./functions/handlePNRStatusRequest');
 
 var registerIntentHandlers = function (intentHandlers, skillContext) {
   
 intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
         handle1.handleTrainStatusRequest(intent, session, response);
+    };
+
+intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
+        handle1.handleTrainRouteRequest(intent, session, response);
+    };
+
+intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
+        handle1.handleSeatAvailabilityRequest(intent, session, response);
+    };
+
+intentHandlers.handleTrainArrivalsIntent = function (intent, session, response) {
+        handle1.handleTrainArrivalsRequest(intent, session, response);
+    };
+
+intentHandlers.handleTrainBtwIntent = function (intent, session, response) {
+        handle1.handleTrainBtwRequest(intent, session, response);
+    };
+
+intentHandlers.handlePNRStatusIntent = function (intent, session, response) {
+        handle1.handlePNRStatusRequest(intent, session, response);
     };
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
