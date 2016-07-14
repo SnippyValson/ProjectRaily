@@ -27,6 +27,7 @@ handleTrainNumberStatusIntent Has train number {TrainNumber} departed
 handleTrainNumberStatusIntent train number {TrainNumber} status
 handleTrainNumberStatusIntent whether train number {TrainNumber} delayed
 handleTrainNumberStatusIntent is train number {TrainNumber} late
+handleTrainNumberStatusIntent train number {TrainNumber}
 
 handleTrainRouteIntent {Train} route
 handleTrainRouteIntent get the {Train} route
@@ -82,6 +83,7 @@ handleTrainBtwIntent provide the details of trains between {StationOne} and {Sta
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {dat}
 
 handlePNRStatusIntent PNR status of {pnrNumber}
+handlePNRStatusIntent PNR number {pnrNumber}
 handlePNRStatusIntent status of {pnrNumber}
 handlePNRStatusIntent get the PNR status of {pnrNumber}
 handlePNRStatusIntent give the PNR status of {pnrNumber}
