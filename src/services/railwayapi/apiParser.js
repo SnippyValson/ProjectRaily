@@ -80,14 +80,14 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                station_string=station_string+station_names[j]+",Arrives at : "+station_arrival[j]+",Departs at :"+station_dep[j]+",on day "+day[j] +".  ";
 
                }
-            var result={speech:station_string,status:station_string};
+            var result={speech:station_string,status:station_string,heading:"Route of Train: "+train_no};
             eventCallback(result);
               
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
-        var result={speech:status,status:status};
+        var result={speech:status,status:status,heading:null};
         eventCallback(result);
     });
 }
@@ -119,11 +119,11 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
                  var waiting=status.substring(index3+3,index3+8);
                  var status=waiting+" seats are in waiting list."; 
                 }
-             var result={speech:status,status:status};
+             var result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
              eventCallback(result);       
         });
     }).on('error', function (e) {
-             var result={speech:"Sorry, we could not process your request.",status:"Sorry, we could not process your request."};
+             var result={speech:"Sorry, we could not process your request.",status:"Sorry, we could not process your request.",heading:null};
              eventCallback(result);
     });
 }
@@ -188,14 +188,14 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
 
                }
             
-             var result={speech:train_string,status:train_string};
+             var result={speech:train_string,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
         
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
         train_string = "sorry, we could not process your request.";
-        var result={speech:train_string,status:train_string};
+        var result={speech:train_string,status:train_string,heading:null};
         eventCallback(result); 
     });
 }
@@ -240,7 +240,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result = result + "passenger "+m+ '.';
                result=result+" Booking status "+booking_status[j]+", Current status "+current_status[j]+", Coach position "+coach_position[j]+".";
                }
-            var result1={speech:result,status:result};
+            var result1={speech:result,status:result,heading:"PNR status of: "+pnr_no};
             eventCallback(result1);          
               
             
@@ -248,7 +248,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
     }).on('error', function (e) {
         console.log("Got error: ", e);
          result = "sorry, we could not process your request.";
-        var result1={speech:result,status:result};
+        var result1={speech:result,status:result,heading:null};
         eventCallback(result1); 
     });
 }
@@ -288,14 +288,14 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result=result+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
 
                }
-            var result1={speech:result,status:result};
+            var result1={speech:result,status:result,heading:"Train arrivals at station: "+station_code};
             eventCallback(result1);    
 
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
          result = "sorry, we could not process your request.";
-         var result1={speech:result,status:result};
+         var result1={speech:result,status:result,heading:null};
          eventCallback(result1);    
     });
 }
