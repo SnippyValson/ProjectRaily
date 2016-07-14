@@ -19,7 +19,7 @@ exports.handleTrainRouteRequest=function(intent, session, response,type) {
 		trainNumber="12469";
 	}
 
-	railways.getJsonTrainRoute(trainNumber,result, function (events){
+	railways.getJsonTrainRoute(trainNumber, function (events){
 	// Create speech output
     var speechOutput =  events; 
     speechOutput['speech']=""+speechOutput['speech'];
