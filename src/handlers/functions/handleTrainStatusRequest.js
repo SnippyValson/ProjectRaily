@@ -57,40 +57,36 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
     var year_ = new Date().getFullYear();
     var result = "";
     result= result + year_+month_+date_;
+    var trainNumber;
   
-  if(type=="number")
-  {    
-  			railways.getJsonLiveStatus(intent.slots.TrainNumber.value,result, function (events){
-	    	// Create speech output
-		    var speechOutput =  events; 
-		    if(speechOutput['speech']=="-")
-		    {
-		    	speechOutput['speech']="Sorry, The train details are not available for today";
-		    }
-		    speechOutput['speech']=""+speechOutput['speech'];
-		    //"The correct train name recieved: " + intent.slots.Train.value;
-		    
-		    if(speechOutput['heading']!=null)	
-		   	{
-		   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
-	    	}
-	    	else
-	    	{
-	    		response.tell(speechOutput['speech']);
-	    	}
-	    	});
+    if(type=="number")
+    {    
+    	trainNumber=intent.slots.TrainNumber.value;
 	}
 	else
 	{
-			railways.getJsonLiveStatus("12469", function (events){
-	    	// Create speech output
-		    var speechOutput =  events; 
-		    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
-		    //"The correct train name recieved: " + intent.slots.Train.value;
-		    	
-		   	response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
-	    	});
+		trainNumber="12469";
 	}
+
+	railways.getJsonLiveStatus(trainNumber,result, function (events){
+	// Create speech output
+    var speechOutput =  events; 
+    if(speechOutput['speech']=="-")
+    {
+    	speechOutput['speech']="Sorry, The train details are not available for today";
+    }
+    speechOutput['speech']=""+speechOutput['speech'];
+    //"The correct train name recieved: " + intent.slots.Train.value;
+    
+	    if(speechOutput['heading']!=null)	
+	   	{
+	   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+    	}
+    	else
+    	{
+    		response.tell(speechOutput['speech']);
+    	}
+	});
     
 
 };

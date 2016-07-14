@@ -9,7 +9,7 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
     railways.getJsonPNRstatus(intent.slots.pnrNumber.value, function (events){
 
     	// Create speech output
-	    var output =  events; 
+	    var speechOutput =  events; 
 	    speechOutput['speech']=speechOutput['speech'];
 	    //"The correct train name recieved: " + intent.slots.Train.value;
 	    		

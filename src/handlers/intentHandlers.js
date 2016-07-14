@@ -20,6 +20,9 @@ intentHandlers.handleTrainNumberStatusIntent = function (intent, session, respon
 intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
         handle2.handleTrainRouteRequest(intent, session, response);
     };
+intentHandlers.handleTrainNumberRouteIntent = function (intent, session, response) {
+        handle2.handleTrainRouteRequest(intent, session, response,"number");
+    };
 
 intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
         handle3.handleSeatAvailabilityRequest(intent, session, response);

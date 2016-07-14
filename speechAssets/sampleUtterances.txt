@@ -41,6 +41,18 @@ handleTrainRouteIntent list of stations in the route of the {Train}
 handleTrainRouteIntent Give the list of stations in the route of the {Train}
 handleTrainRouteIntent Provide the list of stations in the route of the {Train}
 
+handleTrainNumberRouteIntent {TrainNumber} route
+handleTrainNumberRouteIntent get the {TrainNumber} route
+handleTrainNumberRouteIntent what is the route of the {TrainNumber}
+handleTrainNumberRouteIntent give {TrainNumber} route
+handleTrainNumberRouteIntent what's the route of the {TrainNumber}
+handleTrainNumberRouteIntent Provide the list of stations through which the {TrainNumber} passes
+handleTrainNumberRouteIntent Give the list of stations through which the {TrainNumber} passes
+handleTrainNumberRouteIntent list of stations through which the {TrainNumber} passes
+handleTrainNumberRouteIntent list of stations in the route of the {TrainNumber}
+handleTrainNumberRouteIntent Give the list of stations in the route of the {TrainNumber}
+handleTrainNumberRouteIntent Provide the list of stations in the route of the {TrainNumber}
+
 handleSeatAvailabilityIntent seat availability of {Train}
 handleSeatAvailabilityIntent get the seat availability of {Train}
 handleSeatAvailabilityIntent Provide the seat availability of {Train}
@@ -83,6 +95,8 @@ handleTrainBtwIntent provide the details of trains between {StationOne} and {Sta
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {dat}
 
 handlePNRStatusIntent PNR status of {pnrNumber}
+handlePNRStatusIntent PNR status {pnrNumber}
+handlePNRStatusIntent PNR {pnrNumber}
 handlePNRStatusIntent PNR number {pnrNumber}
 handlePNRStatusIntent status of {pnrNumber}
 handlePNRStatusIntent get the PNR status of {pnrNumber}

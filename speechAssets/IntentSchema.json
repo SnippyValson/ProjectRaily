@@ -28,6 +28,15 @@
       ]
     },
     {
+      "intent": "handleTrainNumberRouteIntent",
+      "slots": [
+        {
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "handleSeatAvailabilityIntent",
       "slots": [
         {
