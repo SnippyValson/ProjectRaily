@@ -13,9 +13,6 @@ handleTrainStatusIntent {Train} status
 handleTrainStatusIntent whether {Train} delayed
 handleTrainStatusIntent is {Train} late
 
-<<<<<<< HEAD
-AMAZON.StartOverIntent start
-=======
 handleTrainRouteIntent {Train} route
 handleTrainRouteIntent get the {Train} route
 handleTrainRouteIntent what is the route of the {Train}
@@ -81,4 +78,4 @@ handlePNRStatusIntent current status of {pnrNumber}
 handlePNRStatusIntent give the current status of {pnrNumber}
 handlePNRStatusIntent whether chart prepared for {pnrNumber}
 
->>>>>>> 74507e3afd566721f57a1ea90ccaf38cfea41fdb
+
