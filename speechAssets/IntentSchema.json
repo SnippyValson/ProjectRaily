@@ -45,8 +45,16 @@
       "intent": "handleTrainBtwIntent",
       "slots": [
         {
-          "name": "Station",
+          "name": "Station1",
           "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "Station2",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "dat",
+          "type": "AMAZON.NUMBER"
         }
       ]
     },
