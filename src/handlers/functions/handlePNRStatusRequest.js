@@ -6,19 +6,22 @@ var railways=require('../../services/railwayapi/apiParser');
 exports.handlePNRStatusRequest=function(intent, session, response) {
     //intent.slots.Train.value;
 
-/* CODE TO BE EDITED
-  
-    railways.getJsonLiveStatus('12429',result, function (events){
+    railways.getJsonPNRstatus(intent.slots.pnrNumber.value, function (events){
 
     	// Create speech output
-	    var speechOutput =  events; 
-	    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
+	    var output =  events; 
+	    speechOutput['speech']=speechOutput['speech'];
 	    //"The correct train name recieved: " + intent.slots.Train.value;
-	    	
-	   	 response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
+	    		
+	    if(speechOutput['heading']!=null)	
+		{
+			response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+		}
+		else
+		{
+		    response.tell(speechOutput['speech']);
+		}
     });
-    
-CODE TO BE EDITED*/
 
 };
 

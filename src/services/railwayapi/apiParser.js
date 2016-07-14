@@ -80,7 +80,7 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                station_string=station_string+station_names[j]+",Arrives at : "+station_arrival[j]+",Departs at :"+station_dep[j]+",on day "+day[j] +".  ";
 
                }
-            var result={speech:station_string,status:station_string,heading:"Route of Train: "+train_no};
+            var result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
             eventCallback(result);
               
         });
