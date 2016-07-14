@@ -50,7 +50,7 @@
       "slots": [
         {
           "name": "Pnr_no",
-          "type": "LIST_OF_PNR_NO"
+          "type": "AMAZON.NUMBER"
         }
       ]
     },
