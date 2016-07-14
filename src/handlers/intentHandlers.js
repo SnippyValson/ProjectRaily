@@ -7,30 +7,30 @@ var handle4=require('./functions/handleTrainArrivalsRequest');
 var handle5=require('./functions/handleTrainBtwRequest');
 var handle6=require('./functions/handlePNRStatusRequest');
 
-
 var registerIntentHandlers = function (intentHandlers, skillContext) {
   
-    intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
+intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
         handle1.handleTrainStatusRequest(intent, session, response);
     };
-    intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
+
+intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
         handle2.handleTrainRouteRequest(intent, session, response);
     };
-    intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
+
+intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
         handle3.handleSeatAvailabilityRequest(intent, session, response);
     };
-    intentHandlers.handleTrainArrivalsIntent = function (intent, session, response) {
+
+intentHandlers.handleTrainArrivalsIntent = function (intent, session, response) {
         handle4.handleTrainArrivalsRequest(intent, session, response);
     };
-    intentHandlers.handleTrainBtwIntent = function (intent, session, response) {
+
+intentHandlers.handleTrainBtwIntent = function (intent, session, response) {
         handle5.handleTrainBtwRequest(intent, session, response);
     };
-    intentHandlers.handlePNRStatusIntent = function (intent, session, response) {
-        handle6.handlePNRStatusRequest(intent, session, response);
-    };
 
-    intentHandlers['AMAZON.StartOverIntent'] = function (intent, session, response) {
-        response.ask("Hi, welcome to Raily, helping you commute in Indian Railways.");
+intentHandlers.handlePNRStatusIntent = function (intent, session, response) {
+        handle6.handlePNRStatusRequest(intent, session, response);
     };
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
@@ -49,4 +49,3 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
 };
 
 exports.register = registerIntentHandlers;
-
