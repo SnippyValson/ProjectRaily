@@ -33,7 +33,12 @@
         {
           "name": "Station",
           "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "duration",
+          "type": "AMAZON.DURATION"
         }
+
       ]
     },
     {
@@ -51,10 +56,6 @@
         {
           "name": "pnrNumber",
           "type": "AMAZON.NUMBER"
-        }
-         {
-          "name": "duration",
-          "type": "AMAZON.DURATION"
         }
       ]
     },
