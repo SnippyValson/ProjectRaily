@@ -202,6 +202,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
 
 exports.getJsonPNRstatus=function (pnr_no, eventCallback){
     var result="";
+    var stat="";
       var train_name="Hi";
      var url =config.getBaseUrl() +'pnr_status/pnr/'+pnr_no+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
@@ -227,7 +228,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             Class= stringResult.class;
             chart_prepared= stringResult.chart_prepared; 
             total_passengers= stringResult.total_passengers; 
-            result= result+", Starting date is "+doj+", Class is "+Class+", Chart prepared "+chart_prepared+", Total number of passengers "+total_passengers+". Details of each passengers.";
+            result= result+", Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
             for ( i=0; i<stringResult["passengers"].length; i++){
                booking_status[i]=stringResult["passengers"][i].booking_status;
                current_status[i]=stringResult["passengers"][i].current_status;
@@ -237,12 +238,16 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
-               result = result + "passenger "+m+ '.';
-               result=result+" Booking status "+booking_status[j]+", Current status "+current_status[j]+", Coach position "+coach_position[j]+".";
+               result = result + "passenger "+m+ '\n';
+               result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n Coach position "+coach_position[j]+"\n";
+               stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
-                if(stringResult.response_code=='410')
+               stat=stat+" For details see the card.";
+                if(stringResult.response_code=='410'){
                     result="PNR not yet generated.";
-            var result1={speech:result,status:result,heading:"PNR status of: "+pnr_no};
+                    stat=result;
+                   }
+            var result1={speech:stat,status:result,heading:"PNR status of: "+pnr_no};
             eventCallback(result1);          
               
             
