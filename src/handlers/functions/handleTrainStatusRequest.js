@@ -3,9 +3,10 @@
 var config=require('../../configs');
 var railways=require('../../services/railwayapi/apiParser');
 
-exports.handleTrainStatusRequest=function(intent, session, response) {
+exports.handleTrainStatusRequest=function(intent, session, response, type) {
     // Get a random space fact from the space facts list
     //intent.slots.Train.value;
+    // type= "number" / "name"
     var date_ = new Date().getDate();
     switch(date_)
      {
@@ -57,14 +58,32 @@ exports.handleTrainStatusRequest=function(intent, session, response) {
     var result = "";
     result= result + year_+month_+date_;
   
-    railways.getJsonLiveStatus('12429',result, function (events){
-    	// Create speech output
-	    var speechOutput =  events; 
-	    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
-	    //"The correct train name recieved: " + intent.slots.Train.value;
-	    	
-	   	 response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
-    });
+  if(type=="number")
+  {    
+  			railways.getJsonLiveStatus(intent.slots.TrainNumber.value,result, function (events){
+	    	// Create speech output
+		    var speechOutput =  events; 
+		    if(speechOutput['speech']=="-")
+		    {
+		    	speechOutput['speech']="Sorry, The train details are not available for today";
+		    }
+		    speechOutput['speech']=""+speechOutput['speech'];
+		    //"The correct train name recieved: " + intent.slots.Train.value;
+		    	
+		   	response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
+	    	});
+	}
+	else
+	{
+			railways.getJsonLiveStatus("12469", function (events){
+	    	// Create speech output
+		    var speechOutput =  events; 
+		    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
+		    //"The correct train name recieved: " + intent.slots.Train.value;
+		    	
+		   	response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
+	    	});
+	}
     
 
 };

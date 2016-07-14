@@ -10,6 +10,15 @@
       ]
     },
     {
+      "intent": "handleTrainNumberStatusIntent",
+      "slots": [
+        {
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "handleTrainRouteIntent",
       "slots": [
         {
@@ -19,7 +28,7 @@
       ]
     },
     {
-      "intent": "handleSeatAvailabityIntent",
+      "intent": "handleSeatAvailabilityIntent",
       "slots": [
         {
           "name": "Train",
@@ -45,11 +54,11 @@
       "intent": "handleTrainBtwIntent",
       "slots": [
         {
-          "name": "Station1",
+          "name": "StationOne",
           "type": "LIST_OF_STATIONS"
         },
         {
-          "name": "Station2",
+          "name": "StationTwo",
           "type": "LIST_OF_STATIONS"
         },
         {

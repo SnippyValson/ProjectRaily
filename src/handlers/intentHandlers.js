@@ -10,7 +10,11 @@ var handle6=require('./functions/handlePNRStatusRequest');
 var registerIntentHandlers = function (intentHandlers, skillContext) {
   
 intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
-        handle1.handleTrainStatusRequest(intent, session, response);
+        handle1.handleTrainStatusRequest(intent, session, response,"name");
+    };
+
+intentHandlers.handleTrainNumberStatusIntent = function (intent, session, response) {
+        handle1.handleTrainStatusRequest(intent, session, response,"number");
     };
 
 intentHandlers.handleTrainRouteIntent = function (intent, session, response) {

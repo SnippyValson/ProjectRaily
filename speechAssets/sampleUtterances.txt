@@ -13,6 +13,21 @@ handleTrainStatusIntent {Train} status
 handleTrainStatusIntent whether {Train} delayed
 handleTrainStatusIntent is {Train} late
 
+handleTrainNumberStatusIntent get details of train number {TrainNumber}
+handleTrainNumberStatusIntent train number {TrainNumber} details
+handleTrainNumberStatusIntent what's the status of train number {TrainNumber}
+handleTrainNumberStatusIntent what is the status of train number {TrainNumber}
+handleTrainNumberStatusIntent what's the location of train number {TrainNumber}
+handleTrainNumberStatusIntent what is the location of train number {TrainNumber}
+handleTrainNumberStatusIntent what is the current location of train number {TrainNumber}
+handleTrainNumberStatusIntent what's the current location of train number {TrainNumber}
+handleTrainNumberStatusIntent where is train number {TrainNumber} now
+handleTrainNumberStatusIntent where's train number {TrainNumber} now
+handleTrainNumberStatusIntent Has train number {TrainNumber} departed
+handleTrainNumberStatusIntent train number {TrainNumber} status
+handleTrainNumberStatusIntent whether train number {TrainNumber} delayed
+handleTrainNumberStatusIntent is train number {TrainNumber} late
+
 handleTrainRouteIntent {Train} route
 handleTrainRouteIntent get the {Train} route
 handleTrainRouteIntent what is the route of the {Train}
@@ -25,12 +40,12 @@ handleTrainRouteIntent list of stations in the route of the {Train}
 handleTrainRouteIntent Give the list of stations in the route of the {Train}
 handleTrainRouteIntent Provide the list of stations in the route of the {Train}
 
-handleSeatAvailabiltyIntent seat availability of {Train}
-handleSeatAvailabiltyIntent get the seat availability of {Train}
-handleSeatAvailabiltyIntent Provide the seat availability of {Train}
-handleSeatAvailabiltyIntent details of seat availability of {Train}
-handleSeatAvailabiltyIntent give details of seat availability of {Train}
-handleSeatAvailabiltyIntent provide with the details of seat availability of {Train}
+handleSeatAvailabilityIntent seat availability of {Train}
+handleSeatAvailabilityIntent get the seat availability of {Train}
+handleSeatAvailabilityIntent Provide the seat availability of {Train}
+handleSeatAvailabilityIntent details of seat availability of {Train}
+handleSeatAvailabilityIntent give details of seat availability of {Train}
+handleSeatAvailabilityIntent provide with the details of seat availability of {Train}
 
 handleTrainArrivalsIntent list of trains arriving at the {Station} within the duration of {duration} hours
 handleTrainArrivalsIntent get the list of trains arriving at the {Station} within the duration of {duration} hours
@@ -47,24 +62,24 @@ handleTrainArrivalsIntent details of trains arriving at the {Station} within {du
 handleTrainArrivalsIntent trains arriving at the {Station} within {duration} hours
 handleTrainArrivalsIntent trains arriving at the {Station} within the duration of {duration} hours
 
-handleTrainBtwIntent trains between {Station1} and {Station2}
-handleTrainBtwIntent trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent list of trains between {Station1} and {Station2}
-handleTrainBtwIntent list of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent details of trains between {Station1} and {Station2} on
-handleTrainBtwIntent details of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent get the list of trains between {Station1} and {Station2} 
-handleTrainBtwIntent get the list of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent give the list of trains between {Station1} and {Station2} 
-handleTrainBtwIntent give the list of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent provide the list of trains between {Station1} and {Station2}
-handleTrainBtwIntent provide the list of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent get the details of trains between {Station1} and {Station2}
-handleTrainBtwIntent get the details of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent give the details of trains between {Station1} and {Station2} 
-handleTrainBtwIntent give the details of trains between {Station1} and {Station2} on {dat}
-handleTrainBtwIntent provide the details of trains between {Station1} and {Station2}
-handleTrainBtwIntent provide the details of trains between {Station1} and {Station2} on {dat}
+handleTrainBtwIntent trains between {StationOne} and {StationTwo}
+handleTrainBtwIntent trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent list of trains between {StationOne} and {StationTwo}
+handleTrainBtwIntent list of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent details of trains between {StationOne} and {StationTwo} on
+handleTrainBtwIntent details of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent get the list of trains between {StationOne} and {StationTwo} 
+handleTrainBtwIntent get the list of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent give the list of trains between {StationOne} and {StationTwo} 
+handleTrainBtwIntent give the list of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent provide the list of trains between {StationOne} and {StationTwo}
+handleTrainBtwIntent provide the list of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent get the details of trains between {StationOne} and {StationTwo}
+handleTrainBtwIntent get the details of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent give the details of trains between {StationOne} and {StationTwo} 
+handleTrainBtwIntent give the details of trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo}
+handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {dat}
 
 handlePNRStatusIntent PNR status of {pnrNumber}
 handlePNRStatusIntent status of {pnrNumber}
