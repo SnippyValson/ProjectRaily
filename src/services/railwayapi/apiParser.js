@@ -143,6 +143,9 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
  
 */
 exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
+         var day= date.substring(5,7);
+         var mon= date.substring(8);
+         date=day+"-"+mon;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          var stat="";
          var train_string="";
@@ -187,7 +190,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                             }
                      }
               }
-             stat= stat+ "Total "+i+" trains are between "+source+ " and "+dest+.";
+             stat= stat+ "Total "+i+" trains are between "+source+ " and "+dest+"";
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
@@ -240,14 +243,15 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             var current_status=[];
             var coach_position =[];
             var stringResult = JSON.parse(body);
-           
+             var c="";
             train_no= stringResult.train_no;
             doj= stringResult.doj;
             Class= stringResult.class;
             chart_prepared= stringResult.chart_prepared; 
             total_passengers= stringResult.total_passengers; 
-           result= result+", Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
-
+           result= result+"Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
+           result= result+"Starting date is "+doj+". Class is "+Class+". Chart prepared "+chart_prepared+". Total number of passengers "+total_passengers+". Details of each passengers.";
+           
             for ( i=0; i<stringResult["passengers"].length; i++){
                booking_status[i]=stringResult["passengers"][i].booking_status;
                current_status[i]=stringResult["passengers"][i].current_status;
@@ -259,6 +263,18 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                m=j+1;
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n Coach position "+coach_position[j]+"\n";
+               if(current_status[j]==="CAN/MOD")
+                  current_status[j]="cancelled or modified.";
+              if(current_status[j]==="CNF/Confirmed")
+                  { 
+                    if(chart_prepared==="Y")
+                      {
+                        c=current_status[j];
+                        current_status[j]= "confirmed, coach and berth position is "+ c+".";
+                       }
+                     else
+                           current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                  }
                stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
 
