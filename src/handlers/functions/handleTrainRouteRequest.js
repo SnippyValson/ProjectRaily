@@ -22,7 +22,6 @@ exports.handleTrainRouteRequest=function(intent, session, response,type) {
 	railways.getJsonTrainRoute(trainNumber, function (events){
 	// Create speech output
     var speechOutput =  events; 
-    speechOutput['speech']=""+speechOutput['speech'];
     
 	    if(speechOutput['heading']!=null)	
 	   	{
