@@ -85,7 +85,7 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
             for (j=0; j<i-1; j=j+update){
                m=j+1;
               if((j+update)<(i-1))
-                 station_string=station_string+station_names[j]+" ";
+                 station_string=station_string+station_names[j]+",";
                 else
                  station_string=station_string+" and "+station_names[j]+".";
                }
