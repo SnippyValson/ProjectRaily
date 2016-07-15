@@ -29,8 +29,11 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.parse(body);
+           
             var status=stringResult.position;
-            if(stringResult.response_code!='200')
+             if (stringResult.response_code=='403')
+                  status=null;
+            else  if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
             if(status=='-')
             {
