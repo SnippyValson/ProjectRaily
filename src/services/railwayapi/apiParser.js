@@ -77,11 +77,16 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                 day[i]=stringResult.route[i].day;
                 }
              var m=0;
+             var source_=station_names[0];
+             var dest_=station_names[i-1];
+
+             station_string=station_string+"The train starts from "+source_+" at "+station_dep[0]+" and arrives  "+dest_+" at "+station_arrival[i-1]+" on day "+day[i-1]+" passing through ";
             for (j=0; j<i; j++){
                m=j+1;
-               station_string = station_string + "Station"+m+ '. ';
-               station_string=station_string+station_names[j]+",Arrives at : "+station_arrival[j]+",Departs at :"+station_dep[j]+",on day "+day[j] +".  ";
-
+              if((j+update)<(i-1))
+                 station_string=station_string+station_names[j]+" ";
+                else
+                 station_string=station_string+" and "+station_names[j]+".";
                }
                if(stringResult.response_code!='200')
                     station_string="There was an error processing your request.";
@@ -117,6 +122,12 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
             var index3=0;
             var index4=0;
             var status=stringResult.availability[0].status;
+            if(status.indexOf('AVAILABLE')>-1)
+            {
+                var index_=status.indexOf('AVAILABLE');
+                var available=status.substring(index_+10);
+            }
+            status=available+" seats are available.";
             if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
                {
                  index3=status.indexOf("/WL");
