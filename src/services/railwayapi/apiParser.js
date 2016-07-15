@@ -29,8 +29,11 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.parse(body);
+           
             var status=stringResult.position;
-            if(stringResult.response_code!='200')
+             if (stringResult.response_code=='403')
+                  status=null;
+            else  if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
             if(status=='-')
             {
@@ -86,7 +89,7 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
              var dest_=station_names[i-1];
 
              station_string=station_string+"The train starts from "+source_+" at "+station_dep[0]+" and arrives  "+dest_+" at "+station_arrival[i-1]+" on day "+day[i-1]+" passing through ";
-            for (j=0; j<i-1; j=j+update){
+            for (j=1; j<i-1; j=j+update){
                m=j+1;
               if((j+update)<(i-1))
                  station_string=station_string+station_names[j]+",";
