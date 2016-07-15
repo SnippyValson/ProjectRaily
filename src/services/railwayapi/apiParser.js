@@ -145,6 +145,7 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
                 }
                 if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
+                 
              var result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
              eventCallback(result);       
         });
@@ -260,7 +261,6 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             var total_passengers;
             var booking_status=[];
             var current_status=[];
-            var coach_position =[];
             var stringResult = JSON.parse(body);
              var c="";
             train_no= stringResult.train_no;
@@ -269,19 +269,17 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             chart_prepared= stringResult.chart_prepared; 
             total_passengers= stringResult.total_passengers; 
            result= result+"Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
-           result= result+"Starting date is "+doj+". Class is "+Class+". Chart prepared "+chart_prepared+". Total number of passengers "+total_passengers+". Details of each passengers.";
-           
+                    
             for ( i=0; i<stringResult["passengers"].length; i++){
                booking_status[i]=stringResult["passengers"][i].booking_status;
                current_status[i]=stringResult["passengers"][i].current_status;
-               coach_position[i]=stringResult["passengers"][i].coach_position;
-                                  
+                                               
               } 
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
                result = result + "passenger "+m+ '\n';
-               result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n Coach position "+coach_position[j]+"\n";
+               result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
                   current_status[j]="cancelled or modified.";
               if((current_status[j].toUpperCase()==="CNF"))
