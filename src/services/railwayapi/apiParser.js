@@ -328,6 +328,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
 
 exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
     var result="";
+    var status="";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 
     http.get(url, function(res) {
@@ -382,9 +383,11 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
 
                }
-               if(stringResult.response_code!='200')
+               if(stringResult.response_code!='200'){
                     result="There was an error processing your request.";
-            var result1={speech:result,status:result,heading:"Train arrivals at station: "+station_code};
+                     status=result;
+               }
+            var result1={speech:status,status:result,heading:"Train arrivals at station: "+station_code};
             eventCallback(result1);    
 
         });
