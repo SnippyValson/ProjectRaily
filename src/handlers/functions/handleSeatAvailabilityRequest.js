@@ -3,7 +3,7 @@
 var config=require('../../configs');
 var railways=require('../../services/railwayapi/apiParser');
 
-exports.handleTrainAvailabilityRequest=function(intent, session, response.type) {
+exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
     var dateForJson;
     var trainNumber;
     var stationOne=intent.slots.StationOne.value;
@@ -46,7 +46,6 @@ exports.handleTrainAvailabilityRequest=function(intent, session, response.type) 
 	railways.getJsonSeatAvailability(trainNumber, stationOne, stationTwo, dateForJson, 'CC', 'GN', function (events){
 	// Create speech output
     var speechOutput =  events; 
-    speechOutput['speech']=""+speechOutput['speech'];
     
 	    if(speechOutput['heading']!=null)	
 	   	{

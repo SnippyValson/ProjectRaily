@@ -35,6 +35,10 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
                   status=null;
             else  if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
+            if(status=='-')
+            {
+                status="Sorry, The train details are not available for today";
+            }
             var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
             eventCallback(result);
 
@@ -85,7 +89,7 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
              var dest_=station_names[i-1];
 
              station_string=station_string+"The train starts from "+source_+" at "+station_dep[0]+" and arrives  "+dest_+" at "+station_arrival[i-1]+" on day "+day[i-1]+" passing through ";
-            for (j=0; j<i-1; j=j+update){
+            for (j=1; j<i-1; j=j+update){
                m=j+1;
               if((j+update)<(i-1))
                  station_string=station_string+station_names[j]+",";
@@ -133,18 +137,20 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
             var index3=0;
             var index4=0;
             var status=stringResult.availability[0].status;
+            var class_name=stringResult.class.class_name;
+            var quota_name=stringResult.quota.quota_name;
             if(status.indexOf('AVAILABLE')>-1)
             {
                 var index_=status.indexOf('AVAILABLE');
                 var available=status.substring(index_+10);
             }
-            status=available+" seats are available.";
+            status=available+" seats are available in"+class_name+","+quota_name;
             if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
                {
                  index3=status.indexOf("/WL");
                  index4=status.indexOf("\n",index3);
                  var waiting=status.substring(index3+3,index3+8);
-                 var status=waiting+" seats are in waiting list."; 
+                 var status=waiting+" seats are in waiting list for"+class_name+","+quota_name; 
                 }
                 if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
