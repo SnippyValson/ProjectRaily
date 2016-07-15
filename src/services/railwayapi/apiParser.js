@@ -202,16 +202,16 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                             }
                      }
               }
-             stat= stat+ "Total "+train_no[j]+" trains are there.";
+             stat= stat+ "Total "+i+" trains are there.";
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
                if(m<=3)
                  {
-                  stat = stat + "Train "+m+ '.';
+                  stat = stat + "Train "+train_no[j]+ '.';
                    stat = stat+" Source departure time :"+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
                    } 
-               train_string = train_string + "Train "+m+ '\n';
+               train_string = train_string + "Train "+train_no[j]+ '\n';
                train_string =train_string+" Source departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                }
