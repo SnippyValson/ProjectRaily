@@ -155,6 +155,9 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
  
 */
 exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
+         var day= date.substring(5,7);
+         var mon= date.substring(8);
+         date=day+"-"+mon;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          var stat="";
          var train_string="";
@@ -215,7 +218,8 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                 
                if(stringResult.response_code!='200'){
                     train_string="There was an error processing your request.";
-                    stat =train_string;}
+                     stat=train	_string;
+                   }
              stat=stat+ "For details of all other trains see the result card."
              var result={speech:stat,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
@@ -251,7 +255,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             var current_status=[];
             var coach_position =[];
             var stringResult = JSON.parse(body);
-           
+             var c="";
             train_no= stringResult.train_no;
             doj= stringResult.doj;
             Class= stringResult.class;
@@ -271,6 +275,18 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                m=j+1;
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n Coach position "+coach_position[j]+"\n";
+               if(current_status[j]==="CAN/MOD")
+                  current_status[j]="cancelled or modified.";
+              if(current_status[j]==="CNF/Confirmed")
+                  { 
+                    if(chart_prepared==="Y")
+                      {
+                        c=current_status[j];
+                        current_status[j]= "confirmed, coach and berth position is "+ c+".";
+                       }
+                     else
+                           current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                  }
                stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
 
