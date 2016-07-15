@@ -187,7 +187,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                             }
                      }
               }
-             stat= stat+ "Total "+i+" trains are between "+source+ " and "+dest+.";
+             stat= stat+ "Total "+i+" trains are between "+source+ " and "+dest+"";
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
