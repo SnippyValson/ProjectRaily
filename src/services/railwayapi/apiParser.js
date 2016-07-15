@@ -328,6 +328,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
 
 exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
     var result="";
+    var status="";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 
     http.get(url, function(res) {
@@ -376,9 +377,9 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
              var m=0;
             for ( j=0; j<i; j++){
                m=j+1;
-               result = result + "Train "+train_no[j]+ '\n';
+               result = result + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                status = status + "Train "+train_no[j]+ '.';
-               status=status+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+               status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
 
                }

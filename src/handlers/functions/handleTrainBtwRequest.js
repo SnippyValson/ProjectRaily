@@ -37,7 +37,6 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	railways.getJsonTrainBtw(stationOne, stationTwo, dateForJson, function (events){
 	// Create speech output
     var speechOutput =  events; 
-    speechOutput['speech']=""+speechOutput['speech'];
     
 	    if(speechOutput['heading']!=null)	
 	   	{

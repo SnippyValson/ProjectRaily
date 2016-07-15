@@ -74,20 +74,20 @@ handleSeatAvailabilityNumberIntent details of seat availability of train number 
 handleSeatAvailabilityNumberIntent give details of seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
 handleSeatAvailabilityNumberIntent provide with the details of seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
 
-handleTrainArrivalsIntent list of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent get the list of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent give the list of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent give the list of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent get the list of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent list of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent give the details of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent get the details of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent details of trains arriving at the {Station} within the duration of {duration} hours
-handleTrainArrivalsIntent give the details of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent get the details of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent details of trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent trains arriving at the {Station} within {duration} hours
-handleTrainArrivalsIntent trains arriving at the {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent list of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent get the list of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent give the list of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent give the list of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent get the list of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent list of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent give the details of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent get the details of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent details of trains arriving at {Station} within the duration of {duration} hours
+handleTrainArrivalsIntent give the details of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent get the details of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent details of trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent trains arriving at {Station} within {duration} hours
+handleTrainArrivalsIntent trains arriving at {Station} within the duration of {duration} hours
 
 handleTrainBtwIntent trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent trains between {StationOne} and {StationTwo} on {dat}
