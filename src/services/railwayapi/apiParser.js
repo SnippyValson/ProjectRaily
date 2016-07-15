@@ -144,7 +144,7 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
 */
 exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
-    
+         var stat="";
          var train_string="";
         http.get(url, function(res) {
         var body = '';
@@ -187,16 +187,23 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                             }
                      }
               }
+             stat= stat+ "Total "+i+" trains are between "+source+ " and "+dest+.";
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
-               train_string = train_string + "Train "+m+ '.';
-               train_string =train_string+" Source departure time "+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
+               if(m<=3)
+                 {
+                  stat = stat + "Train "+m+ '.';
+                   stat = stat+" Source departure time :"+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
+                   } 
+               train_string = train_string + "Train "+m+ '\n';
+               train_string =train_string+" Source departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                }
+                
                if(stringResult.response_code!='200')
                     train_string="There was an error processing your request.";
-            
+             stat=stat+ "For details of all other trains see the result card."
              var result={speech:train_string,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
         
