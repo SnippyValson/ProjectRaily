@@ -109,6 +109,13 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
  
 */
 exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class, quota,eventCallback){
+    
+
+    var date_=new Date(date);
+    var dd=date_.getDate();
+    var mm=date_.getMonth()+1;
+    var yy=date_.getFullYear();
+    date=dd+"-"+mm+"-"+yy;
     var url =config.getBaseUrl() +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     var status = ""; 
       http.get(url, function(res) {
@@ -117,11 +124,7 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
         res.on('data', function (chunk) {
             body += chunk;
         });
-        date_=new Date(date);
-        dd=date_.getDay();
-        mm=date_.getMonth();
-        yy=date_.getFullYear();
-        date=dd+""+mm+""+yy;
+        
         res.on('end', function () {
             var stringResult = JSON.parse(body);
             var index3=0;
