@@ -340,7 +340,7 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
              var m=0;
             for ( j=0; j<i; j++){
                m=j+1;
-               result = result + "Train "+m+ '.';
+               result = result + "Train "+train_no[j]+ '.';
                result=result+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
 
                }
