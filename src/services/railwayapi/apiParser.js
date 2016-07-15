@@ -352,13 +352,34 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                 schdep[i]=stringResult["train"][i].schdep;
                 actdep[i]=stringResult["train"][i].actdep;
                 delaydep[i]=stringResult["train"][i].delaydep;
-
+                if(scharr[i].toUpperCase()=="RT")
+                    scharr[i]="Right time";
+                if(scharr[i].toUpperCase()=="SRC")
+                    scharr[i]="Source";
+                if(delayarr[i].toUpperCase()=="RT")
+                    delayarr[i]="Right time";
+                if(delayarr[i].toUpperCase()=="SRC")
+                    delayarr[i]="Source";
+                if(schdep[i].toUpperCase()=="RT")
+                    schdep[i]="Right time";
+                if(schdep[i].toUpperCase()=="DSTN")
+                    schdep[i]="Destination";
+                if(actdep[i].toUpperCase()=="RT")
+                    actdep[i]="Right time";
+                if(actdep[i].toUpperCase()=="DSTN")
+                    actdep[i]="Destination";
+                if(delaydep[i].toUpperCase()=="RT")
+                    delaydep[i]="Right time";
+                if(delaydep[i].toUpperCase()=="DSTN")
+                    delaydep[i]="Destination";
               }
              var m=0;
             for ( j=0; j<i; j++){
                m=j+1;
-               result = result + "Train "+train_no[j]+ '.';
-               result=result+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+               result = result + "Train "+train_no[j]+ '\n';
+               status = status + "Train "+train_no[j]+ '.';
+               status=status+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+               result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
 
                }
                if(stringResult.response_code!='200')
