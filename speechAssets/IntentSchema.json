@@ -51,6 +51,18 @@
         {
           "name": "TrainNumber",
           "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "dat",
+          "type": "AMAZON.DATE"
+        },
+        {
+          "name": "StationOne",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "StationTwo",
+          "type": "LIST_OF_STATIONS"
         }
       ]
     },

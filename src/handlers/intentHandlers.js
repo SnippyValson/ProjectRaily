@@ -29,7 +29,7 @@ intentHandlers.handleSeatAvailabilityIntent = function (intent, session, respons
     };
     
 intentHandlers.handleSeatAvailabilityNumberIntent = function (intent, session, response) {
-        handle3.handleSeatAvailabilityRequest(intent, session, response);
+        handle3.handleSeatAvailabilityRequest(intent, session, response,"number");
     };    
 
 intentHandlers.handleTrainArrivalsIntent = function (intent, session, response) {
