@@ -201,8 +201,9 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
 
                }
                 
-               if(stringResult.response_code!='200')
+               if(stringResult.response_code!='200'){
                     train_string="There was an error processing your request.";
+                    stat =train_string;}
              stat=stat+ "For details of all other trains see the result card."
              var result={speech:stat,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
