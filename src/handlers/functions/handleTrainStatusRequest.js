@@ -72,8 +72,24 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
 	// Create speech output
     var speechOutput =  events; 
     //"The correct train name recieved: " + intent.slots.Train.value;
+        if(speechOutput['status']==null){
+             railways.getJsonLiveStatus(trainNumber,result, function (events){
+                	// Create speech output
+                      var speechOutput =  events; 
+                  //"The correct train name recieved: " + intent.slots.Train.value;
+                  if(speechOutput['heading']!=null)	
+	         	{
+	   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+                	}
+          	else
+    	          {
+    	           response.tell(speechOutput['speech']);
+                  	}
+        	});
     
-	    if(speechOutput['heading']!=null)	
+
+            }
+    else  if(speechOutput['heading']!=null)	
 	   	{
 	   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
     	}
