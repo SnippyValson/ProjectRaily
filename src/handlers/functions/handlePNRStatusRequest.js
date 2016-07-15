@@ -11,7 +11,7 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
     	// Create speech output
 	    var speechOutput =  events; 
 	    //"The correct train name recieved: " + intent.slots.Train.value;
-	    if (speechOutput['status']==null)
+	   /* if (speechOutput['status']==null)
                {
                   railways.getJsonPNRstatus(intent.slots.pnrNumber.value, function (events){
 
@@ -30,7 +30,7 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
 		     }
                  });
             }
-         else if(speechOutput['heading']!=null)
+         else*/ if(speechOutput['heading']!=null)
                 {
                         response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
                 }
