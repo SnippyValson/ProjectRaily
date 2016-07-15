@@ -202,7 +202,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                             }
                      }
               }
-             stat= stat+ "Total "+i+" trains are there.";
+             stat= stat+ "Total "+train_no[j]+" trains are there.";
              var m=0;
             for (j=0; j<i; j++){
                m=j+1;
