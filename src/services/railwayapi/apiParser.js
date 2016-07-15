@@ -212,7 +212,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                m=j+1;
                if(m<=3)
                  {
-                  stat = stat + "Train "+train_no[j]+ '.';
+                  stat = stat + " Train "+train_no[j]+ '.';
                    stat = stat+" Source departure time :"+src_departure_time[j]+", Destination arrival time "+dest_arrival_time[j]+", Days of run "+days[j]+".";
                    } 
                train_string = train_string + "Train "+train_no[j]+ '\n';
