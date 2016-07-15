@@ -155,8 +155,8 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
  
 */
 exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
-         var day= date.substring(5,7);
-         var mon= date.substring(8);
+         var mon= date.substring(5,7);
+         var day= date.substring(8);
          date=day+"-"+mon;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          var stat="";
