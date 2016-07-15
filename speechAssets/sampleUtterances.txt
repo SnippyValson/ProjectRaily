@@ -84,6 +84,7 @@ handleTrainArrivalsIntent trains arriving at the {Station} within the duration o
 
 handleTrainBtwIntent trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent trains between {StationOne} and {StationTwo} on {dat}
+handleTrainBtwIntent trains between {StationOne} and {StationTwo} {dat}
 handleTrainBtwIntent list of trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent list of trains between {StationOne} and {StationTwo} on {dat}
 handleTrainBtwIntent details of trains between {StationOne} and {StationTwo} on

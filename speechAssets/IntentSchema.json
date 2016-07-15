@@ -82,7 +82,7 @@
         },
         {
           "name": "dat",
-          "type": "AMAZON.NUMBER"
+          "type": "AMAZON.DATE"
         }
       ]
     },
