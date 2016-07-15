@@ -32,6 +32,10 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
             var status=stringResult.position;
             if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
+            if(status=='-')
+            {
+                status="Sorry, The train details are not available for today";
+            }
             var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
             eventCallback(result);
 

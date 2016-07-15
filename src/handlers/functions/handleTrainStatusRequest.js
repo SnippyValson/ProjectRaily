@@ -71,11 +71,6 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
 	railways.getJsonLiveStatus(trainNumber,result, function (events){
 	// Create speech output
     var speechOutput =  events; 
-    if(speechOutput['speech']=="-")
-    {
-    	speechOutput['speech']="Sorry, The train details are not available for today";
-    }
-    speechOutput['speech']=""+speechOutput['speech'];
     //"The correct train name recieved: " + intent.slots.Train.value;
     
 	    if(speechOutput['heading']!=null)	

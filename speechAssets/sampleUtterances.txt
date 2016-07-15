@@ -60,19 +60,19 @@ handleSeatAvailabilityIntent details of seat availability of {Train}
 handleSeatAvailabilityIntent give details of seat availability of {Train}
 handleSeatAvailabilityIntent provide with the details of seat availability of {Train}
 
-handleSeatAvailabilityNumberIntent seat availability of {TrainNumber} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent get the seat availability of {TrainNumber} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent Provide the seat availability of {TrainNumber} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent details of seat availability of {TrainNumber} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent give details of seat availability of {TrainNumber} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent provide with the details of seat availability of {TrainNumber}  from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent seat availability of {TrainNumber} {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent get the seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent Provide the seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent details of seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent give details of seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
-handleSeatAvailabilityNumberIntent provide with the details of seat availability of {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent seat availability of train number {TrainNumber} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent get the seat availability of train number {TrainNumber} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent Provide the seat availability of train number {TrainNumber} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent details of seat availability of train number {TrainNumber} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent give details of seat availability of train number {TrainNumber} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent provide with the details of seat availability of train number {TrainNumber}  from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent seat availability of train number {TrainNumber} {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent get the seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent Provide the seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent details of seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent give details of seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
+handleSeatAvailabilityNumberIntent provide with the details of seat availability of train number {TrainNumber} on {dat} from {StationOne} to {StationTwo}
 
 handleTrainArrivalsIntent list of trains arriving at the {Station} within the duration of {duration} hours
 handleTrainArrivalsIntent get the list of trains arriving at the {Station} within the duration of {duration} hours

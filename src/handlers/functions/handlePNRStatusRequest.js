@@ -10,7 +10,6 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
 
     	// Create speech output
 	    var speechOutput =  events; 
-	    speechOutput['speech']=speechOutput['speech'];
 	    //"The correct train name recieved: " + intent.slots.Train.value;
 	    		
 	    if(speechOutput['heading']!=null)	
