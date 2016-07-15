@@ -117,7 +117,11 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
         res.on('data', function (chunk) {
             body += chunk;
         });
-
+        date_=new Date(date);
+        dd=date_.getDay();
+        mm=date_.getMonth();
+        yy=date_.getFullYear();
+        date=dd+""+mm+""+yy;
         res.on('end', function () {
             var stringResult = JSON.parse(body);
             var index3=0;
