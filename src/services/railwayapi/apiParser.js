@@ -77,11 +77,12 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                 day[i]=stringResult.route[i].day;
                 }
              var m=0;
+             var update=Math.ceil(((stringResult.route.length-2)/5));
              var source_=station_names[0];
              var dest_=station_names[i-1];
 
              station_string=station_string+"The train starts from "+source_+" at "+station_dep[0]+" and arrives  "+dest_+" at "+station_arrival[i-1]+" on day "+day[i-1]+" passing through ";
-            for (j=0; j<i; j++){
+            for (j=0; j<i-1; j=j+update){
                m=j+1;
               if((j+update)<(i-1))
                  station_string=station_string+station_names[j]+" ";
