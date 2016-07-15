@@ -4,21 +4,51 @@ var config=require('../../configs');
 var railways=require('../../services/railwayapi/apiParser');
 
 exports.handleTrainBtwRequest=function(intent, session, response) {
-    //intent.slots.Train.value;
+    var dateForJson;
+    var stationOne, stationTwo;
+    stationOne=intent.slots.StationOne.value;
+    stationTwo=intent.slots.StationTwo.value;
 
-/* CODE TO BE EDITED
-  
-    railways.getJsonLiveStatus('12429',result, function (events){
+    if(intent.slots.dat !== undefined && intent.slots.dat !== null)
+    {
+    	dateForJson=intent.slots.dat.value;
+    }
+    else
+    {
+    	var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
 
-    	// Create speech output
-	    var speechOutput =  events; 
-	    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
-	    //"The correct train name recieved: " + intent.slots.Train.value;
-	    	
-	   	 response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
-    });
+		if(dd<10) {
+		    dd='0'+dd
+		} 
+
+		if(mm<10) {
+		    mm='0'+mm
+		} 
+
+		today = yyyy+'-'+mm+'-'+dd;
+		dateForJson=today;
+    }
     
-CODE TO BE EDITED*/
+
+    
+	railways.getJsonTrainBtw(stationOne, stationTwo, dateForJson, function (events){
+	// Create speech output
+    var speechOutput =  events; 
+    speechOutput['speech']=""+speechOutput['speech'];
+    
+	    if(speechOutput['heading']!=null)	
+	   	{
+	   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+    	}
+    	else
+    	{
+    		response.tell(speechOutput['speech']);
+    	}
+	});
+    
 
 };
 
