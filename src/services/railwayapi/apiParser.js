@@ -204,7 +204,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                if(stringResult.response_code!='200')
                     train_string="There was an error processing your request.";
              stat=stat+ "For details of all other trains see the result card."
-             var result={speech:train_string,status:train_string,heading:"Trains running between "+source+" and "+dest};
+             var result={speech:stat,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
         
         });
@@ -244,8 +244,9 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
             Class= stringResult.class;
             chart_prepared= stringResult.chart_prepared; 
             total_passengers= stringResult.total_passengers; 
-           result= result+", Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
-
+           result= result+"Starting date is "+doj+"\n Class is "+Class+"\n Chart prepared "+chart_prepared+"\n Total number of passengers "+total_passengers+"\n Details of each passengers\n";
+           result= result+"Starting date is "+doj+". Class is "+Class+". Chart prepared "+chart_prepared+". Total number of passengers "+total_passengers+". Details of each passengers.";
+           
             for ( i=0; i<stringResult["passengers"].length; i++){
                booking_status[i]=stringResult["passengers"][i].booking_status;
                current_status[i]=stringResult["passengers"][i].current_status;
