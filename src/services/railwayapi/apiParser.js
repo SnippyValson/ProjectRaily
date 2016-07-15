@@ -279,14 +279,13 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                   current_status[j]="cancelled or modified.";
               if(current_status[j]==="CNF/Confirmed")
                   { 
-                    if(chart_prepared==="Y")
-                      {
-                        c=current_status[j];
-                        current_status[j]= "confirmed, coach and berth position is "+ c+".";
-                       }
-                     else
-                           current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
                   }
+                else if(chart_prepared==="Y"){
+                    c=current_status[j];
+                    current_status[j]= "confirmed, coach and berth position is "+ c+".";
+                }
+                     
                stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
 
