@@ -1,0 +1,123 @@
+{
+  "intents": [
+    {
+      "intent": "handleTrainStatusIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+    {
+      "intent": "handleTrainNumberStatusIntent",
+      "slots": [
+        {
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "handleTrainRouteIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+    {
+      "intent": "handleTrainNumberRouteIntent",
+      "slots": [
+        {
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "handleSeatAvailabilityIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        }
+      ]
+    },
+     {
+      "intent": "handleSeatAvailabilityNumberIntent",
+      "slots": [
+        {
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "dat",
+          "type": "AMAZON.DATE"
+        },
+        {
+          "name": "StationOne",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "StationTwo",
+          "type": "LIST_OF_STATIONS"
+        }
+      ]
+    },
+
+    {
+      "intent": "handleTrainArrivalsIntent",
+      "slots": [
+        {
+          "name": "Station",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "duration",
+          "type": "AMAZON.NUMBER"
+        }
+
+      ]
+    },
+    {
+      "intent": "handleTrainBtwIntent",
+      "slots": [
+        {
+          "name": "StationOne",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "StationTwo",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "dat",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "handlePNRStatusIntent",
+      "slots": [
+        {
+          "name": "pnrNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+ }
