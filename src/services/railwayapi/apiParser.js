@@ -298,11 +298,11 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                   current_status[j]="<p>cancelled or modified</p>";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
-                    current_status[j]="<p>confirmed, Coach/Berth number will be available after chart preparation</p>"; 
+                    current_status[j]="<p>confirmed</p>,</p> Coach/Berth number will be available after chart preparation</p>"; 
                   }
                if(current_status[j].toUpperCase()==="CONFIRMED")
                   { 
-                    current_status[j]="<p>confirmed, Coach/Berth number will be available after chart preparation</p>"; 
+                    current_status[j]="<p>confirmed,</p> <p> Coach/Berth number will be available after chart preparation</p>"; 
                   }      
                 else if(chart_prepared.toUpperCase()==="Y"){
                     c=current_status[j];
