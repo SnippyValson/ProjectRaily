@@ -349,9 +349,13 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
             var scharr=[];
             var delayarr=[];
             var schdep =[];
+            var train_name=[];
             var stringResult = JSON.parse(body);
              for (i=0; i<stringResult["train"].length; i++){
                 train_no[i]=stringResult["train"][i].number;
+                train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                train_name[i]=train_name[i].replace(" SP"," SPECIAL");
+                train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                 scharr[i]=stringResult["train"][i].scharr;
                 delayarr[i]=stringResult["train"][i].delayarr;
                 schdep[i]=stringResult["train"][i].schdep;
@@ -384,7 +388,8 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result = result + "Train "+train_no[j]+ '\n';
                if(j<4)
                  {
-                   status = status + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
+                   status = status +"<p>Train <say-as interpret-as='digits'>"+train_no[j]+"</say-as> "+train_name[j]+" "+ ' </p>';
+                   // "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                    status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                   }
                 if(i>4)
