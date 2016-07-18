@@ -297,15 +297,15 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                   current_status[j]="cancelled or modified";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
-                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                    current_status[j]="<p>confirmed, Coach/Berth number will be available after chart preparation</p>"; 
                   }
                if(current_status[j].toUpperCase()==="CONFIRMED")
                   { 
-                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                    current_status[j]="<p>confirmed, Coach/Berth number will be available after chart preparation</p>"; 
                   }      
                 else if(chart_prepared.toUpperCase()==="Y"){
                     c=current_status[j];
-                    current_status[j]= "confirmed, coach and berth position is "+ c+".";
+                    current_status[j]= "<p>confirmed,</p><p> coach and berth position is "+ c+"</p>";
                 }
                      
                stat=stat+"<p> passenger "+m+"</p>, <p>current status is "+current_status[j]+"</p>";
@@ -389,7 +389,6 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                if(j<4)
                  {
                    status = status +"<p>Train <say-as interpret-as='digits'>"+train_no[j]+"</say-as> "+train_name[j]+" "+ ' </p>';
-                   // "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                    status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                   }
                 if(i>4)
