@@ -229,7 +229,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                m=j+1;
                if(m<=3)
                  {
-                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+" "+train_name[j]+" "+ '</say-as> </p>';
+                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+"</say-as> "+train_name[j]+" "+ ' </p>';
                    stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"<p>";
                    } 
                train_string = train_string + "Train "+train_no[j]+ '\n';
