@@ -295,18 +295,18 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
-                  current_status[j]="cancelled or modified";
+                  current_status[j]="<p>cancelled or modified</p>";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
-                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                    current_status[j]="<p>confirmed,</p><p> Coach/Berth number will be available after chart preparation.</p>"; 
                   }
                if(current_status[j].toUpperCase()==="CONFIRMED")
                   { 
-                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
+                    current_status[j]="<p>confirmed</p>,<p> Coach/Berth number will be available after chart preparation.</p>"; 
                   }      
                 else if(chart_prepared.toUpperCase()==="Y"){
                     c=current_status[j];
-                    current_status[j]= "confirmed, coach and berth position is "+ c+".";
+                    current_status[j]= "<p>confirmed,</p> <p>coach and berth position is "+ c+"</p>";
                 }
                      
                stat=stat+"<p> passenger "+m+"</p>, <p>current status is "+current_status[j]+"</p>";
