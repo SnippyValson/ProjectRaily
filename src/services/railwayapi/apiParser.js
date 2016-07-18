@@ -435,7 +435,7 @@ exports.getStationCode = function (station_name,eventCallback){
             for(i=0;i<stringResult.stations.length;i++)
             {
                 if(stringResult.stations[i].fullname.toUpperCase().indexOf(station_name.toUpperCase())>-1)
-                      output=output+stringResult.stations[i].fullname+" "+stringResult.stations[i].code+" ";
+                      output=output+stringResult.stations[i].fullname+" "+stringResult.stations[i].code+",";
                              
             
             }
@@ -470,8 +470,8 @@ exports.getStationName = function (station_code,eventCallback){
             {
                 if(stringResult.stations[i].code==station_code)
                 {
-                       var result1={speech:stringResult.stations[i].name,status:stringResult.stations[i].name,heading:"Station name of: "+station_code};
-                        eventCallback(result1); 
+                       var result1={speech:stringResult.stations[i].fullname,status:stringResult.stations[i].fullname,heading:"Station name of: "+station_code};
+                       eventCallback(result1); 
                }
             
             }
