@@ -78,7 +78,8 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
             var station_dep=[];
             var day=[];
             for (i=0; i<stringResult.route.length; i++){
-                station_names[i]=stringResult.route[i].fullname;
+                station_names[i]=stringResult.route[i].fullname.replace(" JN"," JUNCTION");
+                station_names[i]=station_names[i].replace(" CANT"," CANTONMENT");
                 station_arrival[i]=stringResult.route[i].scharr;
                 station_dep[i]=stringResult.route[i].schdep;
                 day[i]=stringResult.route[i].day;
@@ -419,6 +420,9 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
 
 
 exports.getStationCode = function (station_name,eventCallback){
+    station_name=station_name.toUpperCase();
+    station_name=station_name.replace(" JUNCTION"," JN");
+    station_name=station_name.replace(" CANTONMENT"," CANT");
     var state="";
     var result="";
     var i=0;
