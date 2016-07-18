@@ -199,6 +199,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                 train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
                 train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                 train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
+                train_name[i]=train_name[i].replace(" DLX"," DELUXE");
                 src_departure_time[i]=stringResult["train"][i].src_departure_time;
                 dest_arrival_time[i]=stringResult["train"][i].dest_arrival_time;
                 for  (j=0; j<stringResult["train"][i]["days"].length; j++){
@@ -294,7 +295,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
-                  current_status[j]="cancelled or modified";
+                  current_status[j]="<p>cancelled or modified</p>";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
                     current_status[j]="<p>confirmed, Coach/Berth number will be available after chart preparation</p>"; 
@@ -306,6 +307,8 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                 else if(chart_prepared.toUpperCase()==="Y"){
                     c=current_status[j];
                     current_status[j]= "<p>confirmed,</p><p> coach and berth position is "+ c+"</p>";
+                  }
+            
                 }
                      
                stat=stat+"<p> passenger "+m+"</p>, <p>current status is "+current_status[j]+"</p>";
@@ -356,6 +359,7 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                 train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
                 train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                 train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
+                train_name[i]=train_name[i].replace(" DLX"," DELUXE");
                 scharr[i]=stringResult["train"][i].scharr;
                 delayarr[i]=stringResult["train"][i].delayarr;
                 schdep[i]=stringResult["train"][i].schdep;
