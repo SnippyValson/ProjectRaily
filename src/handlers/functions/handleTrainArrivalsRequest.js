@@ -6,19 +6,23 @@ var railways=require('../../services/railwayapi/apiParser');
 exports.handleTrainArrivalsRequest=function(intent, session, response) {
     //intent.slots.Train.value;
 
-/* CODE TO BE EDITED
-  
-    railways.getJsonLiveStatus('12429',result, function (events){
-
-    	// Create speech output
-	    var speechOutput =  events; 
-	    speechOutput['speech']='<p>'+intent.slots.Train.value+'</p> '+speechOutput['speech'];
-	    //"The correct train name recieved: " + intent.slots.Train.value;
-	    	
-	   	 response.tellWithCard(speechOutput['speech'], "Raily- Indian Railways" , speechOutput['status']);
-    });
+    var station=intent.slots.Station.value;
+    var durationHours=intent.slots.duration.value;
     
-CODE TO BE EDITED*/
+	railways.getJsonTrainArrivals(station,durationHours, function (events){
+	// Create speech output
+    var speechOutput =  events; 
+    
+	    if(speechOutput['heading']!=null)	
+	   	{
+	   		response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+    	}
+    	else
+    	{
+    		response.tell(speechOutput['speech']);
+    	}
+	});
+    
 
 };
 
