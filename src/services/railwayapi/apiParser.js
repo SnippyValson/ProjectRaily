@@ -416,45 +416,11 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
 }
 
 
-/*exports.getJsonTrainName = function (train_no){
+exports.getStationCode = function (station_name,eventCallback){
     var state="";
     var result="";
-    var url =baseUrl +'/name_number/train/'+train_no+'/apikey/'+ apikey+'/';
-    http.get(url, function(res) {
-        var body = '';
-
-        res.on('data', function (chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function () {
-            var stringResult = JSON.stringify(body);
-            var index=0;
-            var index2=0
-            var train_numbers=[];
-            var train_string="";
-            var index=stringResult.indexOf("name")
-            var index1=stringResult.indexOf("}",index)
-            var name =stringResult.substring(index+10,index1-8);
-            result=name;
-            if(stringResult.indexOf("error") > -1) {
-                 state = "error";
-                }
-            else
-                 state = "success";
-
-        });
-    }).on('error', function (e) {
-        state = "error";
-    });
-}  
-
-function numberToName(train_no,eventCallback){
-    var baseURL="http://api.railwayapi.com";
-    var apiKey="bkxel1825";
-    var state="";
-    var result="";
-    var url =baseURL +'/name_number/train/'+train_no+'/apikey/'+ apiKey+'/';
+    var i=0;
+    var url =config.getBaseUrl() +'/name_to_code/station/'+station_name+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
         var body = '';
 
@@ -464,15 +430,47 @@ function numberToName(train_no,eventCallback){
 
         res.on('end', function () {
             var stringResult = JSON.parse(body);
-            eventCallback(stringResult.train.name);
+            for(i=0;i<stringResult.stations.length;i++)
+            {
+                if(stringResult.stations[i].fullname.toUpperCase()==station_name.toUpperCase())
+                        eventCallback(stringResult.stations[i].code)
+            
+            }
+            
 
         });
     }).on('error', function (e) {
         state = "error";
     });
-}
-*/
+}  
 
 
+exports.getStationName = function (station_code,eventCallback){
+    var state="";
+    var result="";
+    var i=0;
+    var url =config.getBaseUrl() +'/code_to_name/code/'+station_code+'/apikey/'+ apiKey+'/';
+    http.get(url, function(res) {
+        var body = '';
+
+        res.on('data', function (chunk) {
+            body += chunk;
+        });
+
+        res.on('end', function () {
+            var stringResult = JSON.parse(body);
+            for(i=0;i<stringResult.stations.length;i++)
+            {
+                if(stringResult.stations[i].code==station_code)
+                        eventCallback(stringResult.stations[i].fullname.replace(" JN"," JUNCTION"))
+            
+            }
+            
+
+        });
+    }).on('error', function (e) {
+        state = "error";
+    });
+}  
 
 
