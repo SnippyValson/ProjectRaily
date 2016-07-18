@@ -4,13 +4,10 @@ var config=require('../../configs');
 var railways=require('../../services/railwayapi/apiParser');
 
 exports.handlePNRStatusRequest=function(intent, session, response) {
-    //intent.slots.Train.value;
 
     railways.getJsonPNRstatus(intent.slots.pnrNumber.value, function (events){
 
-    	// Create speech output
 	    var speechOutput =  events; 
-	    //"The correct train name recieved: " + intent.slots.Train.value;
 	   /* if (speechOutput['status']==null)
                {
                   railways.getJsonPNRstatus(intent.slots.pnrNumber.value, function (events){
