@@ -25,7 +25,7 @@ intentHandlers.handleTrainNumberRouteIntent = function (intent, session, respons
     };
 
 intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
-        handle3.handleSeatAvailabilityRequest(intent, session, response,"text");
+        handle3.handleSeatAvailabilityRequest(intent, session, response,"name");
     };
     
 intentHandlers.handleSeatAvailabilityNumberIntent = function (intent, session, response) {

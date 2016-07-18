@@ -65,7 +65,7 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
 	}
 	else
 	{
-		trainNumber="12469";
+		trainNumber= config.getTrainID(intent.slots.Train.value);
 	}
 
 	railways.getJsonLiveStatus(trainNumber,result, function (events){

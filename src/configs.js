@@ -73,3 +73,12 @@ exports.getTrains=function(){
 exports.getAPPID=function(){
 	return APP_ID;
 };
+exports.getTrainID=function(trainName){
+	trains.forEach(function(value){
+	  if(value['name'].toUpperCase()=== trainName.toUpperCase())
+	  {
+	  	return value['id'];
+	  }
+	});
+	return -1;
+};
