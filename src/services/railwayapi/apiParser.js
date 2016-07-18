@@ -420,6 +420,8 @@ exports.getStationCode = function (station_name,eventCallback){
     var state="";
     var result="";
     var i=0;
+    var output="";
+    var result1="";
     var url =config.getBaseUrl() +'/name_to_code/station/'+station_name+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
         var body = '';
@@ -432,17 +434,22 @@ exports.getStationCode = function (station_name,eventCallback){
             var stringResult = JSON.parse(body);
             for(i=0;i<stringResult.stations.length;i++)
             {
-                if(stringResult.stations[i].fullname.toUpperCase()==station_name.toUpperCase())
-                        eventCallback(stringResult.stations[i].code)
+                if(stringResult.stations[i].fullname.toUpperCase().indexOf(station_name.toUpperCase())>-1)
+                      output=output+stringResult.stations[i].fullname+" "+stringResult.stations[i].code+" ";
+                             
             
             }
+            result1={speech:output,status:output,heading:"Station code of: "+station_name};
+            eventCallback(result1); 
             
 
         });
     }).on('error', function (e) {
         state = "error";
+        var result1={speech:state,status:state,heading:null};
+        eventCallback(result1); 
     });
-}  
+}
 
 
 exports.getStationName = function (station_code,eventCallback){
@@ -462,7 +469,10 @@ exports.getStationName = function (station_code,eventCallback){
             for(i=0;i<stringResult.stations.length;i++)
             {
                 if(stringResult.stations[i].code==station_code)
-                        eventCallback(stringResult.stations[i].fullname.replace(" JN"," JUNCTION"))
+                {
+                       var result1={speech:stringResult.stations[i].name,status:stringResult.stations[i].name,heading:"Station name of: "+station_code};
+                        eventCallback(result1); 
+               }
             
             }
             
@@ -470,6 +480,8 @@ exports.getStationName = function (station_code,eventCallback){
         });
     }).on('error', function (e) {
         state = "error";
+        var result1={speech:state,status:state,heading:null};
+        eventCallback(result1); 
     });
 }  
 
