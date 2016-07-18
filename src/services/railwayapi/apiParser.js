@@ -378,8 +378,15 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
             for ( j=0; j<i; j++){
                m=j+1;
                result = result + "Train "+train_no[j]+ '\n';
-               status = status + "Train "+train_no[j]+ '.';
-               status=status+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+               if(j<5)
+                 {
+                   status = status + "Train "+train_no[j]+ '.';
+                   status=status+", Scheduled arrival "+scharr[j]+", Delayed arrival "+delayarr[j]+", Scheduled departure "+schdep[j]+", actual departure "+actdep[j]+", delayed departure "+delaydep[j]+".";
+                  }
+                if(i>5)
+                   {
+                     status=status+ "For details of other trains see the result card.";
+                   }
                result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
 
                }
