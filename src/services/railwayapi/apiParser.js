@@ -191,10 +191,14 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
             var src_departure_time=[];
             var dest_arrival_time=[];
             var days=[];
+            var train_name=[];
             var index=0;
             for(i=0; i<stringResult["train"].length; i++){
                 days[i]="";
                 train_no[i]=stringResult["train"][i].number;
+                train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                train_name[i]=train_name[i].replace(" SP"," SPECIAL");
+                train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                 src_departure_time[i]=stringResult["train"][i].src_departure_time;
                 dest_arrival_time[i]=stringResult["train"][i].dest_arrival_time;
                 for  (j=0; j<stringResult["train"][i]["days"].length; j++){
@@ -225,7 +229,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                m=j+1;
                if(m<=3)
                  {
-                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
+                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+" "+train_name[j]+" "+ '</say-as> </p>';
                    stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"<p>";
                    } 
                train_string = train_string + "Train "+train_no[j]+ '\n';
