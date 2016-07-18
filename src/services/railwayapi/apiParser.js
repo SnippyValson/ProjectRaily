@@ -290,7 +290,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
-                  current_status[j]="cancelled or modified.";
+                  current_status[j]="cancelled or modified";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
                     current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
@@ -304,10 +304,10 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                     current_status[j]= "confirmed, coach and berth position is "+ c+".";
                 }
                      
-               stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
+               stat=stat+"<p> passenger "+m+"</p>, <p>current status is "+current_status[j]+"</p>";
                }
 
-               stat=stat+" For further details see the result card.";
+               stat=stat+"<p>For further details see the result card</p>";
                 if(stringResult.response_code=='410'){
                     result="PNR does not exist.";
                     stat=result;
