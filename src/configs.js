@@ -9,7 +9,7 @@ var BASE_URL="http://api.railwayapi.com/";
 var trains=[
 	{
 	"name":"SOLAPUR MIRAJ SPECIAL",
-	"id":"1413",
+	"id":"01413",
 	"from":"SOLAPUR",
 	"to":"MIRAJ"},
 	{
@@ -74,11 +74,12 @@ exports.getAPPID=function(){
 	return APP_ID;
 };
 exports.getTrainID=function(trainName){
+	var trainID=-1;
 	trains.forEach(function(value){
-	  if(value['name'].toUpperCase()=== trainName.toUpperCase())
+	  if(value['name'].toUpperCase()==trainName.toUpperCase())
 	  {
-	  	return value['id'];
+	  	trainID=value['id'];
 	  }
 	});
-	return -1;
+	return trainID;
 };
