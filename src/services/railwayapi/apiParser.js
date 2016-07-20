@@ -254,6 +254,14 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
     var result="";
     var stat="";
       var train_name="Hi";
+     if(pnr_no.toString().length!=10)
+      {
+            result="Not a valid PNR number";
+            stat="<p>Not a valid PNR number</p>";
+            var result1={speech:stat,status:result,heading:null};
+            eventCallback(result1);
+            return;
+     }     
      var url =config.getBaseUrl() +'pnr_status/pnr/'+pnr_no+'/apikey/'+ apiKey+'/';
     http.get(url, function(res) {
         var body = '';
