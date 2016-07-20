@@ -1,0 +1,58 @@
+{
+  "name": "raily",
+  "version": "0.2",
+  "description": "",
+  "author": "Snippy Valson <v.snippy@gmail.com>",
+  "contributors": [{
+    "name": "Prince Raju",
+    "email": "princerajukl@gmail.com",
+    "url":"http://www.princeraju.com"
+  },
+    {
+      "name":"Sruthi Varghese",
+      "email":"sruthivarghese15@gmail.com"
+    }
+  ],
+  "bin": {
+    "module-name": "./bin/module-name"
+  },
+  "scripts": {
+    "test": "vows --spec --isolate",
+    "start": "node src/index.js",
+    "predeploy": "echo im about to deploy",
+    "postdeploy": "echo ive deployed",
+    "prepublish": "coffee --bare --compile --output lib/foo src/foo/*.coffee"
+  },
+  "main": "lib/foo.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SnippyValson/ProjectRaily"
+  },
+  "bugs": {
+    "url": "https://github.com/SnippyValson/ProjectRaily/issues"
+  },
+  "keywords": [
+    "raily",
+    "indianrailways",
+    "amazonalexa",
+    "alexa",
+    "alexaproject"
+  ],
+  "dependencies": {
+    "primus": "*",
+    "async": "~0.8.0",
+    "express": "4.2.x",
+    "winston": "git://github.com/flatiron/winston#master",
+    "bigpipe": "bigpipe/pagelet",
+    "plates": "https://github.com/flatiron/plates/tarball/master"
+  },
+  "devDependencies": {
+    "vows": "^0.7.0",
+    "assume": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
+    "pre-commit": "*"
+  },
+  "preferGlobal": true,
+  "private": true,
+  "analyze": true,
+  "license": "MIT"
+}

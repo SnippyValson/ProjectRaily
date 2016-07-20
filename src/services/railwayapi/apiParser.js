@@ -78,8 +78,7 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
             var station_dep=[];
             var day=[];
             for (i=0; i<stringResult.route.length; i++){
-                station_names[i]=stringResult.route[i].fullname.replace(" JN"," JUNCTION");
-                station_names[i]=station_names[i].replace(" CANT"," CANTONMENT");
+                station_names[i]=stringResult.route[i].fullname;
                 station_arrival[i]=stringResult.route[i].scharr;
                 station_dep[i]=stringResult.route[i].schdep;
                 day[i]=stringResult.route[i].day;
@@ -192,15 +191,10 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
             var src_departure_time=[];
             var dest_arrival_time=[];
             var days=[];
-            var train_name=[];
             var index=0;
             for(i=0; i<stringResult["train"].length; i++){
                 days[i]="";
                 train_no[i]=stringResult["train"][i].number;
-                train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
-                train_name[i]=train_name[i].replace(" SP"," SPECIAL");
-                train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
-                train_name[i]=train_name[i].replace(" DLX"," DELUXE");
                 src_departure_time[i]=stringResult["train"][i].src_departure_time;
                 dest_arrival_time[i]=stringResult["train"][i].dest_arrival_time;
                 for  (j=0; j<stringResult["train"][i]["days"].length; j++){
@@ -231,7 +225,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                m=j+1;
                if(m<=3)
                  {
-                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+"</say-as> "+train_name[j]+" "+ ' </p>';
+                  stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                    stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"<p>";
                    } 
                train_string = train_string + "Train "+train_no[j]+ '\n';
@@ -296,26 +290,24 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result = result + "passenger "+m+ '\n';
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
-                  current_status[j]="<p>cancelled or modified</p>";
+                  current_status[j]="cancelled or modified.";
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
-                    current_status[j]="<p>confirmed</p>,</p> Coach/Berth number will be available after chart preparation</p>"; 
+                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
                   }
                if(current_status[j].toUpperCase()==="CONFIRMED")
                   { 
-                    current_status[j]="<p>confirmed,</p> <p> Coach/Berth number will be available after chart preparation</p>"; 
+                    current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
                   }      
                 else if(chart_prepared.toUpperCase()==="Y"){
                     c=current_status[j];
-                    current_status[j]= "<p>confirmed,</p><p> coach and berth position is "+ c+"</p>";
-                  }
-            
+                    current_status[j]= "confirmed, coach and berth position is "+ c+".";
                 }
                      
-               stat=stat+"<p> passenger "+m+"</p>, <p>current status is "+current_status[j]+"</p>";
+               stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                }
 
-               stat=stat+"<p>For further details see the result card</p>";
+               stat=stat+" For further details see the result card.";
                 if(stringResult.response_code=='410'){
                     result="PNR does not exist.";
                     stat=result;
@@ -353,14 +345,9 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
             var scharr=[];
             var delayarr=[];
             var schdep =[];
-            var train_name=[];
             var stringResult = JSON.parse(body);
              for (i=0; i<stringResult["train"].length; i++){
                 train_no[i]=stringResult["train"][i].number;
-                train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
-                train_name[i]=train_name[i].replace(" SP"," SPECIAL");
-                train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
-                train_name[i]=train_name[i].replace(" DLX"," DELUXE");
                 scharr[i]=stringResult["train"][i].scharr;
                 delayarr[i]=stringResult["train"][i].delayarr;
                 schdep[i]=stringResult["train"][i].schdep;
@@ -393,7 +380,7 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result = result + "Train "+train_no[j]+ '\n';
                if(j<4)
                  {
-                   status = status +"<p>Train <say-as interpret-as='digits'>"+train_no[j]+"</say-as> "+train_name[j]+" "+ ' </p>';
+                   status = status + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                    status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                   }
                 if(i>4)
@@ -420,16 +407,10 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
 }
 
 
-exports.getStationCode = function (station_name,eventCallback){
-    station_name=station_name.toUpperCase();
-    station_name=station_name.replace(" JUNCTION"," JN");
-    station_name=station_name.replace(" CANTONMENT"," CANT");
+/*exports.getJsonTrainName = function (train_no){
     var state="";
     var result="";
-    var i=0;
-    var output="";
-    var result1="";
-    var url =config.getBaseUrl() +'/name_to_code/station/'+station_name+'/apikey/'+ apiKey+'/';
+    var url =baseUrl +'/name_number/train/'+train_no+'/apikey/'+ apikey+'/';
     http.get(url, function(res) {
         var body = '';
 
@@ -438,58 +419,51 @@ exports.getStationCode = function (station_name,eventCallback){
         });
 
         res.on('end', function () {
-            var stringResult = JSON.parse(body);
-            for(i=0;i<stringResult.stations.length;i++)
-            {
-                if(stringResult.stations[i].fullname.toUpperCase().indexOf(station_name.toUpperCase())>-1)
-                      output=output+stringResult.stations[i].fullname+" "+stringResult.stations[i].code+",";
-                             
-            
-            }
-            result1={speech:output,status:output,heading:"Station code of: "+station_name};
-            eventCallback(result1); 
-            
+            var stringResult = JSON.stringify(body);
+            var index=0;
+            var index2=0
+            var train_numbers=[];
+            var train_string="";
+            var index=stringResult.indexOf("name")
+            var index1=stringResult.indexOf("}",index)
+            var name =stringResult.substring(index+10,index1-8);
+            result=name;
+            if(stringResult.indexOf("error") > -1) {
+                 state = "error";
+                }
+            else
+                 state = "success";
 
         });
     }).on('error', function (e) {
         state = "error";
-        var result1={speech:state,status:state,heading:null};
-        eventCallback(result1); 
-    });
-}
-
-
-exports.getStationName = function (station_code,eventCallback){
-    var state="";
-    var result="";
-    var i=0;
-    var url =config.getBaseUrl() +'/code_to_name/code/'+station_code+'/apikey/'+ apiKey+'/';
-    http.get(url, function(res) {
-        var body = '';
-
-        res.on('data', function (chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function () {
-            var stringResult = JSON.parse(body);
-            for(i=0;i<stringResult.stations.length;i++)
-            {
-                if(stringResult.stations[i].code==station_code)
-                {
-                       var result1={speech:stringResult.stations[i].fullname,status:stringResult.stations[i].fullname,heading:"Station name of: "+station_code};
-                       eventCallback(result1); 
-               }
-            
-            }
-            
-
-        });
-    }).on('error', function (e) {
-        state = "error";
-        var result1={speech:state,status:state,heading:null};
-        eventCallback(result1); 
     });
 }  
+
+function numberToName(train_no,eventCallback){
+    var baseURL="http://api.railwayapi.com";
+    var apiKey="bkxel1825";
+    var state="";
+    var result="";
+    var url =baseURL +'/name_number/train/'+train_no+'/apikey/'+ apiKey+'/';
+    http.get(url, function(res) {
+        var body = '';
+
+        res.on('data', function (chunk) {
+            body += chunk;
+        });
+
+        res.on('end', function () {
+            var stringResult = JSON.parse(body);
+            eventCallback(stringResult.train.name);
+
+        });
+    }).on('error', function (e) {
+        state = "error";
+    });
+}
+*/
+
+
 
 
