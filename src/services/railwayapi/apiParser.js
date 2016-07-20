@@ -300,6 +300,8 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
                result=result+" Booking status "+booking_status[j]+"\n Current status "+current_status[j]+"\n";
                if(current_status[j].toUpperCase()==="CAN/MOD")
                   current_status[j]="cancelled or modified.";
+               if(current_status[j].indexOf("W/L")>-1)
+                  current_status[j]=current_status[j].replace("W/L","Waiting List");
               if((current_status[j].toUpperCase()==="CNF"))
                   { 
                     current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
