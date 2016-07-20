@@ -176,7 +176,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
          var day= date.substring(8);
          date=day+"-"+mon;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
-         var stat="";
+         var stat="<speak>";
          var train_string="";
         http.get(url, function(res) {
         var body = '';
@@ -226,7 +226,7 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                if(m<=3)
                  {
                   stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
-                   stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"<p>";
+                   stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"</p>";
                    } 
                train_string = train_string + "Train "+train_no[j]+ '\n';
                train_string =train_string+" Source departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
@@ -237,7 +237,8 @@ exports.getJsonTrainBtw =function (source, dest, date, eventCallback){
                     train_string="There was an error processing your request.";
                      stat=train_string;
                    }
-             stat=stat+ "<p>For details of all other trains see the result card</p>"
+             stat=stat+ "<p>For details of all other trains see the result card</p>";
+             stat=stat+ "</speak>";
              var result={speech:stat,status:train_string,heading:"Trains running between "+source+" and "+dest};
              eventCallback(result);  
         
@@ -380,7 +381,7 @@ exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
                result = result + "Train "+train_no[j]+ '\n';
                if(j<4)
                  {
-                   status = status + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
+                   status = status + "<p>Train <say-as>"+train_no[j]+ '</say-as> </p>';
                    status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                   }
                 if(i>4)

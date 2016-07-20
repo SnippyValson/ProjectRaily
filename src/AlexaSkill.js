@@ -173,6 +173,18 @@ Response.prototype = (function () {
                 shouldEndSession: true
             }));
         },
+        tellWithCardSSML: function (speechOutput, cardTitle, cardContent) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: {
+                    speech:speechOutput,
+                    type:'SSML'
+                    },
+                cardTitle: cardTitle,
+                cardContent: cardContent,
+                shouldEndSession: true
+            }));
+        },
         ask: function (speechOutput, repromptSpeech) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,

@@ -40,7 +40,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 
 		if(speechOutput['heading']!=null)
 		{
-			response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+			response.tellWithCardSSML(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
 		}
 		else
 		{
