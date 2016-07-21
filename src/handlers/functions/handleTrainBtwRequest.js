@@ -44,7 +44,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 		}
 		else
 		{
-			response.tell(speechOutput['speech']);
+			response.ask(speechOutput['speech']);
 		}
 	});
 

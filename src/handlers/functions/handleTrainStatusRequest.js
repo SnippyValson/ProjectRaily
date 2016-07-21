@@ -94,7 +94,7 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
         }
         else
         {
-            response.tell(speechOutput['speech']);
+            response.ask(speechOutput['speech']);
         }
     });
 
