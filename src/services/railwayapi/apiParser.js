@@ -168,7 +168,8 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
             eventCallback(result1);
             return;
       }     
-    var url =config.getBaseUrl() +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
+    var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
+    console.log(url);
     var status = ""; 
       http.get(url, function(res) {
         var body = '';

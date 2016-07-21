@@ -1,6 +1,7 @@
 'use strict';
 
 var config=require('../../configs');
+var station=require('../../stations');
 var railways=require('../../services/railwayapi/apiParser');
 
 exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
@@ -42,21 +43,29 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	}
 
 
+	var stationOneCode=station.getStationCode(stationOne);
+	var stationTwoCode=station.getStationCode(stationTwo);
 
-	railways.getJsonSeatAvailability(trainNumber, stationOne, stationTwo, dateForJson, 'CC', 'GN', function (events){
-		// Create speech output
-		var speechOutput =  events;
+	if(stationOneCode!=-1 && stationTwoCode!=-1)
+	{
+		railways.getJsonSeatAvailability(trainNumber, stationOneCode, stationTwoCode, dateForJson, 'CC', 'GN', function (events){
+			// Create speech output
+			var speechOutput =  events;
 
-		if(speechOutput['heading']!=null)
-		{
-			response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
-		}
-		else
-		{
-			response.ask(speechOutput['speech']);
-		}
-	});
-
+			if(speechOutput['heading']!=null)
+			{
+				response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+			}
+			else
+			{
+				response.ask(speechOutput['speech']);
+			}
+		});
+	}
+	else
+	{
+		response.ask('Stations not suported or Incorrect station name');
+	}
 };
 
 
