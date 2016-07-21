@@ -1,17 +1,17 @@
-handleTrainStatusIntent get details of {Train}
-handleTrainStatusIntent {Train} details
-handleTrainStatusIntent what's the status of {Train}
-handleTrainStatusIntent what is the status of {Train}
-handleTrainStatusIntent what's the location of {Train}
-handleTrainStatusIntent what is the location of {Train}
-handleTrainStatusIntent what is the current location of {Train}
-handleTrainStatusIntent what's the current location of {Train}
-handleTrainStatusIntent where is {Train} now
-handleTrainStatusIntent where's {Train} now
-handleTrainStatusIntent Has {Train} departed
-handleTrainStatusIntent {Train} status
-handleTrainStatusIntent whether {Train} delayed
-handleTrainStatusIntent is {Train} late
+handleTrainNumberStatusIntent get details of {TrainNumber}
+handleTrainNumberStatusIntent {TrainNumber} details
+handleTrainNumberStatusIntent what's the status of {TrainNumber}
+handleTrainNumberStatusIntent what is the status of {TrainNumber}
+handleTrainNumberStatusIntent what's the location of {TrainNumber}
+handleTrainNumberStatusIntent what is the location of {TrainNumber}
+handleTrainNumberStatusIntent what is the current location of {TrainNumber}
+handleTrainNumberStatusIntent what's the current location of {TrainNumber}
+handleTrainNumberStatusIntent where is {TrainNumber} now
+handleTrainNumberStatusIntent where's {TrainNumber} now
+handleTrainNumberStatusIntent Has {TrainNumber} departed
+handleTrainNumberStatusIntent {TrainNumber} status
+handleTrainNumberStatusIntent whether {TrainNumber} delayed
+handleTrainNumberStatusIntent is {TrainNumber} late
 
 handleTrainNumberStatusIntent get details of train number {TrainNumber}
 handleTrainNumberStatusIntent train number {TrainNumber} details

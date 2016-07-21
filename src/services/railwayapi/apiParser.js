@@ -55,6 +55,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
                       {
                           status="<p>Sorry,</p> <p>The train details are not available for today</p>";
                       }
+                    status=status.replace(/ *\([^)]*\) */g, " ");
                     result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
                     eventCallback(result);
                 }
