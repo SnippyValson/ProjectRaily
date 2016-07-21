@@ -15,7 +15,7 @@ var i=0,j=0,flag=0;
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
-exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
+ function getJsonLiveStatus(train_no,doj,eventCallback){
 
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
@@ -52,7 +52,7 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
                   if(flag<1)
                      {
                          flag++;
-                         exports.getJsonLiveStatus(train_no,doj,eventCallback);
+                         getJsonLiveStatus(train_no,doj,eventCallback);
                          
                      }
            }       
@@ -508,6 +508,6 @@ function numberToName(train_no,eventCallback){
 }
 */
 
-
+module.exports.getJsonLiveStatus=getJsonLiveStatus;
 
 
