@@ -759,6 +759,106 @@ var stations=[
         "code":"BGVN"
     },
     {
+        "name":"Bhilavdi",
+        "code":"BVQ"
+    },
+    {
+        "name":"Bhiwandi Road",
+        "code":"BIRD"
+    },
+    {
+        "name":"Bhokar",
+        "code":"BOKR"
+    },
+    {
+        "name":"Bhusaval",
+        "code":"BSL"
+    },
+    {
+        "name":"Bodhadi Bujrug",
+        "code":"BHBK"
+    },
+    {
+        "name":"Bodwad",
+        "code":"BDWD"
+    },
+    {
+        "name":"Boisar",
+        "code":"BOR"
+    },
+    {
+        "name":"Borivali",
+        "code":"BVI"
+    },
+    {
+        "name":"Chalisgaon Junction",
+        "code":"CSN"
+    },
+    {
+        "name":"Chanda Fort",
+        "code":"CAF"
+    },
+    {
+        "name":"Chandrapur",
+        "code":"CD"
+    },
+    {
+        "name":"Chandur",
+        "code":"CND"
+    },
+    {
+        "name":"Chinchvad",
+        "code":"CCH"
+    },
+    {
+        "name":"Chiplun",
+        "code":"CHI"
+    },
+    {
+        "name":"Achhalda",
+        "code":"ULD"
+    },
+    {
+        "name":"Achhnera Junction",
+        "code":"AH"
+    },
+    {
+        "name":"Agori Khas",
+        "code":"AGY"
+    },
+    {
+        "name":"Agra Cantonment",
+        "code":"AGC"
+    },
+    {
+        "name":"Agra City",
+        "code":"AGA"
+    },
+    {
+        "name":"Agra Fort",
+        "code":"AF"
+    },
+    {
+        "name":"Ahraura Road",
+        "code":"ARW"
+    },
+    {
+        "name":"Aishbagh",
+        "code":"ASH"
+    },
+    {
+        "name":"Ait",
+        "code":"AIT"
+    },
+    {
+        "name":"Akbarganj",
+        "code":"AKJ"
+    },
+    {
+        "name":"Akbarpur",
+        "code":"ABP"
+    },
+    {
         "name":"",
         "code":""
     }
