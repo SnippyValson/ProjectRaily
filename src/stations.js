@@ -859,9 +859,162 @@ var stations=[
         "code":"ABP"
     },
     {
-        "name":"",
-        "code":""
+        "name":"Alamnagar",
+        "code":"AMG"
+    },
+    {
+        "name":"Algawan",
+        "code":"AIG"
+    },
+    {
+        "name":"Aligarh Junction",
+        "code":"ALJN"
+    },
+    {
+        "name":"Allahabad City",
+        "code":"ALY"
+    },
+    {
+        "name":"Allahabad Junction",
+        "code":"ALD"
+    },
+    {
+        "name":"Amethi",
+        "code":"AME"
+    },
+    {
+        "name":"Amroha",
+        "code":"AMRO"
+    },
+    {
+        "name":"Anand Nagar",
+        "code":"ANDN"
+    },
+    {
+        "name":"Andevnagar",
+        "code":"ACND"
+    },
+    {
+        "name":"Anjhi Shahabad",
+        "code":"AJI"
+    },
+    {
+        "name":"Anpara",
+        "code":"ANPR"
+    },
+    {
+        "name":"Antu",
+        "code":"ANTU"
+    },
+    {
+        "name":"Aonla",
+        "code":"AO"
+    },
+    {
+        "name":"Asafpur",
+        "code":"AFR"
+    },
+    {
+        "name":"Atarra",
+        "code":"ATE"
+    },
+    {
+        "name":"Aunrihar Junctio",
+        "code":"ARJ"
+    },
+    {
+        "name":"Ayodhya",
+        "code":"AY"
+    },
+    {
+        "name":"Azamgarh",
+        "code":"AMH"
+    },
+    {
+        "name":"Babatpur",
+        "code":"BTP"
+    },
+    {
+        "name":"Babhnan",
+        "code":"BV"
+    },
+    {
+        "name":"Babina",
+        "code":"BAB"
+    },
+    {
+        "name":"Babrala",
+        "code":"BBA"
+    },
+    {
+        "name":"Bachhrawan",
+        "code":"BCN"
+    },
+    {
+        "name":"Badshahnagar",
+        "code":"BNZ"
+    },
+    {
+        "name":"Badshahpur",
+        "code":"BSE"
+    },
+    {
+        "name":"Baghauli",
+        "code":"BGH"
+    },
+    {
+        "name":"Baheri",
+        "code":"BHI"
+    },
+    {
+        "name":"Bahjoi",
+        "code":"BJ"
+    },
+    {
+        "name":"Bahraich",
+        "code":"BRK"
+    },
+    {
+        "name":"Balamu Junction",
+        "code":"BLM"
+    },
+    {
+        "name":"Balawali",
+        "code":"BLW"
+    },
+    {
+        "name":"Ballia",
+        "code":"BUI"
+    },
+    {
+        "name":"Bamhrauli",
+        "code":"BMU"
+    },
+    {
+        "name":"Banda Junction",
+        "code":"BNDA"
+    },
+    {
+        "name":"Bani",
+        "code":"BANI"
+    },
+    {
+        "name":"Bankata",
+        "code":"BTK"
+    },
+    {
+        "name":"Banthra",
+        "code":"BTRA"
+    },
+    {
+        "name":"Barabanki Junction",
+        "code":"BBK"
+    },
+    {
+        "name":"Baral",
+        "code":"BARL"
     }
+
 ];
 
 exports.getStationCode=function(stationName){
