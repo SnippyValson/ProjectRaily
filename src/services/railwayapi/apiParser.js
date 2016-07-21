@@ -34,16 +34,17 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
            
             var status=stringResult.position;
              if (stringResult.response_code=='403')
-               {
-                  if(flag<2)
+               {  
+                  status="<p>Please try again</p>";
+                  result1=null;
+                  result={speech:status,status:result1,heading:null};
+                  if(flag==1)
+                    eventCallback(result);
+                  if(flag<1)
                      {
                          flag++;
                          exports.getJsonLiveStatus(train_no,doj,eventCallback);
-                         status="<p>Please try again</p>";
-                         result1=null;
-                         result={speech:status,status:result1,heading:null};
-                         if(flag==2)
-                              eventCallback(result);
+                         
                      }
                }       
             else
