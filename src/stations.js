@@ -518,16 +518,15 @@ var stations=[
         "name":"",
         "code":"DPJ"
     }
-
-
-
-
-
-
-
-
-
-
-
-
 ];
+
+exports.getStationCode=function(stationName){
+    var stationID=-1;
+    stations.forEach(function(value){
+        if(value['name'].toUpperCase()==stationName.toUpperCase())
+        {
+            stationID=value['code'];
+        }
+    });
+    return stationID;
+};

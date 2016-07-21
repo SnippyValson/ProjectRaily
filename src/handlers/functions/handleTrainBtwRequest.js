@@ -1,6 +1,7 @@
 'use strict';
 
 var config=require('../../configs');
+var station=require('../../stations');
 var railways=require('../../services/railwayapi/apiParser');
 
 exports.handleTrainBtwRequest=function(intent, session, response) {
@@ -32,21 +33,29 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 		dateForJson=today;
 	}
 
+	var stationOneCode=station.getStationCode(stationOne);
+	var stationTwoCode=station.getStationCode(stationTwo);
 
+	if(stationOneCode!=-1 && stationTwoCode!=-1)
+	{
+		railways.getJsonTrainBtw(stationOneCode, stationTwoCode, dateForJson, function (events){
+			// Create speech output
+			var speechOutput =  events;
 
-	railways.getJsonTrainBtw(stationOne, stationTwo, dateForJson, function (events){
-		// Create speech output
-		var speechOutput =  events;
-
-		if(speechOutput['heading']!=null)
-		{
-			response.tellWithCardSSML(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
-		}
-		else
-		{
-			response.ask(speechOutput['speech']);
-		}
-	});
+			if(speechOutput['heading']!=null)
+			{
+				response.tellWithCardSSML(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+			}
+			else
+			{
+				response.ask(speechOutput['speech']);
+			}
+		});
+	}
+	else
+	{
+		response.ask('Stations not suported or Incorrect station name');
+	}
 
 
 };
