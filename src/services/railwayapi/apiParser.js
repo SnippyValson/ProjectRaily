@@ -10,7 +10,7 @@ var http = require('http');
 
 
 var apiKey=config.getAPIKey();
-var i=0,j=0;
+var i=0,j=0,flag=0;
 /**
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
@@ -20,6 +20,8 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     var state="";
     var status= "";
+    var result="";
+    var result1="";
     http.get(url, function(res) {
         var body = '';
 
@@ -32,20 +34,33 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
            
             var status=stringResult.position;
              if (stringResult.response_code=='403')
-                  status=null;
-            else  if(stringResult.response_code!='200')
-                    status="There was an error processing your request.";
-            if(status=='-')
-            {
-                status="Sorry, The train details are not available for today";
-            }
-            var result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
-            eventCallback(result);
-
+               {
+                  if(flag<2)
+                     {
+                         flag++;
+                         exports.getJsonLiveStatus(train_no,doj,eventCallback);
+                         status="<p>Please try again</p>";
+                         result1=null;
+                         result={speech:status,status:result1,heading:null};
+                         if(flag==2)
+                              eventCallback(result);
+                     }
+               }       
+            else
+                {
+                    if(stringResult.response_code!='200')
+                          status="<p>There was an error processing your request</p>";
+                    if(status=='-')
+                      {
+                          status="<p>Sorry,</p> <p>The train details are not available for today</p>";
+                      }
+                    result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
+                    eventCallback(result);
+                }
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-        status= "Sorry, we could not process your request.";
+        status= "<p>Sorry, we could not process your request</p>";
         
         var result={speech:status,status:status,heading:null};
         eventCallback(result);
