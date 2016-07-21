@@ -402,16 +402,15 @@ var stations=[
         "name":"Shivaji Bridge",
         "code":"CSB"
     }
-
-
-
-
-
-
-
-
-
-
-
-
 ];
+
+exports.getStationCode=function(stationName){
+    var stationID=-1;
+    stations.forEach(function(value){
+        if(value['name'].toUpperCase()==stationName.toUpperCase())
+        {
+            stationID=value['code'];
+        }
+    });
+    return stationID;
+};
