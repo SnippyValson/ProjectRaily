@@ -401,6 +401,122 @@ var stations=[
     {
         "name":"Shivaji Bridge",
         "code":"CSB"
+    },
+    {
+        "name":"Subzi Mandi",
+        "code":"SZM"
+    },
+    {
+        "name":"Tilak Bridge",
+        "code":"TKJ"
+    },
+    {
+        "name":"Tuglakabad",
+        "code":"TKD"
+    },
+    {
+        "name":"Viveka Vihar",
+        "code":"VVB"
+    },
+    {
+        "name":"Aattur",
+        "code":"ATU"
+    },
+    {
+        "name":"Aduturai",
+        "code":"ADT"
+    },
+    {
+        "name":"Ambaturai",
+        "code":"ABI"
+    },
+    {
+        "name":"Ambur",
+        "code":"AB"
+    },
+    {
+        "name":"Anavardikhanpet",
+        "code":"AVN"
+    },
+    {
+        "name":"Arakkonam Junction",
+        "code":"AJJ"
+    },
+    {
+        "name":"Aralvaymozhi",
+        "code":"AAY"
+    },
+    {
+        "name":"Ariyalur",
+        "code":"ALU"
+    },
+    {
+        "name":"Arumuganeri",
+        "code":"ANY"
+    },
+    {
+        "name":"Avadi",
+        "code":"AVD"
+    },
+    {
+        "name":"Ayodhyapattanam",
+        "code":"APN"
+    },
+    {
+        "name":"Bommidi",
+        "code":"BQI"
+    },
+    {
+        "name":"Budalur",
+        "code":"BAL"
+    },
+    {
+        "name":"Buddireddippati",
+        "code":"BDY"
+    },
+    {
+        "name":"Chengalpattu",
+        "code":"CGL"
+    },
+    {
+        "name":"Chennai Central",
+        "code":"MAS"
+    },
+    {
+        "name":"Chennai Egmore",
+        "code":"MS"
+    },
+    {
+        "name":"Chettinad",
+        "code":"CTND"
+    },
+    {
+        "name":"Chidambaram",
+        "code":"CDM"
+    },
+    {
+        "name":"Chinna Salem",
+        "code":"CHSM"
+    },
+    {
+        "name":"Coimbatore Junction",
+        "code":"CBE"
+    },
+    {
+        "name":"Coimbatore North Junction",
+        "code":"CBF"
+    },
+    {
+        "name":"Cuddalore Port",
+        "code":"CUPJ"
+    },
+    {
+        "name":"Devakottai Road",
+        "code":"DKO"
+    },
+    {
+        "name":"",
+        "code":"DPJ"
     }
 
 
