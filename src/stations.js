@@ -53,7 +53,107 @@ var stations=[
     {
         "name":"Dhanuvachapuram",
         "code":"DAVM"
+    },
+    {
+        "name":"Divinenagar",
+        "code":"DINR"
+    },
+    {
+        "name":"Edappally",
+        "code":"IPL"
+    },
+    {
+        "name":"Ernakulam Junction",
+        "code":"ERS"
+    },
+    {
+        "name":"Ernakulam Town",
+        "code":"ERN"
+    },
+    {
+        "name":"Ettumanur",
+        "code":"ETM"
+    },
+    {
+        "name":"Ezhimala",
+        "code":"ELM"
+    },
+    {
+        "name":"Ferok",
+        "code":"FK"
+    },
+    {
+        "name":"Guruvayur",
+        "code":"GUV"
+    },
+    {
+        "name":"Haripad",
+        "code":"HAD"
+    },
+    {
+        "name":"Irinjalakuda",
+        "code":"IJK"
+    },
+    {
+        "name":"Kadakavur",
+        "code":"KVU"
+    },
+    {
+        "name":"Kadalundi",
+        "code":"KN"
+    },
+    {
+        "name":"Kanhangad",
+        "code":"KZE"
+    },
+    {
+        "name":"Kannapuram",
+        "code":"KPQ"
+    },
+    {
+        "name":"Karunagapalli",
+        "code":"KPY"
+    },
+    {
+        "name":"Kasaragod",
+        "code":"KGQ"
+    },
+    {
+        "name":"Kayamkulam",
+        "code":"KYJ"
+    },
+    {
+        "name":"Kazhakuttam",
+        "code":"KZK"
+    },
+    {
+        "name":"Kollam Junction",
+        "code":"QLN"
+    },
+    {
+        "name":"Kotikulam",
+        "code":"KQK"
+    },
+    {
+        "name":"Kottayam",
+        "code":"KTYM"
+    },
+    {
+        "name":"Koyilandy",
+        "code":"QLD"
+    },
+    {
+        "name":"Kumbala",
+        "code":"KMQ"
     }
+
+
+
+
+
+
+
+
 
 
 
