@@ -203,10 +203,34 @@ Response.prototype = (function () {
                 shouldEndSession: false
             }));
         },
+        askSSML: function (speechOutput, repromptSpeech) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: {
+                    speech:speechOutput,
+                    type:'SSML'
+                    },
+                reprompt: repromptSpeech,
+                shouldEndSession: false
+            }));
+        },
         askWithCard: function (speechOutput, repromptSpeech, cardTitle, cardContent) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
+                reprompt: repromptSpeech,
+                cardTitle: cardTitle,
+                cardContent: cardContent,
+                shouldEndSession: false
+            }));
+        },
+        askWithCardSSML: function (speechOutput, repromptSpeech, cardTitle, cardContent) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: {
+                    speech:speechOutput,
+                    type:'SSML'
+                    },
                 reprompt: repromptSpeech,
                 cardTitle: cardTitle,
                 cardContent: cardContent,

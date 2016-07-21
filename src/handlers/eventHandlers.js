@@ -12,7 +12,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
 
 	eventHandlers.onLaunch = function (launchRequest, session, response) {
 		console.log("Raily onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-		response.ask("Raily here");
+		response.askSSML('<speak><audio src="https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3"/></speak>');
 	};
 
 	/**
