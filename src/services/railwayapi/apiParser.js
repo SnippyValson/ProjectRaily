@@ -355,6 +355,7 @@ exports.getJsonPNRstatus=function (pnr_no, eventCallback){
 exports.getJsonTrainArrivals=function (station_code,hrs, eventCallback){
     var result="";
     var status="<speak>";
+    status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output.mp3' />";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 
     http.get(url, function(res) {
