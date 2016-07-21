@@ -1,3 +1,216 @@
 Alappuzha
 Aluva
 Angamaly
+Ambalappuzha
+Badagara
+Bekal Fort
+Calicut
+Cannanore
+Chalakudi
+Changanacherry
+Charvattur
+Chengannur
+Chirayinkil
+Dhanuvachapuram
+Divinenagar
+Edappally
+Ernakulam
+Ernakulam
+Ettumanur
+Ezhimala
+Ferok
+Guruvayur
+Haripad
+Irinjalakuda
+Kadakavur
+Kadalundi
+Kanhangad
+Kannapuram
+Karunagapalli
+Kasaragod
+Kayamkulam
+Kazhakuttam
+Kollam Junction
+Kotikulam
+Kottayam
+Koyilandy
+Kumbala
+Kuttippuram
+Manjeshwar
+Mararikulam
+Mavelikara
+Mayyanad
+Mulanturutti
+Munroturuttu
+Murukkampuzha
+Neyyattinkara
+Nileshwar
+Ottappalam
+Palakkad Town
+Palghat
+Parassala
+Paravur
+Parpanangadi
+Pattambi
+Payangadi
+Payyanur
+Payyoli
+Piravam Road
+Pudukad
+Punkunnam
+Sasthamkotta
+Shertalai
+Shoranur
+Tanur
+Tellicherry
+Thiruvananthapuram Pettah
+Tirunnavaya
+Tirur
+Tiruvalla
+Trichur
+Trikarpur
+Tripunittura
+Trivandrum Central
+Trivandrum Kochuveli
+Turavur
+Uppala
+Vaikam Road
+Valapattanam
+Vallikunnu
+Varkala Sivagiri Station
+Wadakanchery
+Adarsh Nagar
+Anand Vihar
+Anand Vihar Terminus
+Badli
+Bijwasan
+Delhi
+Delhi Cantonment
+Delhi Kishanganj
+Delhi Safdarjung
+Delhi Sarai Rohilla
+Delhi Shahdara
+Hazrat Nizamuddin
+Mangolpuri
+Nangloi
+Narela
+New Delhi
+Okhla
+Palam
+Shakurbasti
+Shivaji Bridge
+Subzi Mandi
+Tilak Bridge
+Tuglakabad
+Viveka Vihar
+Aattur
+Aduturai
+Ambaturai
+Ambur
+Anavardikhanpet
+Arakkonam Junction
+Aralvaymozhi
+Ariyalur
+Arumuganeri
+Avadi
+Ayodhyapattanam
+Bommidi
+Budalur
+Buddireddippati
+Chengalpattu
+Chennai Central
+Chennai Egmore
+Chettinad
+Chidambaram
+Chinna Salem
+Coimbatore Junction
+Coimbatore North Junction
+Cuddalore Port
+Devakottai Road
+Dharmapuri
+Dindigul Junction
+Eraniel
+Erode Junction
+Ettapur Road
+Gudiyattam
+Gummidipundi
+Hosur
+Almatti
+Alnavar Junction
+Ammasandra
+Anandapuram
+Ankola
+Annigeri
+Arsikere Junction
+Badami
+Bagalkot
+Bagevadi Road
+Banaswadi
+Bangalore Cantonment
+Bangalore City Junction
+Bangalore East
+Bangarapet
+Bantawala
+Barkur
+Belgaum
+Bellary Junction
+Bhadravati
+Bhalki
+Bhanapur
+Bidadi
+Bidar
+Bijapur
+Bijoor
+Birur Junction
+Byadgi
+Byndoor
+Adavali
+Ahmednagar
+Ajni
+Akkalkot Road
+Akola Junction
+Amalner
+Ambale
+Amgaon
+Amravati
+Andheri
+Ankai
+Aravalli Road
+Aurangabad
+Badnapur
+Badnera Junction
+Balharshah
+Bandra Terminus
+Barsi Town
+Basmat
+Belapur
+Bhandak
+Bhandara Road
+Bhavani Nagar
+Bhigwan
+Bhilavdi
+Bhiwandi Road
+Bhokar
+Bhusaval
+Bodhadi Bujrug
+Bodwad
+Boisar
+Borivali
+Chalisgaon Junction
+Chanda Fort
+Chandrapur
+Chandur
+Chinchvad
+Chiplun
+Achhalda
+Achhnera Junction
+Agori Khas
+Agra Cantonment
+Agra City
+Agra Fort
+Ahraura Road
+Aishbagh
+Ait
+Akbarganj
+Akbarpur
+Alamnagar
