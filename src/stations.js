@@ -515,8 +515,84 @@ var stations=[
         "code":"DKO"
     },
     {
-        "name":"",
+        "name":"Dharmapuri",
         "code":"DPJ"
+    },
+    {
+        "name":"Dindigul Junction",
+        "code":"DG"
+    },
+    {
+        "name":"Eraniel",
+        "code":"ERL"
+    },
+    {
+        "name":"Erode Junction",
+        "code":"ED"
+    },
+    {
+        "name":"Ettapur Road",
+        "code":"ETP"
+    },
+    {
+        "name":"Gudiyattam",
+        "code":"GYM"
+    },
+    {
+        "name":"Gummidipundi",
+        "code":"GPD"
+    },
+    {
+        "name":"Hosur",
+        "code":"HSRA"
+    },
+    {
+        "name":"Almatti",
+        "code":"LMT"
+    },
+    {
+        "name":"Alnavar Junction",
+        "code":"LWR"
+    },
+    {
+        "name":"Ammasandra",
+        "code":"AMSA"
+    },
+    {
+        "name":"Anandapuram",
+        "code":"ANF"
+    },
+    {
+        "name":"Ankola",
+        "code":"ANKL"
+    },
+    {
+        "name":"Annigeri",
+        "code":"NGR"
+    },
+    {
+        "name":"Arsikere Junction",
+        "code":"ASK"
+    },
+    {
+        "name":"Badami",
+        "code":"BDM"
+    },
+    {
+        "name":"Bagalkot",
+        "code":"BGK"
+    },
+    {
+        "name":"Bagevadi Road",
+        "code":"BSRX"
+    },
+    {
+        "name":"Banaswadi",
+        "code":"BAND"
+    },
+    {
+        "name":"Bangalore Cantonment",
+        "code":"BNC"
     }
 ];
 
