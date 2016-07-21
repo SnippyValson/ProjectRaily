@@ -22,6 +22,14 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
     var status= "";
     var result="";
     var result1="";
+     if(train_no.toString().length!=5)
+      {
+            result="Not a valid train number";
+            status="<p>Not a valid train number</p>";
+            result1={speech:status,status:result,heading:null};
+            eventCallback(result1);
+            return;
+     }     
     http.get(url, function(res) {
         var body = '';
 
@@ -78,8 +86,18 @@ exports.getJsonLiveStatus= function (train_no,doj,eventCallback){
 exports.getJsonTrainRoute=function (train_no,eventCallback){
 
     var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
-       var station_string="";
+    var station_string="";
     var state = "";
+    var result="";
+    var status="";
+    if(train_no.toString().length!=5)
+      {
+            result="Not a valid train number";
+            status="<p>Not a valid train number</p>";
+            var result1={speech:status,status:result,heading:null};
+            eventCallback(result1);
+            return;
+     }     
     http.get(url, function(res) {
         var body = '';
 
@@ -114,14 +132,14 @@ exports.getJsonTrainRoute=function (train_no,eventCallback){
                }
                if(stringResult.response_code!='200')
                     station_string="There was an error processing your request.";
-            var result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
+            result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
             eventCallback(result);
               
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
         status= "Sorry, we could not process your request.";
-        var result={speech:status,status:status,heading:null};
+        result={speech:status,status:status,heading:null};
         eventCallback(result);
     });
 }
@@ -139,6 +157,16 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
     var mm=date_.getMonth()+1;
     var yy=date_.getFullYear();
     date=dd+"-"+mm+"-"+yy;
+    var result="";
+    var status="";
+    if(train_no.toString().length!=5)
+      {
+            result="Not a valid train number";
+            status="<p>Not a valid train number</p>";
+            var result1={speech:status,status:result,heading:null};
+            eventCallback(result1);
+            return;
+      }     
     var url =config.getBaseUrl() +'/check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     var status = ""; 
       http.get(url, function(res) {
@@ -166,16 +194,16 @@ exports.getJsonSeatAvailability = function (train_no, source, dest, date, _class
                  index3=status.indexOf("/WL");
                  index4=status.indexOf("\n",index3);
                  var waiting=status.substring(index3+3,index3+8);
-                 var status=waiting+" seats are in waiting list for"+class_name+","+quota_name; 
+                 status=waiting+" seats are in waiting list for"+class_name+","+quota_name; 
                 }
                 if(stringResult.response_code!='200')
                     status="There was an error processing your request.";
                  
-             var result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
+             result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
              eventCallback(result);       
         });
     }).on('error', function (e) {
-             var result={speech:"Sorry, we could not process your request.",status:"Sorry, we could not process your request.",heading:null};
+             result={speech:"Sorry, we could not process your request.",status:"Sorry, we could not process your request.",heading:null};
              eventCallback(result);
     });
 }
