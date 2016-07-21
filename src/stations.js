@@ -277,6 +277,130 @@ var stations=[
     {
         "name":"Trichur",
         "code":"TCR"
+    },
+    {
+        "name":"Trikarpur",
+        "code":"TKQ"
+    },
+    {
+        "name":"Tripunittura",
+        "code":"TRTR"
+    },
+    {
+        "name":"Trivandrum Central",
+        "code":"TVC"
+    },
+    {
+        "name":"Trivandrum Kochuveli",
+        "code":"KCVL"
+    },
+    {
+        "name":"Turavur",
+        "code":"TUVR"
+    },
+    {
+        "name":"Uppala",
+        "code":"UAA"
+    },
+    {
+        "name":"Vaikam Road",
+        "code":"VARD"
+    },
+    {
+        "name":"Valapattanam",
+        "code":"VAPM"
+    },
+    {
+        "name":"Vallikunnu",
+        "code":"VLI"
+    },
+    {
+        "name":"Varkala Sivagiri Station",
+        "code":"VAK"
+    },
+    {
+        "name":"Wadakanchery",
+        "code":"WKI"
+    },
+    {
+        "name":"Adarsh Nagar",
+        "code":"ANDI"
+    },
+    {
+        "name":"Anand Vihar",
+        "code":"ANVR"
+    },
+    {
+        "name":"Anand Vihar Terminus",
+        "code":"ANVT"
+    },
+    {
+        "name":"Badli",
+        "code":"BHD"
+    },
+    {
+        "name":"Bijwasan",
+        "code":"BWSN"
+    },
+    {
+        "name":"Delhi",
+        "code":"DLI"
+    },
+    {
+        "name":"Delhi Cantonment",
+        "code":"DEC"
+    },
+    {
+        "name":"Delhi Kishanganj",
+        "code":"DKZ"
+    },
+    {
+        "name":"Delhi Safdarjung",
+        "code":"DSJ"
+    },
+    {
+        "name":"Delhi Sarai Rohilla",
+        "code":"DEE"
+    },
+    {
+        "name":"Delhi Shahdara",
+        "code":"DSA"
+    },
+    {
+        "name":"Hazrat Nizamuddin",
+        "code":"NZM"
+    },
+    {
+        "name":"Mangolpuri",
+        "code":"MGLP"
+    },
+    {
+        "name":"Nangloi",
+        "code":"NNO"
+    },
+    {
+        "name":"Narela",
+        "code":"NUR"
+    },
+    {
+        "name":"New Delhi",
+        "code":"NDLS"
+    },
+    {
+        "name":"Okhla",
+        "code":"OKA"
+    },
+    {
+        "name":"Palam",
+        "code":"PM"
+    },
+    {
+        "name":"Shakurbasti",
+        "code":"SSB"
+    },
+    {
+        "name":"Shivaji Bridge",
+        "code":"CSB"
     }
 
 
