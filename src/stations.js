@@ -593,6 +593,174 @@ var stations=[
     {
         "name":"Bangalore Cantonment",
         "code":"BNC"
+    },
+    {
+        "name":"Bangalore City Junction",
+        "code":"SBC"
+    },
+    {
+        "name":"Bangalore East",
+        "code":"BNCE"
+    },
+    {
+        "name":"Bangarapet",
+        "code":"BWT"
+    },
+    {
+        "name":"Bantawala",
+        "code":"BNTL"
+    },
+    {
+        "name":"Barkur",
+        "code":"BKJ"
+    },
+    {
+        "name":"Belgaum",
+        "code":"BGM"
+    },
+    {
+        "name":"Bellary Junction",
+        "code":"BAY"
+    },
+    {
+        "name":"Bhadravati",
+        "code":"BDVT"
+    },
+    {
+        "name":"Bhalki",
+        "code":"BHLK"
+    },
+    {
+        "name":"Bhanapur",
+        "code":"BNP"
+    },
+    {
+        "name":"Bidadi",
+        "code":"BID"
+    },
+    {
+        "name":"Bidar",
+        "code":"BIDR"
+    },
+    {
+        "name":"Bijapur",
+        "code":"BJP"
+    },
+    {
+        "name":"Bijoor",
+        "code":"BIJR"
+    },
+    {
+        "name":"Birur Junction",
+        "code":"RRB"
+    },
+    {
+        "name":"Byadgi",
+        "code":"BYD"
+    },
+    {
+        "name":"Byndoor",
+        "code":"BYNR"
+    },
+    {
+        "name":"Adavali",
+        "code":"ADVI"
+    },
+    {
+        "name":"Ahmednagar",
+        "code":"ANG"
+    },
+    {
+        "name":"Ajni",
+        "code":"AJNI"
+    },
+    {
+        "name":"Akkalkot Road",
+        "code":"AKOR"
+    },
+    {
+        "name":"Akola Junction",
+        "code":"AK"
+    },
+    {
+        "name":"Amalner",
+        "code":"AN"
+    },
+    {
+        "name":"Ambale",
+        "code":"ABLE"
+    },
+    {
+        "name":"Amgaon",
+        "code":"AGN"
+    },
+    {
+        "name":"Amravati",
+        "code":"AMI"
+    },
+    {
+        "name":"Andheri",
+        "code":"ADH"
+    },
+    {
+        "name":"Ankai",
+        "code":"ANK"
+    },
+    {
+        "name":"Aravalli Road",
+        "code":"AVRD"
+    },
+    {
+        "name":"Aurangabad",
+        "code":"AWB"
+    },
+    {
+        "name":"Badnapur",
+        "code":"BDU"
+    },
+    {
+        "name":"Badnera Junction",
+        "code":"BD"
+    },
+    {
+        "name":"Balharshah",
+        "code":"BPQ"
+    },
+    {
+        "name":"Bandra Terminus",
+        "code":"BDTS"
+    },
+    {
+        "name":"Barsi Town",
+        "code":"BTW"
+    },
+    {
+        "name":"Basmat",
+        "code":"BMF"
+    },
+    {
+        "name":"Belapur",
+        "code":"BAP"
+    },
+    {
+        "name":"Bhandak",
+        "code":"BUX"
+    },
+    {
+        "name":"Bhandara Road",
+        "code":"BRD"
+    },
+    {
+        "name":"Bhavani Nagar",
+        "code":"BVNR"
+    },
+    {
+        "name":"Bhigwan",
+        "code":"BGVN"
+    },
+    {
+        "name":"",
+        "code":""
     }
 ];
 
