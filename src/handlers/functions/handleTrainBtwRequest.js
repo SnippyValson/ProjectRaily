@@ -7,10 +7,11 @@ var railways=require('../../services/railwayapi/apiParser');
 exports.handleTrainBtwRequest=function(intent, session, response) {
 	var dateForJson;
 	var stationOne, stationTwo;
+	var today;
 	stationOne=intent.slots.StationOne.value;
 	stationTwo=intent.slots.StationTwo.value;
 
-	if(intent.slots.dat !== undefined && intent.slots.dat !== null)
+	if(intent.slots.dat.value !== undefined )
 	{
 		dateForJson=intent.slots.dat.value;
 	}
@@ -18,7 +19,8 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	{
 		var d = new Date();
                 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-                var today = new Date(utc + (3600000*5.5));
+                today = new Date(utc + (3600000*5.5));
+                console.log(today);
        		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
 		if(dd<10) {
@@ -35,6 +37,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 
 	var stationOneCode=station.getStationCode(stationOne);
 	var stationTwoCode=station.getStationCode(stationTwo);
+console.log(dateForJson);
 
 	if(stationOneCode!=-1 && stationTwoCode!=-1)
 	{
