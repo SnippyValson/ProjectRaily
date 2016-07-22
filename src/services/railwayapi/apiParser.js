@@ -476,9 +476,11 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                          train_no[i]=stringResult["train"][i].number;
                          scharr[i]=stringResult["train"][i].scharr;
                          delayarr[i]=stringResult["train"][i].delayarr;
+                         delayarr[i]=convertTime(delayarr[i]);
                          schdep[i]=stringResult["train"][i].schdep;
                          actdep[i]=stringResult["train"][i].actdep;
                          delaydep[i]=stringResult["train"][i].delaydep;
+                         delaydep[i]=convertTime(delaydep[i]);
                          if(scharr[i].toUpperCase()=="RT")
                                scharr[i]="Right time";
                          if(scharr[i].toUpperCase()=="SRC")
@@ -536,6 +538,14 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
           }
     });
    return status;
+}
+
+function convertTime(time)
+{
+    var time_digits=time.split(":");
+    var output=time_digits[0]+" hours and "+time_digits[1]+" minutes.";
+    return output;
+
 }
 
 
