@@ -15,8 +15,21 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	var stationTwoCode;
 	var classTrainCode;
 	var quotaCode;
-	var sessionAttributes={};
+	var sessionAttributes=session.attributes;
 	var interText;
+
+	// if(session.attributes.TrainNumber!=undefined)
+	// 	sessionAttributes.TrainNumber=session.attributes.TrainNumber;
+	// if(session.attributes.Dat!=undefined)
+	// 	sessionAttributes.Dat=session.attributes.Dat;
+	// if(session.attributes.StationOne!=undefined)
+	// 	sessionAttributes.StationOne=session.attributes.StationOne;
+	// if(session.attributes.StationTwo!=undefined)
+	// 	sessionAttributes.StationTwo=session.attributes.StationTwo;
+	// if(session.attributes.StationTwo!=undefined)
+	// 	sessionAttributes.ClassTrain=session.attributes.StationTwo;
+	// if(session.attributes.StationTwo!=undefined)
+	// 	sessionAttributes.Quota=session.attributes.StationTwo;
 
 	if(intent.slots.TrainNumber.value != undefined )
 	{
@@ -25,7 +38,7 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	}
 	if(intent.slots.Dat.value != undefined )
 	{
-		dateForJson=intent.slots.dat.value;
+		dateForJson=intent.slots.Dat.value;
 		sessionAttributes.Dat=dateForJson;
 	}
 	if(intent.slots.StationOne.value != undefined )
@@ -51,27 +64,27 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 
 	if(dateForJson==undefined && session.attributes.Dat!=undefined )
 	{
-		dateForJson=session.attributes.Dat.value;
+		dateForJson=session.attributes.Dat;
 		sessionAttributes.Dat=dateForJson;
 	}
 	if(stationOne==undefined && session.attributes.StationOne!=undefined )
 	{
-		stationOne=session.attributes.StationOne.value;
+		stationOne=session.attributes.StationOne;
 		sessionAttributes.StationOne=stationOne;
 	}
 	if(stationTwo==undefined && session.attributes.StationTwo!=undefined )
 	{
-		stationTwo=session.attributes.StationTwo.value;
+		stationTwo=session.attributes.StationTwo;
 		sessionAttributes.StationTwo=stationTwo;
 	}
 	if(classTrain==undefined && session.attributes.ClassTrain!=undefined )
 	{
-		classTrain=session.attributes.ClassTrain.value;
+		classTrain=session.attributes.ClassTrain;
 		sessionAttributes.ClassTrain=classTrain;
 	}
 	if(quota==undefined && session.attributes.Quota!=undefined )
 	{
-		quota=session.attributes.Quota.value;
+		quota=session.attributes.Quota;
 		sessionAttributes.Quota=quota;
 	}
 
@@ -80,17 +93,24 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 		interText="<speak>On what date?</speak>";
 		response.askSSML(interText,interText,sessionAttributes);
 	}
-	else if (dateForJson==undefined)
-	{
-
-	}
 	else if (stationOne==undefined)
 	{
+		if(stationTwo==undefined)
+		{
+			interText='<speak>From where? And to  where?</speak>';
+			response.askSSML(interText,interText,sessionAttributes);
+		}
+		else
+		{
+			interText='<speak>From where are you boarding?</speak>';
+			response.askSSML(interText,interText,sessionAttributes);
+		}
 
 	}
 	else if (stationTwo==undefined)
 	{
-
+		interText='<speak>Where is your journey to?</speak>';
+		response.askSSML(interText,interText,sessionAttributes);
 	}
 	else if (classTrain==undefined)
 	{
@@ -98,16 +118,21 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 		stationTwoCode=station.getStationCode(stationTwo);
 		if(stationOneCode==-1 || stationTwoCode==-1)
 		{
-			response.ask('Stations not suported or Incorrect station name');
+			interText='<speak>Sorry! The station names are invalid, please repeat your starting and ending point.</speak>';
+			response.askSSML(interText,interText,sessionAttributes);
 		}
 		else
 		{
-
+			//Get classes available
+			interText='<speak>Which class do you want? <p>Sleeper class,First class AC,AC Two tier,AC three tier, Seater class or, AC chair car </p></speak>';
+			response.askSSML(interText,interText,sessionAttributes);
 		}
 	}
 	else if (quota==undefined)
 	{
-
+		//Get quotas available
+		interText='<speak><p>Normally people choose General Quota</p>Which Quota do you want?</speak>';
+		response.askSSML(interText,interText,sessionAttributes);
 	}
 	else
 	{
