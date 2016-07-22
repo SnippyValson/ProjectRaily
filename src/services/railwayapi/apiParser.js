@@ -281,7 +281,9 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    var days=[];
                    var index=0;
                    for(i=0; i<stringResult["train"].length; i++){
+                        train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
                         train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                        train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
                         train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                         train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                         days[i]="";
@@ -474,7 +476,9 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
          else
             {
                   for (i=0; i<stringResult["train"].length; i++){
+                         train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
                          train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                         train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
                          train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                          train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                          train_no[i]=stringResult["train"][i].number;
@@ -519,7 +523,8 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                                 status=status+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
                             status+="<p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                           }
-
+                     if(delayarr[j]=="Right time")
+                         delayarr[j]="Train is on right time.";
                          result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
                    }
