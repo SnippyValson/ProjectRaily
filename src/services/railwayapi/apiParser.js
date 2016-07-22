@@ -281,11 +281,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    var days=[];
                    var index=0;
                    for(i=0; i<stringResult["train"].length; i++){
-                        train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
-                        train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
-                        train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
-                        train_name[i]=train_name[i].replace(" SP"," SPECIAL");
-                        train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
+
                         days[i]="";
                         train_no[i]=stringResult["train"][i].number;
                         src_departure_time[i]=stringResult["train"][i].src_departure_time;
@@ -476,11 +472,6 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
          else
             {
                   for (i=0; i<stringResult["train"].length; i++){
-                         train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
-                         train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
-                         train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
-                         train_name[i]=train_name[i].replace(" SP"," SPECIAL");
-                         train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                          train_no[i]=stringResult["train"][i].number;
                          scharr[i]=stringResult["train"][i].scharr;
                          delayarr[i]=stringResult["train"][i].delayarr;
@@ -526,7 +517,6 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                      if(delayarr[j]=="Right time")
                          delayarr[j]="Train is on right time.";
                      result=result+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
-
                      result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
                    }
