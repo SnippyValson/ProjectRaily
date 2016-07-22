@@ -519,9 +519,17 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                                 status=status+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
                             status+="<p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                           }
-                       result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
+
+                         result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
                    }
+<<<<<<< HEAD
+=======
+                if(j>4)
+                   {
+                          status=status+ "<p>For details of other trains see the result card</p>";
+                   }
+>>>>>>> 9fef7bd1575a1827275fde652f1d266efb980246
                 if(stringResult.response_code!='200'){
                        result="There was an error processing your request.";
                        status=result;
