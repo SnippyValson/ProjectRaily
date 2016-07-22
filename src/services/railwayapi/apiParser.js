@@ -320,7 +320,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                                 stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"</p>";
                          } 
                       train_string = train_string + "Train "+train_no[j]+ '\n';
-                      train_string =train_string+" Source departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+                      train_string =train_string+"Train name :"+train_name[j]+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                    }
                 
