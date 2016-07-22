@@ -1031,7 +1031,7 @@ exports.getStationCode=function(stationName){
 exports.getStationName=function(stationCode){
     var stationName=-1;
     stations.forEach(function(value){
-        if(value['id'].toUpperCase()==stationCode.toUpperCase())
+        if(value['code'].toUpperCase()==stationCode.toUpperCase())
         {
             stationName=value['name'];
         }
