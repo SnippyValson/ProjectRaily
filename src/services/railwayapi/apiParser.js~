@@ -2,7 +2,7 @@
 var config = require('../../configs');
 
 //var http = require('http');
-var request = require('./request/index.js');
+var request = require('./request/request.js');
 
 /**
  *The AlexaSkill Module that has the AlexaSkill prototype and helper functions
@@ -320,7 +320,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                                 stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"</p>";
                          } 
                       train_string = train_string + "Train "+train_no[j]+ '\n';
-                      train_string =train_string+"Train name :"+train_name[j]+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+                      train_string =train_string+" Source departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                    }
                 
@@ -513,12 +513,12 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                                  status=status+" "+train_name[j]+" ";
                                  status=status+" <p>Scheduled arrival "+scharr[j]+"</p>,<p> Delayed arrival "+delayarr[j]+"</p>, <p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                           }
+                       if(i>4)
+                         {
+                               status=status+ "<p>For details of other trains see the result card</p>";
+                         }
                        result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
-                   }
-                if(i>4)
-                   {
-                          status=status+ "<p>For details of other trains see the result card</p>";
                    }
                 if(stringResult.response_code!='200'){
                        result="There was an error processing your request.";
