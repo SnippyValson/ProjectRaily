@@ -1,5 +1,6 @@
 'use strict';
 var config = require('../../configs');
+var stationHere = require('../../stations');
 
 //var http = require('http');
 var request = require('./request/index.js');
@@ -213,13 +214,13 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                         var index_=status.indexOf('AVAILABLE');
                         var available=status.substring(index_+10);
                    }
-                status=available+" seats are available in"+class_name+","+quota_name;
+                status=available+" seats are available in "+class_name+","+quota_name;
                 if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
                    {
                         index3=status.indexOf("/WL");
                         index4=status.indexOf("\n",index3);
                         var waiting=status.substring(index3+3,index3+8);
-                        status=waiting+" seats are in waiting list for"+class_name+","+quota_name; 
+                        status=waiting+" seats are in waiting list for "+class_name+","+quota_name;
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
@@ -330,7 +331,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    }
                 stat=stat+ "<p>For details of all other trains see the result card</p>";
                 stat=stat+ "</speak>";
-                result={speech:stat,status:train_string,heading:"Trains running between "+source+" and "+dest};
+                result={speech:stat,status:train_string,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
                 eventCallback(result);  
          }
     });
@@ -534,7 +535,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                     status=status+ "<p>For details of other trains see the result card</p>";
                     status+="</speak>";
                 }
-                var result1={speech:status,status:result,heading:"Train arrivals at station: "+station_code};
+                var result1={speech:status,status:result,heading:"Train arrivals at station: "+stationHere.getStationName(station_code)+" ("+station_code+")"};
                 eventCallback(result1);    
           }
     });
