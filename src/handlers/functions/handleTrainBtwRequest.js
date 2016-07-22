@@ -16,8 +16,10 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	}
 	else
 	{
-		var today = new Date();
-		var dd = today.getDate();
+		var d = new Date();
+                var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+                var today = new Date(utc + (3600000*5.5));
+       		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
 		if(dd<10) {
 			dd='0'+dd;
