@@ -281,7 +281,9 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    var days=[];
                    var index=0;
                    for(i=0; i<stringResult["train"].length; i++){
+                        train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
                         train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                        train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
                         train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                         train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                         days[i]="";
@@ -474,7 +476,9 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
          else
             {
                   for (i=0; i<stringResult["train"].length; i++){
+                         train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
                          train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                         train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
                          train_name[i]=train_name[i].replace(" SP"," SPECIAL");
                          train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                          train_no[i]=stringResult["train"][i].number;
