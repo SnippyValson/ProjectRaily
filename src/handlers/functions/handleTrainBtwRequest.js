@@ -18,9 +18,9 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	{
 		var d = new Date();
                 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-                var today = new Date(utc + (3600000*5.5));
-       		var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
+                var toda = new Date(utc + (3600000*5.5));
+       		var dd = toda.getDate();
+		var mm = toda.getMonth()+1; //January is 0!
 		if(dd<10) {
 			dd='0'+dd;
 		}
@@ -28,8 +28,8 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 		if(mm<10) {
 			mm='0'+mm;
 		}
-
-		today =dd+'-'+mm;
+                var yyyy= toda.getFullYear();
+		var today =yyyy+'-'+mm+'-'+dd;
 		dateForJson=today;
 	}
 
