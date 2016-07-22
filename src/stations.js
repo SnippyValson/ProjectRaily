@@ -1040,6 +1040,11 @@ exports.getStationName=function(stationCode){
 };
 
 exports.fillStationCodesTrainName=function(trainName){
+    trainName=trainName.replace(" EXPRESS"," ###");
+    trainName=trainName.replace(" EXP"," EXPRESS");
+    trainName=trainName.replace(" ###"," EXPRESS");
+    trainName=trainName.replace(" SP"," SPECIAL");
+    trainName=trainName.replace(" SHTBDI"," SHATABDI");
     var finalTrainName=trainName;
     var myarr = trainName.split(" ");
     var fname= myarr[0].split("-");
