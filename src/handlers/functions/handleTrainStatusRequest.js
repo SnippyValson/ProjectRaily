@@ -7,20 +7,23 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
     // Get a random space fact from the space facts list
     //intent.slots.Train.value;
     // type= "number" / "name"
-    var date_ = new Date().getDate();
-    var month_ = new Date().getMonth();
+    var d = new Date();
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    var toda = new Date(utc + (3600000*5.5));//coverting to IST
+    var date_ = toda.getDate();
+    var month_ = toda.getMonth();
     month_= month_+1;
     if(date_<10)
         {  
          	date_='0'+date_;
 	}
 
-  if(month_<10) 
+    if(month_<10) 
         {
 	       month_='0'+month_;
         }
    
-    var year_ = new Date().getFullYear();
+    var year_ = toda.getFullYear();
     var result = "";
     result= result + year_+month_+date_;
     var trainNumber;

@@ -244,6 +244,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
          var day= date.substring(8);
          date=day+"-"+mon;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
+         console.log(url);
          var stat="<speak>";
          var train_string="";
          var result="";
