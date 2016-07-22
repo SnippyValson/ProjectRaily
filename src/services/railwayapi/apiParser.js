@@ -242,7 +242,10 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
 exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallback){
          var mon= date.substring(5,7);
          var day= date.substring(8);
+         var year=date.substring(0,4);
+         var originalDate=date;
          date=day+"-"+mon;
+         var indianDate=day+"-"+mon+"-"+year;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          console.log(url);
          var stat="<speak>";
@@ -282,7 +285,11 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    var days=[];
                    var index=0;
                    for(i=0; i<stringResult["train"].length; i++){
-
+                        train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
+                         train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
+                         train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
+                         train_name[i]=train_name[i].replace(" SP"," SPECIAL");
+                         train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                         days[i]="";
                         train_no[i]=stringResult["train"][i].number;
                         src_departure_time[i]=stringResult["train"][i].src_departure_time;
@@ -308,19 +315,21 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                                            }
                                  }
                            }
-                    }              
-                 stat= stat+ "Total "+i+" trains are there.";
+                    }      
+                 stat= stat+ "On "+originalDate;        
+                 stat= stat+ " there are a total "+i+" trains from "+stationHere.getStationName(source)+" to "+stationHere.getStationName(dest);
+                 train_string="Date: "+indianDate+"\n Total "+i+" trains\n";
                  var m=0;
                  for (j=0; j<i; j++){
                       m=j+1;
                       if(m<=3)
                          {
                                 stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
-                                stat=stat+" "+train_name[j]+" ";
-                                stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>,<p> Days of run "+days[j]+"</p>";
+                                stat=stat+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
+                                stat = stat+"<p> Source departure time :"+src_departure_time[j]+"</p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>";//,<p> Days of run "+days[j]+"</p>";
                          } 
                       train_string = train_string + "Train "+train_no[j]+ '\n';
-                      train_string =train_string+"Train name :"+train_name[j]+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+                      train_string =train_string+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                    }
                 
@@ -328,7 +337,8 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                        train_string="There was an error processing your request.";
                        stat=train_string;
                    }
-                stat=stat+ "<p>For details of all other trains see the result card</p>";
+                else   
+                    stat=stat+ "<p>For further details and details of all other trains see the result card</p>";
                 stat=stat+ "</speak>";
                 result={speech:stat,status:train_string,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
                 eventCallback(result);  

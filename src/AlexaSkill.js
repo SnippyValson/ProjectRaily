@@ -167,11 +167,11 @@ Response.prototype = (function () {
                 shouldEndSession: true
             }));
         },
-        tell: function (speechOutput) {
+        tell: function (speechOutput,sessionAttributesHere) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
-                shouldEndSession: true
+                shouldEndSession: true 
             }));
         },
         tellWithCard: function (speechOutput, cardTitle, cardContent) {
@@ -195,20 +195,26 @@ Response.prototype = (function () {
                 shouldEndSession: true
             }));
         },
-        ask: function (speechOutput, repromptSpeech) {
+        ask: function (speechOutput, repromptSpeech,sessionAttributes) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
                 reprompt: repromptSpeech,
+                session:{
+                    attributes: sessionAttributes
+                    },
                 shouldEndSession: false
             }));
         },
-        askSSML: function (speechOutput, repromptSpeech) {
+        askSSML: function (speechOutput, repromptSpeech,sessionAttributes) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: {
                     speech:speechOutput,
                     type:'SSML'
+                    },
+                session:{
+                    attributes: sessionAttributes
                     },
                 reprompt: repromptSpeech,
                 shouldEndSession: false
