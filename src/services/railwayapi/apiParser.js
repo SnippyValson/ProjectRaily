@@ -404,7 +404,9 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
                         if(current_status[j].toUpperCase()==="CAN/MOD")
                               current_status[j]="cancelled or modified.";
                         if(current_status[j].indexOf("W/L")>-1)
-                              current_status[j]=current_status[j].replace("W/L","Waiting List");
+                            { 
+                                  current_status[j]="You are "+current_status[j].substring(4)+"th on waiting list"; 
+                            }
                         if((current_status[j].toUpperCase()==="CNF"))
                             { 
                                   current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
