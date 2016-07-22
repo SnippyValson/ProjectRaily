@@ -1038,3 +1038,30 @@ exports.getStationName=function(stationCode){
     });
     return stationName;
 };
+
+exports.fillStationCodesTrainName=function(trainName){
+    var finalTrainName=trainName;
+    var myarr = trainName.split(" ");
+    var fname= myarr[0].split("-");
+    var i;
+    if(fname[1]!=undefined)
+    {
+        stations.forEach(function(value){
+            if(value['code'].toUpperCase()==fname[0].toUpperCase())
+            {
+                fname[0]=value['name'];
+            }
+            else if(value['code'].toUpperCase()==fname[1].toUpperCase())
+            {
+                fname[1]=value['name'];
+            }
+        });
+        finalTrainName=fname[0]+"-"+fname[1];
+        for(i=1;i<myarr.length;i++)
+        {
+            finalTrainName+=" "+myarr[i];
+        }
+
+    }
+    return finalTrainName;
+};

@@ -8,8 +8,15 @@ exports.handleTrainArrivalsRequest=function(intent, session, response) {
 	//intent.slots.Train.value;
 
 	var station=intent.slots.Station.value;
-	var durationHours=intent.slots.duration.value;
-
+	var durationHours;
+	if(intent.slots.duration !== undefined && intent.slots.duration !== null)
+	{	
+		durationHours=intent.slots.duration.value;
+	}
+	else
+	{
+		durationHours=2;
+	}
 	var stationCode=stationHere.getStationCode(station);
 
 	if(stationCode!=-1)

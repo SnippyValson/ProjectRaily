@@ -511,7 +511,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                        if(j<4)
                           {
                             status = status + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
-                            status=status+" "+train_name[j]+" ";
+                            status=status+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
                             status=status+" <p>Scheduled arrival "+scharr[j]+"</p>";
                             if(delayarr[j]=="Right time")
                                 status+=" <p>Train is on right time</p> ";
