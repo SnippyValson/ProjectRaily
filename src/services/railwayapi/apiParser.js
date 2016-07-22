@@ -414,7 +414,9 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
                         if(current_status[j].toUpperCase()==="CAN/MOD")
                               current_status[j]="cancelled or modified.";
                         if(current_status[j].indexOf("W/L")>-1)
-                              current_status[j]=current_status[j].replace("W/L","Waiting List");
+                            { 
+                                  current_status[j]="You are "+current_status[j].substring(4)+"th on waiting list"; 
+                            }
                         if((current_status[j].toUpperCase()==="CNF"))
                             { 
                                   current_status[j]="confirmed, Coach/Berth number will be available after chart preparation."; 
@@ -483,17 +485,14 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
          else
             {
                   for (i=0; i<stringResult["train"].length; i++){
-                         train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
-                         train_name[i]=stringResult["train"][i].name.replace(" EXP"," EXPRESS");
-                         train_name[i]=stringResult["train"][i].name.replace(" ###"," EXPRESS");
-                         train_name[i]=train_name[i].replace(" SP"," SPECIAL");
-                         train_name[i]=train_name[i].replace(" SHTBDI"," SHATABDI");
                          train_no[i]=stringResult["train"][i].number;
                          scharr[i]=stringResult["train"][i].scharr;
                          delayarr[i]=stringResult["train"][i].delayarr;
+                         delayarr[i]=convertTime(delayarr[i]);
                          schdep[i]=stringResult["train"][i].schdep;
                          actdep[i]=stringResult["train"][i].actdep;
                          delaydep[i]=stringResult["train"][i].delaydep;
+                         delaydep[i]=convertTime(delaydep[i]);
                          if(scharr[i].toUpperCase()=="RT")
                                scharr[i]="Right time";
                          if(scharr[i].toUpperCase()=="SRC")
@@ -525,15 +524,23 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                             status=status+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
                             status=status+" <p>Scheduled arrival "+scharr[j]+"</p>";
                             if(delayarr[j]=="Right time")
-                                status+=" <p>Train is on right time</p> ";
+                                status+=" <p>Train arrived at right time</p> ";
                             else
                                 status=status+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
-                            status+="<p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
+                            if((actdep[j]=="Right time")&&(delaydep[j]=="Right time"))
+                                status+="<p>Scheduled departure "+schdep[j]+"</p>";
+                            else
+                                status+="<p>Scheduled departure "+schdep[j]+"</p>,<p> actual departure "+actdep[j]+"</p>";
+                            if(delaydep[j]=="Right time")
+                                status+=" <p>Train departure on right time</p> ";
+                            else
+                                status=status+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
                           }
                      if(delayarr[j]=="Right time")
-                         delayarr[j]="Train is on right time.";
+                         delayarr[j]="Train arrived on right time.\n";
+                     if(delaydep[j]=="Right time")
+                         delaydep[j]="Train departure on right time.\n";
                      result=result+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
-
                      result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
                    }
@@ -552,6 +559,14 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
           }
     });
    return status;
+}
+
+function convertTime(time)
+{
+    var time_digits=time.split(":");
+    var output=time_digits[0]+" hours and "+time_digits[1]+" minutes.";
+    return output;
+
 }
 
 

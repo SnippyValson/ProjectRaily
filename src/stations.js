@@ -1013,6 +1013,246 @@ var stations=[
     {
         "name":"Baral",
         "code":"BARL"
+    },
+    {
+        "name":"Canacona",
+        "code":"CNO"
+    },
+    {
+        "name":"Karmali Railway Station",
+        "code":"KRMI"
+    },
+    {
+        "name":"Kulem",
+        "code":"QLM"
+    },
+    {
+        "name":"Madgaon",
+        "code":"MAO"
+    },
+    {
+        "name":"Pernem",
+        "code":"PERN"
+    },
+    {
+        "name":"Sanvordem Curchorem",
+        "code":"SVM"
+    },
+    {
+        "name":"Thivim",
+        "code":"THVM"
+    },
+    {
+        "name":"Vasco da Gama",
+        "code":"VSG"
+    },
+    {
+        "name":"Abu Road",
+        "code":"ABR"
+    },
+    {
+        "name":"Ajmer Junction",
+        "code":"AII"
+    },
+    {
+        "name":"Alwar",
+        "code":"AWR"
+    },
+    {
+        "name":"Asalpur Jobner",
+        "code":"JOB"
+    },
+    {
+        "name":"Ashapura Gomat",
+        "code":"AQG"
+    },
+    {
+        "name":"Balotra Junction",
+        "code":"BLT"
+    },
+    {
+        "name":"Banasthali Niwai",
+        "code":"BNLW"
+    },
+    {
+        "name":"Bandikui Junction",
+        "code":"BKI"
+    },
+    {
+        "name":"Baran",
+        "code":"BAZ"
+    },
+    {
+        "name":"Barmer",
+        "code":"BME"
+    },
+    {
+        "name":"Basni",
+        "code":"BANE"
+    },
+    {
+        "name":"Bayana Junction",
+        "code":"BXN"
+    },
+    {
+        "name":"Baytu",
+        "code":"BUT"
+    },
+    {
+        "name":"Beawar",
+        "code":"BER"
+    },
+    {
+        "name":"Bharatpur Junction",
+        "code":"BTE"
+    },
+    {
+        "name":"Bhilwara",
+        "code":"BHL"
+    },
+    {
+        "name":"Bijainagar",
+        "code":"BJNR"
+    },
+    {
+        "name":"Bikaner Junction",
+        "code":"BKN"
+    },
+    {
+        "name":"Biradhwal",
+        "code":"BDWL"
+    },
+    {
+        "name":"Bundi",
+        "code":"BUDI"
+    },
+    {
+        "name":"Chanderiya",
+        "code":"CNA"
+    },
+    {
+        "name":"Chau Mahla",
+        "code":"CMU"
+    },
+    {
+        "name":"Chauth Ka Brwra",
+        "code":"CKB"
+    },
+    {
+        "name":"Chhabra Gugor",
+        "code":"CAG"
+    },
+    {
+        "name":"Chittaurgarh",
+        "code":"COR"
+    },
+    {
+        "name":"Churu",
+        "code":"CUR"
+    },
+    {
+        "name":"Dakaniya Talav",
+        "code":"DKNT"
+    },
+    {
+        "name":"Dara",
+        "code":"DARA"
+    },
+    {
+        "name":"Dausa",
+        "code":"DO"
+    },
+    {
+        "name":"Degana Junction",
+        "code":"DNA"
+    },
+    {
+        "name":"Deshnok",
+        "code":"DSO"
+    },
+    {
+        "name":"Dhaban",
+        "code":"DABN"
+    },
+    {
+        "name":"Dhaulpur",
+        "code":"DHO"
+    },
+    {
+        "name":"Dhirera",
+        "code":"DHRR"
+    },
+    {
+        "name":"Dungarpur",
+        "code":"DNRP"
+    },
+    {
+        "name":"Durgapura",
+        "code":"DPA"
+    },
+    {
+        "name":"Falna",
+        "code":"FA"
+    },
+    {
+        "name":"Fateh Singhpura",
+        "code":"FSP"
+    },
+    {
+        "name":"Fatehnagar",
+        "code":"FAN"
+    },
+    {
+        "name":"Gachhipura",
+        "code":"GCH"
+    },
+    {
+        "name":"Gandhinagar JPR",
+        "code":"GADJ"
+    },
+    {
+        "name":"Gangapur City",
+        "code":"GGC"
+    },
+    {
+        "name":"Gangrar",
+        "code":"GGR"
+    },
+    {
+        "name":"Getor Jagatpura",
+        "code":"GTJT"
+    },
+    {
+        "name":"Gotan",
+        "code":"GOTN"
+    },
+    {
+        "name":"Gulabpura",
+        "code":"GBP"
+    },
+    {
+        "name":"Gurla",
+        "code":"GQL"
+    },
+    {
+        "name":"Hamirgarh",
+        "code":"HMG"
+    },
+    {
+        "name":"Hanumangarh Junction",
+        "code":"HMH"
+    },
+    {
+        "name":"Haripur",
+        "code":"HP"
+    },
+    {
+        "name":"Abohar",
+        "code":"ABS"
+    },
+    {
+        "name":"",
+        "code":""
     }
 
 ];
@@ -1040,6 +1280,11 @@ exports.getStationName=function(stationCode){
 };
 
 exports.fillStationCodesTrainName=function(trainName){
+    trainName=trainName.replace(" EXPRESS"," ###");
+    trainName=trainName.replace(" EXP"," EXPRESS");
+    trainName=trainName.replace(" ###"," EXPRESS");
+    trainName=trainName.replace(" SP"," SPECIAL");
+    trainName=trainName.replace(" SHTBDI"," SHATABDI");
     var finalTrainName=trainName;
     var myarr = trainName.split(" ");
     var fname= myarr[0].split("-");
