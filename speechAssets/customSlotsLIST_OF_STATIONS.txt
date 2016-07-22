@@ -251,3 +251,113 @@ Bankata
 Banthra
 Barabanki Junction
 Baral
+
+Canacona
+Karmali Railway Station
+Kulem
+Madgaon
+Pernem
+Sanvordem Curchorem
+Thivim
+Vasco da Gama
+Abu Road
+Ajmer Junction
+Alwar
+Asalpur Jobner
+Ashapura Gomat
+Balotra Junction
+Banasthali Niwai
+Bandikui Junction
+Baran
+Barmer
+Basni
+Bayana Junction
+Baytu
+Beawar
+Bharatpur Junction
+Bhilwara
+Bijainagar
+Bikaner Junction
+Biradhwal
+Bundi
+Chanderiya
+Chau Mahla
+Chauth Ka Brwra
+Chhabra Gugor
+Chittaurgarh
+Churu
+Dakaniya Talav
+Dara
+Dausa
+Degana Junction
+Deshnok
+Dhaban
+Dhaulpur
+Dhirera
+Dungarpur
+Durgapura
+Falna
+Fateh Singhpura
+Fatehnagar
+Gachhipura
+Gandhinagar JPR
+Gangapur City
+Gangrar
+Getor Jagatpura
+Gotan
+Gulabpura
+Gurla
+Hamirgarh
+Hanumangarh Junction
+Haripur
+Abohar
+Ahmadgarh
+Amritsar Junction
+Anandpur Sahib
+Attari
+Bareta
+Barnala
+Bassi Pathana
+Batala Junction
+Beas
+Bhatinda Junction
+Bhuchchu
+Bolinna Doaba
+Budhlada
+Chakki Bank
+Chawapall
+Dappar
+Dasuya
+Dhandari Kalan
+Dhariwal
+Dhuri Junction
+Dinanagar
+Doraha
+Faridkot
+Fatehgarhsahib
+Firozpur Cantonment
+Gangsar Jaitu
+Ghanauli
+Giddarbaha
+Goneana
+Goraya
+Govindgarh
+Gurdaspur
+Hoshiarpur
+Jagraon
+Jalandhar Cantonment
+Jalandhar City
+Jandiala
+Kapurthala
+Kartarpur
+Khanna
+Khurdpur
+Kila Raipur
+Kiratpursahib
+Kot Kapura
+Kotli Kalan
+Kurali
+Lehra Gaga
+Lohian Khas Junction
+Ludhiana Junction
+
