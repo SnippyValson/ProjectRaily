@@ -523,7 +523,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                    }
                 if(i>4)
                    {
-                          //status=status+ "<p>For details of other trains see the result card</p>";
+                          status=status+ "<p>For details of other trains see the result card</p>";
                    }
                 if(stringResult.response_code!='200'){
                        result="There was an error processing your request.";
