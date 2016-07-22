@@ -2,7 +2,7 @@
 var config = require('../../configs');
 
 //var http = require('http');
-var request = require('request');
+var request = require('./request/request.js');
 
 /**
  *The AlexaSkill Module that has the AlexaSkill prototype and helper functions
