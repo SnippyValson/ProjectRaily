@@ -1027,3 +1027,14 @@ exports.getStationCode=function(stationName){
     });
     return stationID;
 };
+
+exports.getStationName=function(stationCode){
+    var stationName=-1;
+    stations.forEach(function(value){
+        if(value['id'].toUpperCase()==stationCode.toUpperCase())
+        {
+            stationName=value['name'];
+        }
+    });
+    return stationName;
+};

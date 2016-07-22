@@ -1,5 +1,6 @@
 'use strict';
 var config = require('../../configs');
+var stationHere = require('../../stations');
 
 //var http = require('http');
 var request = require('./request/index.js');
