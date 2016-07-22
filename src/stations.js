@@ -1013,6 +1013,170 @@ var stations=[
     {
         "name":"Baral",
         "code":"BARL"
+    },
+    {
+        "name":"Canacona",
+        "code":"CNO"
+    },
+    {
+        "name":"Karmali Railway Station",
+        "code":"KRMI"
+    },
+    {
+        "name":"Kulem",
+        "code":"QLM"
+    },
+    {
+        "name":"Madgaon",
+        "code":"MAO"
+    },
+    {
+        "name":"Pernem",
+        "code":"PERN"
+    },
+    {
+        "name":"Sanvordem Curchorem",
+        "code":"SVM"
+    },
+    {
+        "name":"Thivim",
+        "code":"THVM"
+    },
+    {
+        "name":"Vasco da Gama",
+        "code":"VSG"
+    },
+    {
+        "name":"Abu Road",
+        "code":"ABR"
+    },
+    {
+        "name":"Ajmer Junction",
+        "code":"AII"
+    },
+    {
+        "name":"Alwar",
+        "code":"AWR"
+    },
+    {
+        "name":"Asalpur Jobner",
+        "code":"JOB"
+    },
+    {
+        "name":"Ashapura Gomat",
+        "code":"AQG"
+    },
+    {
+        "name":"Balotra Junction",
+        "code":"BLT"
+    },
+    {
+        "name":"Banasthali Niwai",
+        "code":"BNLW"
+    },
+    {
+        "name":"Bandikui Junction",
+        "code":"BKI"
+    },
+    {
+        "name":"Baran",
+        "code":"BAZ"
+    },
+    {
+        "name":"Barmer",
+        "code":"BME"
+    },
+    {
+        "name":"Basni",
+        "code":"BANE"
+    },
+    {
+        "name":"Bayana Junction",
+        "code":"BXN"
+    },
+    {
+        "name":"Baytu",
+        "code":"BUT"
+    },
+    {
+        "name":"Beawar",
+        "code":"BER"
+    },
+    {
+        "name":"Bharatpur Junction",
+        "code":"BTE"
+    },
+    {
+        "name":"Bhilwara",
+        "code":"BHL"
+    },
+    {
+        "name":"Bijainagar",
+        "code":"BJNR"
+    },
+    {
+        "name":"Bikaner Junction",
+        "code":"BKN"
+    },
+    {
+        "name":"Biradhwal",
+        "code":"BDWL"
+    },
+    {
+        "name":"Bundi",
+        "code":"BUDI"
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
+    },
+    {
+        "name":"",
+        "code":""
     }
 
 ];
