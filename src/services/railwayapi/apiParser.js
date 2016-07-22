@@ -167,6 +167,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var result="";
     var status="";
     var result1="";
+    console.log(train_no);
     if(train_no.toString().length!=5)
       {
             result="Not a valid train number";
@@ -209,12 +210,13 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 var status=stringResult.availability[0].status;
                 var class_name=stringResult.class.class_name;
                 var quota_name=stringResult.quota.quota_name;
+                console.log(status);
                 if(status.indexOf('AVAILABLE')>-1)
                    {
                         var index_=status.indexOf('AVAILABLE');
                         var available=status.substring(index_+10);
-                   }
-                status=available+" seats are available in "+class_name+","+quota_name;
+                        status=available+" seats are available in "+class_name+","+quota_name;
+                   } 
                 if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
                    {
                         index3=status.indexOf("/WL");

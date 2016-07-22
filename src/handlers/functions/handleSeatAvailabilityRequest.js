@@ -138,10 +138,24 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	{
 		stationOneCode=station.getStationCode(stationOne);
 		stationTwoCode=station.getStationCode(stationTwo);
+		trainNumber=session.attributes.TrainNumber;
+
+		classTrainCode=convertClassCode(classTrain);
+		quotaCode=convertQuota(quota);
+		if(classTrainCode==-1)
+		{
+			interText='<speak>Please tell again the class you need.</speak>';
+			response.askSSML(interText,interText,sessionAttributes);
+		}
+		if(quotaCode==-1)
+		{
+			interText='<speak>Please tell again the quota you need.</speak>';
+			response.askSSML(interText,interText,sessionAttributes);
+		}
 
 		if(stationOneCode!=-1 && stationTwoCode!=-1)
 		{
-			railways.getJsonSeatAvailability(trainNumber, stationOneCode, stationTwoCode, dateForJson, 'CC', 'GN', function (events){
+			railways.getJsonSeatAvailability(trainNumber, stationOneCode, stationTwoCode, dateForJson, classTrainCode, quotaCode, function (events){
 				// Create speech output
 				var speechOutput =  events;
 
@@ -165,5 +179,28 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	
 };
 
+function convertClassCode(classTrain)
+{
+	switch(classTrain.toUpperCase())
+	{
+		case "SLEEPER": return "SL";
+		case "FIRST CLASS AC": return "1A";
+		case "AC TWO TIER": return "2A";
+		case "AC THREE TIER": return "3A";
+		case "SEATER": return "2S";
+		case "AC CHAIR CAR": return "CC";
+		default: return -1;
+	}
+}
+
+function convertQuota(quota)
+{
+	switch(quota.toUpperCase())
+	{
+		case "GENERAL": return "GN";
+		case "LADIES": return "LD";
+		default: return -1;
+	}
+}
 
 

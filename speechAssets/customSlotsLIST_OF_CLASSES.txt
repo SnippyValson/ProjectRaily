@@ -1,6 +1,6 @@
-Sleeper class
+Sleeper
 First class AC
 AC Two tier
 AC three tier
-Seater class
+Seater
 AC chair car
