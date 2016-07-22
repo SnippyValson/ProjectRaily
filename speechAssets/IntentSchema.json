@@ -36,16 +36,8 @@
         }
       ]
     },
+
     {
-      "intent": "handleSeatAvailabilityIntent",
-      "slots": [
-        {
-          "name": "Train",
-          "type": "LIST_OF_TRAINS"
-        }
-      ]
-    },
-     {
       "intent": "handleSeatAvailabilityNumberIntent",
       "slots": [
         {
@@ -53,7 +45,7 @@
           "type": "AMAZON.NUMBER"
         },
         {
-          "name": "dat",
+          "name": "Dat",
           "type": "AMAZON.DATE"
         },
         {
@@ -63,6 +55,14 @@
         {
           "name": "StationTwo",
           "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "ClassTrain",
+          "type": "LIST_OF_CLASSES"
+        },
+        {
+          "name": "Quota",
+          "type": "LIST_OF_QUOTAS"
         }
       ]
     },

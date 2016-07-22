@@ -27,7 +27,8 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
          }
          });
          }
-         else*/ if(speechOutput['heading']!=null)
+         else*/ 
+        if(speechOutput['heading']!=null)
         {
             response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
         }
