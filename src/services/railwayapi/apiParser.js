@@ -517,8 +517,11 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                                 status+=" <p>Train arrived at right time</p> ";
                             else
                                 status=status+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
-                            status+="<p>Scheduled departure "+schdep[j]+"</p>,<p> actual departure "+actdep[j]+"</p>";
-                             if(delaydep[j]=="Right time")
+                            if((actdep[j]=="Right time")&&(delaydep[j]=="Right time"))
+                                status+="<p>Scheduled departure "+schdep[j]+"</p>";
+                            else
+                                status+="<p>Scheduled departure "+schdep[j]+"</p>,<p> actual departure "+actdep[j]+"</p>";
+                            if(delaydep[j]=="Right time")
                                 status+=" <p>Train departure on right time</p> ";
                             else
                                 status=status+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
