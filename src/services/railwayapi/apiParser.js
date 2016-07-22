@@ -523,7 +523,8 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
                                 status=status+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
                             status+="<p>Scheduled departure "+schdep[j]+"</p>, actual departure "+actdep[j]+", <p>delayed departure "+delaydep[j]+".</p>";
                           }
-
+                     if(delayarr[j]=="Right time")
+                         delayarr[j]="Train is on right time.";
                          result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                
                    }
