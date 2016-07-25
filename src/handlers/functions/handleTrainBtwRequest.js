@@ -46,7 +46,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 
 			if(speechOutput['heading']!=null)
 			{
-				response.tellWithCardSSML(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+				response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
 			}
 			else
 			{

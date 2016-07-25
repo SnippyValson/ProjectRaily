@@ -65,6 +65,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
                        status="<p>Sorry,</p> <p>The train details are not available for today</p>";
                   }
                status=status.replace(/ *\([^)]*\) */g, " ");
+               status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                result={speech:status,status:stringResult.position,heading:'Train Number: '+train_no};
                eventCallback(result);
           }
@@ -145,6 +146,8 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
                   }
                if(stringResult.response_code!='200')
                      station_string="There was an error processing your request.";
+                else
+                    station_string="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+station_string;
                result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
                eventCallback(result);
            }    
@@ -179,7 +182,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
     var status = ""; 
-    request(url,{timeout: 3000}, function (error, response, body) {
+    request(url,{timeout: 7000}, function (error, response, body) {
        if(error)
           {  
               if(error.code === 'ETIMEDOUT')
@@ -193,7 +196,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                                 return;
                           }
                 }
-              status= "Sorry, we could not process your request.";
+              status= "<p>Railway server is slow</p> <p>Do you want to try again</p>";
               result={speech:status,status:status,heading:null};
               eventCallback(result);
               return;
@@ -237,6 +240,8 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
+                else
+                    status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                  
                 result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
                 eventCallback(result);       
@@ -261,7 +266,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
          var indianDate=day+"-"+mon+"-"+year;
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          console.log(url);
-         var stat="<speak>";
+         var stat="";
          var train_string="";
          var result="";
          var result1="";
@@ -351,8 +356,8 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                        stat=train_string;
                    }
                 else   
-                    stat=stat+ "<p>For further details and details of all other trains see the result card</p>";
-                stat=stat+ "</speak>";
+                    stat=stat+ "<p>For further details on these trains and details of all other trains see the result card</p>";
+                stat="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+stat;
                 result={speech:stat,status:train_string,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
                 eventCallback(result);  
          }
@@ -446,11 +451,15 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
                         stat=stat+" passenger "+m+", current status is "+current_status[j]+".";
                    }
 
-                 stat=stat+" For further details see the result card.";
-                 if(stringResult.response_code=='410'){
+                stat=stat+" For further details see the result card.";
+                if(stringResult.response_code=='410'){
                         result="PNR does not exist.";
                         stat=result;
                     }
+                else{
+                    stat="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+stat;
+                }
+
                  var result1={speech:stat,status:result,heading:"PNR status of: "+pnr_no};
                  eventCallback(result1);          
           }
