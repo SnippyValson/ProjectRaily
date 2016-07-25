@@ -113,6 +113,7 @@ handlePNRStatusIntent whether chart prepared for {pnrNumber}
 
 
 handleMultipleCasesIntent from {StationOne} to {StationTwo}
+handleMultipleCasesIntent from {StationOne} to {StationTwo}
 handleMultipleCasesIntent {StationOne} to {StationTwo}
 handleMultipleCasesIntent from {StationOne}
 handleMultipleCasesIntent to {StationTwo}
