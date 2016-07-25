@@ -161,11 +161,11 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 
 				if(speechOutput['heading']!=null)
 				{
-					response.tellWithCard(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+					response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
 				}
 				else
 				{
-					response.ask(speechOutput['speech']);
+					response.askSSML('<speak>'+speechOutput['speech']+'</speak>');
 				}
 			});
 		}
