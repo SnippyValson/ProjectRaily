@@ -41,7 +41,9 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
           }
 
        var stringResult = JSON.parse(body);     
-       var status=stringResult.position;
+       var stat=stringResult.position;
+       stat=stat.replace("Train ","");
+       status="Train "+train_no+" "+stat;
        if (stringResult.response_code=='403')
            {  
                   status="<p>Please try again</p>";
@@ -428,7 +430,7 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
                               current_status[j]="cancelled or modified.";
                         if(current_status[j].indexOf("W/L")>-1)
                             { 
-                                  current_status[j]="You are "+current_status[j].substring(4)+"th on waiting list"; 
+                                  current_status[j]=current_status[j].substring(4)+"th on waiting list"; 
                             }
                         if((current_status[j].toUpperCase()==="CNF"))
                             { 
