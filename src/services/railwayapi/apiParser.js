@@ -179,9 +179,20 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
     var status = ""; 
-    request(url, function (error, response, body) {
+    request(url,{timeout: 3000}, function (error, response, body) {
        if(error)
-          {
+          {  
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
               status= "Sorry, we could not process your request.";
               result={speech:status,status:status,heading:null};
               eventCallback(result);
