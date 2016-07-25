@@ -8,15 +8,45 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	var dateForJson;
 	var stationOne, stationTwo;
 	var today;
-	stationOne=intent.slots.StationOne.value;
-	stationTwo=intent.slots.StationTwo.value;
+	var takenToday=0;
+	var errorText;
+	var sessionAttributes=session.attributes;
+	sessionAttributes.requestType="handleTrainBtwRequest";
 
-	if(intent.slots.dat.value !== undefined )
+	if(intent.slots.StationOne.value==undefined && intent.slots.StationTwo.value==undefined)
 	{
-		dateForJson=intent.slots.dat.value;
+		errorText='Please tell the destination and source!';
+		response.askSSML(errorText,errorText,sessionAttributes);
+	}
+	else if(intent.slots.StationOne.value==undefined && session.attributes.StationOne==undefined )
+	{
+		errorText='Where do you start your journey from?';
+		response.askSSML(errorText,errorText,sessionAttributes);
+	}
+	else if(intent.slots.StationTwo.value==undefined && session.attributes.StationTwo==undefined )
+	{
+		sessionAttributes.StationOne=intent.slots.StationOne.value;
+		errorText="Where is your journey to?";
+		response.askSSML(errorText,errorText,sessionAttributes);
+	}
+	if(intent.slots.StationOne.value!=undefined)
+		stationOne=intent.slots.StationOne.value;
+	else if (session.attributes.StationOne!=undefined)
+		stationOne=session.attributes.StationOne;
+	
+	if(intent.slots.StationTwo.value!=undefined)
+		stationTwo=intent.slots.StationTwo.value;
+	else if (session.attributes.StationTwo!=undefined)
+		stationTwo=session.attributes.StationTwo;
+	
+
+	if(intent.slots.Dat.value != undefined )
+	{
+		dateForJson=intent.slots.Dat.value;
 	}
 	else
 	{
+		takenToday=1;
 		var d = new Date();
                 var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
                 var toda = new Date(utc + (3600000*5.5));//coverting to IST
@@ -38,14 +68,22 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	var stationTwoCode=station.getStationCode(stationTwo);
         console.log(dateForJson);
 
+
 	if(stationOneCode!=-1 && stationTwoCode!=-1)
 	{
 		railways.getJsonTrainBtw(stationOneCode, stationTwoCode, dateForJson, function (events){
 			// Create speech output
 			var speechOutput =  events;
 
+			
+
 			if(speechOutput['heading']!=null)
 			{
+				if(takenToday!=0) //Check if we've assumed the date to be today
+				{
+					speechOutput['speech']+='<break strength="medium"/>If you want to search for another day, just say the new date!';
+					response.askWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status'],sessionAttributes);
+				}
 				response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
 			}
 			else
@@ -56,7 +94,8 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	}
 	else
 	{
-		response.ask('Stations not suported or Incorrect station name');
+		errorText='Stations not suported or Incorrect station name';
+		response.ask(errorText,errorText,sessionAttributes);
 	}
 
 

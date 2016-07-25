@@ -220,22 +220,28 @@ Response.prototype = (function () {
                 shouldEndSession: false
             }));
         },
-        askWithCard: function (speechOutput, repromptSpeech, cardTitle, cardContent) {
+        askWithCard: function (speechOutput, repromptSpeech, cardTitle, cardContent,sessionAttributes) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
+                session:{
+                    attributes: sessionAttributes
+                    },
                 reprompt: repromptSpeech,
                 cardTitle: cardTitle,
                 cardContent: cardContent,
                 shouldEndSession: false
             }));
         },
-        askWithCardSSML: function (speechOutput, repromptSpeech, cardTitle, cardContent) {
+        askWithCardSSML: function (speechOutput, repromptSpeech, cardTitle, cardContent,sessionAttributes) {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: {
                     speech:speechOutput,
                     type:'SSML'
+                    },
+                session:{
+                    attributes: sessionAttributes
                     },
                 reprompt: repromptSpeech,
                 cardTitle: cardTitle,

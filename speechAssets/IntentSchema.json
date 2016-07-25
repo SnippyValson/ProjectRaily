@@ -46,7 +46,7 @@
         },
         {
           "name": "Dat",
-          "type": "AMAZON.DATE"
+          "type": "AMAZON.DatE"
         },
         {
           "name": "StationOne",
@@ -93,8 +93,8 @@
           "type": "LIST_OF_STATIONS"
         },
         {
-          "name": "dat",
-          "type": "AMAZON.DATE"
+          "name": "Dat",
+          "type": "AMAZON.Date"
         }
       ]
     },
@@ -118,6 +118,35 @@
     },
     {
       "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "handleMultipleCasesIntent",
+      "slots": [
+        {
+          "name": "Train",
+          "type": "LIST_OF_TRAINS"
+        },
+        {
+          "name": "StationOne",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "StationTwo",
+          "type": "LIST_OF_STATIONS"
+        },
+        {
+          "name": "ClassTrain",
+          "type": "LIST_OF_CLASSES"
+        },
+        {
+          "name": "Quota",
+          "type": "LIST_OF_QUOTAS"
+        },
+        {
+          "name": "Dat",
+          "type": "AMAZON.Date"
+        }
+      ]
     }
   ]
  }

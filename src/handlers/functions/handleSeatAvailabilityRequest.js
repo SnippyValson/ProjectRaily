@@ -17,6 +17,7 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	var quotaCode;
 	var sessionAttributes=session.attributes;
 	var interText;
+	sessionAttributes.requestType="handleSeatAvailabilityRequest";
 
 	// if(session.attributes.TrainNumber!=undefined)
 	// 	sessionAttributes.TrainNumber=session.attributes.TrainNumber;

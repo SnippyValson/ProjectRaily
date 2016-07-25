@@ -43,6 +43,24 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     intentHandlers.handlePNRStatusIntent = function (intent, session, response) {
         handle6.handlePNRStatusRequest(intent, session, response);
     };
+    intentHandlers.handleMultipleCasesIntent = function (intent, session, response) {
+
+        if(session.attributes.requestType==undefined)
+            response.tell('For help with with Raily, ask help');
+        else
+        {
+            switch(session.attributes.requestType)
+            {
+                case "handleSeatAvailabilityRequest":
+                    handle3.handleSeatAvailabilityRequest(intent, session, response,"name");
+                    break;
+                case "handleTrainBtwRequest":
+                    handle5.handleTrainBtwRequest(intent, session, response);
+                    break;
+            }
+        }
+        
+    };
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
         response.ask("You can ask Indian Railways tell me the details of a train, or, you can say exit... What can I help you with?", "What can I help you with?");
