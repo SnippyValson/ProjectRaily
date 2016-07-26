@@ -139,7 +139,18 @@ Response.prototype = (function () {
                 outputSpeech: createSpeechObject(options.reprompt)
             };
         }
-        if (options.cardTitle && options.cardContent) {
+        if (options.cardTitle && options.cardContent && options.cardImage) {
+            alexaResponse.card = {
+                type: "Standard",
+                title: options.cardTitle,
+                content: options.cardContent,
+                image: {
+                    smallImageUrl: "https://s3.ap-south-1.amazonaws.com/railysamples/small.png",
+                    largeImageUrl: "https://s3.ap-south-1.amazonaws.com/railysamples/large.png"
+                  }
+            };
+        }
+        else if (options.cardTitle && options.cardContent) {
             alexaResponse.card = {
                 type: "Simple",
                 title: options.cardTitle,
@@ -192,6 +203,19 @@ Response.prototype = (function () {
                     },
                 cardTitle: cardTitle,
                 cardContent: cardContent,
+                shouldEndSession: true
+            }));
+        },
+        tellWithCardSSMLImageCard: function (speechOutput, cardTitle, cardContent) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: {
+                    speech:speechOutput,
+                    type:'SSML'
+                    },
+                cardTitle: cardTitle,
+                cardContent: cardContent,
+                cardImage: true,
                 shouldEndSession: true
             }));
         },

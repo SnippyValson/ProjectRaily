@@ -13,7 +13,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	var sessionAttributes=session.attributes;
 	sessionAttributes.requestType="handleTrainBtwRequest";
 
-	if(intent.slots.StationOne.value==undefined && intent.slots.StationTwo.value==undefined)
+	if(intent.slots.StationOne.value==undefined && intent.slots.StationTwo.value==undefined && session.attributes.StationOne==undefined && session.attributes.StationTwo==undefined )
 	{
 		errorText='Please tell the destination and source!';
 		response.askSSML(errorText,errorText,sessionAttributes);
@@ -33,11 +33,14 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 		stationOne=intent.slots.StationOne.value;
 	else if (session.attributes.StationOne!=undefined)
 		stationOne=session.attributes.StationOne;
-	
+
 	if(intent.slots.StationTwo.value!=undefined)
 		stationTwo=intent.slots.StationTwo.value;
 	else if (session.attributes.StationTwo!=undefined)
 		stationTwo=session.attributes.StationTwo;
+
+	sessionAttributes.StationOne=stationOne;
+	sessionAttributes.StationTwo=stationTwo;
 	
 
 	if(intent.slots.Dat.value != undefined )
@@ -82,7 +85,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 				if(takenToday!=0) //Check if we've assumed the date to be today
 				{
 					speechOutput['speech']+='<break strength="medium"/>If you want to search for another day, just say the new date!';
-					response.askWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status'],sessionAttributes);
+					response.askWithCardSSML('<speak>'+speechOutput['speech']+'</speak>','<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status'],sessionAttributes);
 				}
 				response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
 			}

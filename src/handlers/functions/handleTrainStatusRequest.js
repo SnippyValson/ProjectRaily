@@ -47,7 +47,7 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
                 var speechOutput =  events;
                 if(speechOutput['heading']!=null)
                 {
-                    response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+                    response.tellWithCardSSMLImageCard('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ exports.handleTrainStatusRequest=function(intent, session, response, type) {
         }
         else  if(speechOutput['heading']!=null)
         {
-            response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+            response.tellWithCardSSMLImageCard('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
         }
         else
         {

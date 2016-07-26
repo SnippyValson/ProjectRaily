@@ -46,7 +46,7 @@
         },
         {
           "name": "Dat",
-          "type": "AMAZON.DatE"
+          "type": "AMAZON.DATE"
         },
         {
           "name": "StationOne",
@@ -94,7 +94,7 @@
         },
         {
           "name": "Dat",
-          "type": "AMAZON.Date"
+          "type": "AMAZON.DATE"
         }
       ]
     },
@@ -123,8 +123,8 @@
       "intent": "handleMultipleCasesIntent",
       "slots": [
         {
-          "name": "Train",
-          "type": "LIST_OF_TRAINS"
+          "name": "TrainNumber",
+          "type": "AMAZON.NUMBER"
         },
         {
           "name": "StationOne",
@@ -144,7 +144,7 @@
         },
         {
           "name": "Dat",
-          "type": "AMAZON.Date"
+          "type": "AMAZON.DATE"
         }
       ]
     }

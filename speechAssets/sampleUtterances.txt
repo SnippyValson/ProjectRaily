@@ -29,17 +29,6 @@ handleTrainNumberStatusIntent whether train number {TrainNumber} delayed
 handleTrainNumberStatusIntent is train number {TrainNumber} late
 handleTrainNumberStatusIntent train number {TrainNumber}
 
-handleTrainRouteIntent {Train} route
-handleTrainRouteIntent get the {Train} route
-handleTrainRouteIntent what is the route of the {Train}
-handleTrainRouteIntent give {Train} route
-handleTrainRouteIntent what's the route of the {Train}
-handleTrainRouteIntent Provide the list of stations through which the {Train} passes
-handleTrainRouteIntent Give the list of stations through which the {Train} passes
-handleTrainRouteIntent list of stations through which the {Train} passes
-handleTrainRouteIntent list of stations in the route of the {Train}
-handleTrainRouteIntent Give the list of stations in the route of the {Train}
-handleTrainRouteIntent Provide the list of stations in the route of the {Train}
 
 handleTrainNumberRouteIntent train number {TrainNumber} route
 handleTrainNumberRouteIntent get the train number {TrainNumber} route
@@ -55,7 +44,11 @@ handleTrainNumberRouteIntent Provide the list of stations in the route of the {T
 
 handleSeatAvailabilityNumberIntent seat availability of train {TrainNumber}
 handleSeatAvailabilityNumberIntent {ClassTrain} class
+handleSeatAvailabilityNumberIntent class is {ClassTrain}
+handleSeatAvailabilityNumberIntent i want {ClassTrain} class
 handleSeatAvailabilityNumberIntent {Quota} quota
+handleSeatAvailabilityNumberIntent quota is {Quota}
+handleSeatAvailabilityNumberIntent i want {Quota} quota
 
 
 handleTrainArrivalsIntent list of trains arriving at {Station}
@@ -95,6 +88,8 @@ handleTrainBtwIntent give the details of trains between {StationOne} and {Statio
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {Dat}
 handleTrainBtwIntent trains between stations
+handleTrainBtwIntent trains from {StationOne}
+handleTrainBtwIntent trains to {StationTwo}
 
 handlePNRStatusIntent PNR status of {pnrNumber}
 handlePNRStatusIntent PNR status {pnrNumber}
