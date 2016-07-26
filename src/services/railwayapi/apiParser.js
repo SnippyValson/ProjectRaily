@@ -18,6 +18,7 @@ var i=0,j=0,flag=0;
  */
 exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback){
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+    console.log(url);
     var state="";
     var status= "";
     var result="";
@@ -85,6 +86,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
 
     var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
+    console.log(url);
     var station_string="";
     var state = "";
     var result="";
@@ -381,6 +383,7 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
             return;
      }     
      var url =config.getBaseUrl() +'pnr_status/pnr/'+pnr_no+'/apikey/'+ apiKey+'/';
+     console.log(url);
      request(url, function (error, response, body) {
          if(error)
             {
@@ -476,6 +479,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
     var result1="";
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
+console.log(url);
     request(url, function (error, response, body) {
          if(error)
             {
@@ -510,6 +514,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
             {
                   for (i=0; i<stringResult["train"].length; i++){
                          train_no[i]=stringResult["train"][i].number;
+			 train_name[i]=stringResult["train"][i].name;
                          scharr[i]=stringResult["train"][i].scharr;
                          delayarr[i]=stringResult["train"][i].delayarr;
                          delayarr[i]=convertTime(delayarr[i]);
@@ -650,6 +655,5 @@ function numberToName(train_no,eventCallback){
     });
 }
 */
-
 
 
