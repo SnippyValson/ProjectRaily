@@ -44,7 +44,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
        var stringResult = JSON.parse(body);     
        var stat=stringResult.position;
        stat=stat.replace("Train ","");
-       status="Train "+train_no+" "+stat;
+       status="Train Number <say-as interpret-as='digits'>"+train_no+"</say-as> "+stat;
        if (stringResult.response_code=='403')
            {  
                   status="<p>Please try again</p>";
@@ -377,7 +377,7 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
      if(pnr_no.toString().length!=10)
       {
             result="Not a valid PNR number";
-            stat="<p>Not a valid PNR number</p>";
+            stat="Not a valid PNR number";
             var result1={speech:stat,status:result,heading:null};
             eventCallback(result1);
             return;
