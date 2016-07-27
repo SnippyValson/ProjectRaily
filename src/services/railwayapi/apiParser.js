@@ -50,6 +50,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
        stat=stat.replace("Train ","");
        stat=stat.replace(" JN"," JUNCTION");
        stat=stat.replace(" CANT"," CANTONMENT");
+       stat=stat.replace(" CNTL"," CENTRAL");
        if(stat.indexOf("late by -")>-1)
           stat=stat.replace("late by -","is early by ");
        status="Train <say-as interpret-as='digits'>"+train_no+"</say-as> "+stat;
