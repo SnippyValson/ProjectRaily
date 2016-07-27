@@ -50,6 +50,11 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
        stat=stat.replace("Train ","");
        stat=stat.replace(" JN"," JUNCTION");
        stat=stat.replace(" CANT"," CANTONMENT");
+        if(stat.indexOf("-")>-1)
+        {
+            stat.replace("-"," ");
+            stat.replace("late","early");
+        }
        status="Train <say-as interpret-as='digits'>"+train_no+"</say-as> "+stat;
        if (stringResult.response_code=='403')
            {  
