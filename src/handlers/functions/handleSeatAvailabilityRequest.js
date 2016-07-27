@@ -91,6 +91,9 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 
 	if(dateForJson==undefined)
 	{
+		var trainTemp= config.getCorrectedTrainNo(trainNumber);
+		if(trainTemp==-1)
+			response.tell('Invalid train number');
 		interText="<speak>On what date?</speak>";
 		response.askSSML(interText,interText,sessionAttributes);
 	}
