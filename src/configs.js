@@ -83,3 +83,12 @@ exports.getTrainID=function(trainName){
 	});
 	return trainID;
 };
+exports.getCorrectedTrainNo = function(train_no){
+    if(train_no.toString().length==4)
+          train_no='0'+train_no;
+    else if((train_no.toString().length==6)&&(train_no.substring(0,1)==='0'))
+          train_no=train_no.substring(1);
+    else if(train_no.toString().length!=5)
+            return -1;
+    return train_no;
+};
