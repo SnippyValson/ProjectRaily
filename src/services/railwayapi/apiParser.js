@@ -17,6 +17,10 @@ var i=0,j=0,flag=0;
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
 exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback){
+    if(train_no.toString().length==4)
+          train_no='0'+train_no;
+    else if((train_no.toString().length==6)&&(train_no.substring(0,1)==='0'))
+          train_no=train_no.substring(1);
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     console.log(url);
     var state="";
@@ -36,8 +40,9 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
           {
               console.log("Got error: ", e);
               status= "<p>Sorry, we could not process your request</p>";
-              result={speech:status,status:status,heading:null};
-              eventCallback(result);
+              result= "Sorry, we could not process your request\n";
+              result1={speech:status,status:result,heading:null};
+              eventCallback(result1);
               return;
           }
 
@@ -84,7 +89,10 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
  * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
  */
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
-
+    if(train_no.toString().length==4)
+          train_no='0'+train_no;
+    else if((train_no.toString().length==6)&&(train_no.substring(0,1)==='0'))
+          train_no=train_no.substring(1);
     var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
     console.log(url);
     var station_string="";
@@ -165,7 +173,10 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
  
 */
 exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, source, dest, date, _class, quota,eventCallback){
-
+    if(train_no.toString().length==4)
+          train_no='0'+train_no;
+    else if((train_no.toString().length==6)&&(train_no.substring(0,1)==='0'))
+          train_no=train_no.substring(1);
     var date_=new Date(date);
     var dd=date_.getDate();
     var mm=date_.getMonth()+1;
@@ -484,8 +495,8 @@ console.log(url);
          if(error)
             {
                   stat= "Sorry, we could not process your request.";
-                  result={speech:stat,status:stat,heading:null};
-                  eventCallback(result);
+                  result1={speech:stat,status:stat,heading:null};
+                  eventCallback(result1);
                   return;
             }  
          var train_no=[];
