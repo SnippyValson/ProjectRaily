@@ -17,34 +17,40 @@ var i=0,j=0,flag=0;
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
 exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback){
-    var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
-    console.log(url);
     var state="";
     var status= "";
     var result="";
     var result1="";
-     if(train_no.toString().length!=5)
+    var t= config.getCorrectedTrainNo(train_no);
+    if(t==-1)
       {
             result="Not a valid train number";
-            status="<p>Not a valid train number</p>";
+            status="Not a valid train number";
             result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
-     }     
+      }  
+    else
+            train_no=t;   
+    var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
+    console.log(url);
     request(url, function (error, response, body) {
        if(error)
           {
               console.log("Got error: ", e);
               status= "<p>Sorry, we could not process your request</p>";
-              result={speech:status,status:status,heading:null};
-              eventCallback(result);
+              result= "Sorry, we could not process your request\n";
+              result1={speech:status,status:result,heading:null};
+              eventCallback(result1);
               return;
           }
 
        var stringResult = JSON.parse(body);     
        var stat=stringResult.position;
        stat=stat.replace("Train ","");
-       status="Train Number <say-as interpret-as='digits'>"+train_no+"</say-as> "+stat;
+       stat=stat.replace(" JN"," JUNCTION");
+       stat=stat.replace(" CANT"," CANTONMENT");
+       status="Train <say-as interpret-as='digits'>"+train_no+"</say-as> "+stat;
        if (stringResult.response_code=='403')
            {  
                   status="<p>Please try again</p>";
@@ -84,23 +90,25 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
  * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
  */
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
-
-    var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
-    console.log(url);
     var station_string="";
     var state = "";
     var result="";
     var status="";
     var result1="";
-    if(train_no.toString().length!=5)
+    var t= config.getCorrectedTrainNo(train_no);
+    if(t==-1)
       {
             result="Not a valid train number";
             status="<p>Not a valid train number</p>";
-            var result1={speech:status,status:result,heading:null};
+            result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
-     }     
-     request(url, function (error, response, body) {
+      }  
+    else
+            train_no=t;   
+    var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
+    console.log(url);
+    request(url, function (error, response, body) {
        if(error)
           {
               status= "Sorry, we could not process your request.";
@@ -165,7 +173,6 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
  
 */
 exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, source, dest, date, _class, quota,eventCallback){
-
     var date_=new Date(date);
     var dd=date_.getDate();
     var mm=date_.getMonth()+1;
@@ -174,15 +181,18 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var result="";
     var status="";
     var result1="";
-    console.log(train_no);
-    if(train_no.toString().length!=5)
+    var t= config.getCorrectedTrainNo(train_no);
+    if(t==-1)
       {
             result="Not a valid train number";
             status="<p>Not a valid train number</p>";
-            var result1={speech:status,status:result,heading:null};
+            result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
-      }     
+      }  
+    else
+            train_no=t;   
+    console.log(train_no);
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
     var status = ""; 
@@ -484,8 +494,8 @@ console.log(url);
          if(error)
             {
                   stat= "Sorry, we could not process your request.";
-                  result={speech:stat,status:stat,heading:null};
-                  eventCallback(result);
+                  result1={speech:stat,status:stat,heading:null};
+                  eventCallback(result1);
                   return;
             }  
          var train_no=[];
