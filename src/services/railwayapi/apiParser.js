@@ -49,6 +49,8 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
        var stringResult = JSON.parse(body);     
        var stat=stringResult.position;
        stat=stat.replace("Train ","");
+       stat=stat.replace(" JN"," JUNCTION");
+       stat=stat.replace(" CANT"," CANTONMENT");
        status="Train "+train_no+" "+stat;
        if (stringResult.response_code=='403')
            {  
