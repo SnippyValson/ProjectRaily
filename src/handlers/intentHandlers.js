@@ -63,7 +63,9 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     };
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
-        response.ask("You can ask Indian Railways tell me the details of a train, or, you can say exit... What can I help you with?", "What can I help you with?");
+        var speechOutput = "<speak>You can ask raily to get the details of a train, like,<p>live status of the train using the train number,</p> seat availability of the train between two stations on a date for a particular class and quota,<p> or about route of the train using the train number.</p> You can even ask about the details of the trains arriving at a station in the next two or four hours,<p> trains between two stations for a particular date,</p> or, can get the status of your PNR number. For example,<p> you can ask,</p> train number 16346 status,<p> what's the route of the train number 16346,</p> seat availability of train number 16346,<p> trains arriving at aluva,</p> get the PNR status of 1234567891,<p> list of trains between Aluva and New Delhi,etc...</p><p>What can I help you with?</p></speak>";
+        var cardContent= "You can ask raily to get the following details:\n1) Live status of a train using the train number\n2) Seat availability of the train between two stations on a date for a particular class and quota\n3) Route of the train using the train number\n4) Trains arriving at a station in the next two or four hours\n5)Trains between two stations for a particular date\n6) Status of your PNR number.\n For example you can ask, \nTrain number 16346 status,\n what's the route of the train number 16346?,\n seat availability of train number 16346,\n trains arriving at aluva,\n get the PNR status of 1234567891,\n list of trains between Aluva and New Delhi, etc...\n What can I help you with?";
+        response.askWithCardSSML(speechOutput,speechOutput,"Raily help",cardContent);
     };
 
     intentHandlers['AMAZON.StopIntent'] = function (intent, session, response) {
