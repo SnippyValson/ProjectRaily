@@ -272,6 +272,19 @@ Response.prototype = (function () {
                 cardContent: cardContent,
                 shouldEndSession: false
             }));
+        },
+        askWithCardSSMLImageCard: function (speechOutput, repromptSpeech, cardTitle, cardContent,sessionAttributes) {
+            this._context.succeed(buildSpeechletResponse({
+                session: this._session,
+                output: {
+                    speech:speechOutput,
+                    type:'SSML'
+                    },
+                cardTitle: cardTitle,
+                cardContent: cardContent,
+                cardImage: true,
+                shouldEndSession: false
+            }));
         }
     };
 })();
