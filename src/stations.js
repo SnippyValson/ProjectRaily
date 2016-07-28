@@ -1476,6 +1476,8 @@ exports.fillStationCodesTrainName=function(trainName){
     trainName=trainName.replace(" ###"," EXPRESS");
     trainName=trainName.replace(" SP"," SPECIAL");
     trainName=trainName.replace(" SHTBDI"," SHATABDI");
+    trainName=trainName.replace(" PASSR"," PASSENGER");
+
     var finalTrainName=trainName;
     var myarr = trainName.split(" ");
     var fname= myarr[0].split("-");
