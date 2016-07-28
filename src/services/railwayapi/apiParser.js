@@ -318,6 +318,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                    var dest_arrival_time=[];
                    var train_name=[];
                    var days=[];
+                   var trains_remaining="";
                    var index=0;
                    for(i=0; i<stringResult["train"].length; i++){
                         train_name[i]=stringResult["train"][i].name.replace(" EXPRESS"," ###");
@@ -362,7 +363,13 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                                 stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                                 stat=stat+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
                                 stat = stat+"<p> Source departure time : <say-as interpret-as='time'>"+src_departure_time[j]+"</say-as></p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>";//,<p> Days of run "+days[j]+"</p>";
-                         } 
+                         }
+                         else
+                      {
+                          trains_remaining = train_string + "Train "+train_no[j]+ '\n';
+                          trains_remaining =train_string+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+
+                      }
                       train_string = train_string + "Train "+train_no[j]+ '\n';
                       train_string =train_string+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
@@ -375,7 +382,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                 else   
                     stat=stat+ "<p>For further details on these trains and details of all other trains see the result card</p>";
                 stat="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+stat;
-                result={speech:stat,status:train_string,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
+                result={speech:stat,status:train_string,trains_remaining:trains_remaining,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
                 eventCallback(result);  
          }
     });
