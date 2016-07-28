@@ -1537,6 +1537,14 @@ var stations=[
     {
         "name":"Patna",
         "code":"PNBE"
+    },
+    {
+        "name":"Ghandhinagar",
+        "code":"GNC"
+    },
+    {
+        "name":"Ranchi",
+        "code":"RNC"
     }
 ];
 
