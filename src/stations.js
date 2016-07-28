@@ -1447,24 +1447,44 @@ var stations=[
         "code":"LDH"
     },
     {
-        "name":"MAQ",
-        "code":"Mangalore"
+        "name":"Mangalore",
+        "code":"MAQ"
     },
     {
-        "name":"CSTM",
-        "code":"Mumbai"
+        "name":"Mumbai",
+        "code":"CSTM"
     },
     {
-        "name":"BCT",
-        "code":"Mumbai Central"
+        "name":"Mumbai Central",
+        "code":"BCT"
     },
     {
-        "name":"HYB",
-        "code":"Hyderabad"
+        "name":"Hyderabad",
+        "code":"HYB"
     },
     {
-        "name":"ITOA",
-        "code":"Itanagar"
+        "name":"Itanagar",
+        "code":"ITOA"
+    },
+    {
+        "name":"Guwahati",
+        "code":"GHY"
+    },
+    {
+        "name":"Vapi",
+        "code":"VAPI"
+    },
+    {
+        "name":"SML",
+        "code":"Simla"
+    },
+    {
+        "name":"Srinagar",
+        "code":"SNAR"
+    },
+    {
+        "name":"Shillong",
+        "code":"SOC"
     }
 ];
 
