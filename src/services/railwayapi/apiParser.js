@@ -94,6 +94,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
  */
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
     var station_string="";
+    var speech_station_string="";
     var state = "";
     var result="";
     var status="";
@@ -162,8 +163,8 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
                if(stringResult.response_code!='200')
                      station_string="There was an error processing your request.";
                 else
-                    station_string="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+station_string;
-               result={speech:station_string,status:station_string,heading:"Route of Train Number: "+train_no};
+                    speech_station_string="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+station_string;
+               result={speech:speech_station_string,status:station_string,heading:"Route of Train Number: "+train_no};
                eventCallback(result);
            }    
      });
@@ -260,7 +261,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 else
                     status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                  
-                result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
+                result={speech:status,status:"On "+date+"\n"+status,heading:"Seat availability of Train: "+train_no};
                 eventCallback(result);       
          }
     });
