@@ -1485,6 +1485,14 @@ var stations=[
     {
         "name":"Shillong",
         "code":"SOC"
+    },
+    {
+        "name":"Jammu Tawi",
+        "code":"JAT"
+    },
+    {
+        "name":"Silchar",
+        "code":"SCL"
     }
 ];
 
