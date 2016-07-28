@@ -605,9 +605,14 @@ console.log(url);
 
 function convertTime(time)
 {
-    var time_digits=time.split(":");
-    var output=time_digits[0]+" hours and "+time_digits[1]+" minutes.";
-    return output;
+    if(time.indexOf(":")>-1)
+    {
+        var time_digits = time.split(":");
+        var output = time_digits[0] + " hours and " + time_digits[1] + " minutes.";
+        return output;
+    }
+    else
+        return time;
 
 }
 
