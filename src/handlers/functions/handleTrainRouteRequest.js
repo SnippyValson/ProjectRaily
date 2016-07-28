@@ -24,7 +24,7 @@ exports.handleTrainRouteRequest=function(intent, session, response,type) {
     
 	    if(speechOutput['heading']!=null)	
 	   	{
-	   		response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+	   		response.tellWithCardSSMLImageCard('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
     	}
     	else
     	{
