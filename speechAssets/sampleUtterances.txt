@@ -87,9 +87,6 @@ handleTrainBtwIntent give the details of trains between {StationOne} and {Statio
 handleTrainBtwIntent give the details of trains between {StationOne} and {StationTwo} on {Dat}
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {Dat}
-handleTrainBtwIntent trains between stations
-handleTrainBtwIntent trains from {StationOne}
-handleTrainBtwIntent trains to {StationTwo}
 
 handlePNRStatusIntent PNR status of {pnrNumber}
 handlePNRStatusIntent PNR status {pnrNumber}
