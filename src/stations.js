@@ -1445,6 +1445,10 @@ var stations=[
     {
         "name":"Ludhiana Junction",
         "code":"LDH"
+    },
+    {
+        "name":"MAQ",
+        "code":"Mangalore"
     }
 ];
 
