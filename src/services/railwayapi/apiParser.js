@@ -368,8 +368,8 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                          }
                          else
                       {
-                          trains_remaining = train_string + "Train "+train_no[j]+ '\n';
-                          trains_remaining =train_string+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+                          trains_remaining = trains_remaining + "Train "+train_no[j]+ '\n';
+                          trains_remaining =trains_remaining+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
 
                       }
                       train_string = train_string + "Train "+train_no[j]+ '\n';
