@@ -496,10 +496,10 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
 
 exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eventCallback){
     var result="";
-    var status="<speak>";
+    var status="";
     var stat;
     var result1="";
-    var remaining="<speak>";
+    var remaining="";
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 console.log(url);
@@ -535,6 +535,7 @@ console.log(url);
             } 
          else
             {
+              console.log('Reached else');
                   for (i=0; i<stringResult["train"].length; i++){
                          train_no[i]=stringResult["train"][i].number;
 			 train_name[i]=stringResult["train"][i].name;
@@ -596,6 +597,7 @@ console.log(url);
                      result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                      if(m>4)
                         {
+                          console.log('reach'+m);
                               remaining = remaining + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                               remaining=remaining+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
                               remaining=remaining+" <p>Scheduled arrival "+scharr[j]+"</p>";
@@ -613,7 +615,6 @@ console.log(url);
                                    remaining=remaining+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
                         }
                    }
-                remaining+="</speak>";
                 if(i<4)
                        remaining="";
                 if(stringResult.response_code!='200'){
@@ -624,7 +625,6 @@ console.log(url);
                 else
                 {
                     status=status+ "<p>For details of other trains see the result card</p>";
-                    status+="</speak>";
                 }
                 var result1={speech:status,status:result,heading:"Train arrivals at station: "+stationHere.getStationName(station_code)+" ("+station_code+")",remaining:remaining};
                 eventCallback(result1);    
