@@ -260,7 +260,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 else
                     status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                  
-                result={speech:status,status:status,heading:"Seat availability of Train: "+train_no};
+                result={speech:status,status:"On "+date+"\n"+status,heading:"Seat availability of Train: "+train_no};
                 eventCallback(result);       
          }
     });
