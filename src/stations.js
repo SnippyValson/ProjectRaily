@@ -1445,6 +1445,98 @@ var stations=[
     {
         "name":"Ludhiana Junction",
         "code":"LDH"
+    },
+    {
+        "name":"Mangalore",
+        "code":"MAQ"
+    },
+    {
+        "name":"Mumbai",
+        "code":"CSTM"
+    },
+    {
+        "name":"Mumbai Central",
+        "code":"BCT"
+    },
+    {
+        "name":"Hyderabad",
+        "code":"HYB"
+    },
+    {
+        "name":"Itanagar",
+        "code":"ITOA"
+    },
+    {
+        "name":"Guwahati",
+        "code":"GHY"
+    },
+    {
+        "name":"Vapi",
+        "code":"VAPI"
+    },
+    {
+        "name":"SML",
+        "code":"Simla"
+    },
+    {
+        "name":"Srinagar",
+        "code":"SNAR"
+    },
+    {
+        "name":"Shillong",
+        "code":"SOC"
+    },
+    {
+        "name":"Jammu Tawi",
+        "code":"JAT"
+    },
+    {
+        "name":"Silchar",
+        "code":"SCL"
+    },
+    {
+        "name":"Kohima",
+        "code":"KHMX"
+    },
+    {
+        "name":"Bubaneshwar",
+        "code":"BBS"
+    },
+    {
+        "name":"Pondicherry",
+        "code":"PDY"
+    },
+    {
+        "name":"Chandigarh",
+        "code":"CDG"
+    },
+    {
+        "name":"Jaipur",
+        "code":"JP"
+    },
+    {
+        "name":"Agartala",
+        "code":"AGTL"
+    },
+    {
+        "name":"Lucknow",
+        "code":"LKO"
+    },
+    {
+        "name":"Dehradun",
+        "code":"DDN"
+    },
+    {
+        "name":"KOLKATA",
+        "code":"KOAA"
+    },
+    {
+        "name":"Bhopal",
+        "code":"BPL"
+    },
+    {
+        "name":"Patna",
+        "code":"PNBE"
     }
 ];
 
@@ -1476,6 +1568,8 @@ exports.fillStationCodesTrainName=function(trainName){
     trainName=trainName.replace(" ###"," EXPRESS");
     trainName=trainName.replace(" SP"," SPECIAL");
     trainName=trainName.replace(" SHTBDI"," SHATABDI");
+    trainName=trainName.replace(" PASSR"," PASSENGER");
+
     var finalTrainName=trainName;
     var myarr = trainName.split(" ");
     var fname= myarr[0].split("-");
