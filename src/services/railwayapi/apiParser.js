@@ -499,6 +499,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
     var status="<speak>";
     var stat;
     var result1="";
+    var remaining="<speak>";
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 console.log(url);
@@ -506,7 +507,7 @@ console.log(url);
          if(error)
             {
                   stat= "Sorry, we could not process your request.";
-                  result1={speech:stat,status:stat,heading:null};
+                  result1={speech:stat,status:stat,heading:null,remaining:""};
                   eventCallback(result1);
                   return;
             }  
@@ -522,7 +523,7 @@ console.log(url);
             {  
                   stat="<p>Please try again</p>";
                   result1=null;
-                  result={speech:stat,status:result1,heading:null};
+                  result={speech:stat,status:result1,heading:null,remaining:""};
                   if(flag==1)
                     eventCallback(result);
                   if(flag<1)
@@ -593,19 +594,39 @@ console.log(url);
                          delaydep[j]="Train departure on right time.\n";
                      result=result+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
                      result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
-               
+                     if(m>4)
+                        {
+                              remaining = remaining + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
+                              remaining=remaining+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
+                              remaining=remaining+" <p>Scheduled arrival "+scharr[j]+"</p>";
+                              if(delayarr[j]=="Right time")
+                                   remaining+=" <p>Train arrived at right time</p> ";
+                              else
+                                   remaining=remaining+",<p> Delayed arrival *"+delayarr[j]+"*</p>, ";
+                              if((actdep[j]=="Right time")&&(delaydep[j]=="Right time"))
+                                   remaining+="<p>Scheduled departure "+schdep[j]+"</p>";
+                              else
+                                   remaining+="<p>Scheduled departure "+schdep[j]+"</p>,<p> actual departure "+actdep[j]+"</p>";
+                              if(delaydep[j]=="Right time")
+                                   remaining+=" <p>Train departure on right time</p> ";
+                              else
+                                   remaining=remaining+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
+                        }
                    }
-
+                remaining+="</speak>";
+                if(i<4)
+                       remaining="";
                 if(stringResult.response_code!='200'){
                        result="There was an error processing your request.";
                        status=result;
+                       remaining="";
                   }
                 else
                 {
                     status=status+ "<p>For details of other trains see the result card</p>";
                     status+="</speak>";
                 }
-                var result1={speech:status,status:result,heading:"Train arrivals at station: "+stationHere.getStationName(station_code)+" ("+station_code+")"};
+                var result1={speech:status,status:result,heading:"Train arrivals at station: "+stationHere.getStationName(station_code)+" ("+station_code+")",remaining:remaining};
                 eventCallback(result1);    
           }
     });
