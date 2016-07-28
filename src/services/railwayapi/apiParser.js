@@ -384,7 +384,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                 else   
                     stat=stat+ "<p>For further details on these trains and details of all other trains see the result card</p>";
                 stat="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+stat;
-                result={speech:stat,status:train_string,trains_remaining:trains_remaining,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
+                result={speech:stat,status:train_string,remaining:trains_remaining,heading:"Trains running between "+stationHere.getStationName(source)+" and "+stationHere.getStationName(dest)};
                 eventCallback(result);  
          }
     });
