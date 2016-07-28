@@ -1493,6 +1493,46 @@ var stations=[
     {
         "name":"Silchar",
         "code":"SCL"
+    },
+    {
+        "name":"Kohima",
+        "code":"KHMX"
+    },
+    {
+        "name":"Bubaneshwar",
+        "code":"BBS"
+    },
+    {
+        "name":"Pondicherry",
+        "code":"PDY"
+    },
+    {
+        "name":"Chandigarh",
+        "code":"CDG"
+    },
+    {
+        "name":"Jaipur",
+        "code":"JP"
+    },
+    {
+        "name":"Agartala",
+        "code":"AGTL"
+    },
+    {
+        "name":"Lucknow",
+        "code":"LKO"
+    },
+    {
+        "name":"Dehradun",
+        "code":"DDN"
+    },
+    {
+        "name":"KOLKATA",
+        "code":"KOAA"
+    },
+    {
+        "name":"Bhopal",
+        "code":"BPL"
     }
 ];
 

@@ -371,3 +371,13 @@ Srinagar
 Shillong
 Jammu Tawi
 Silchar
+Kohima
+Bubaneshwar
+Pondicherry
+Chandigarh
+Jaipur
+Agartala
+Lucknow
+Dehradun
+Kolkata
+Bhopal
