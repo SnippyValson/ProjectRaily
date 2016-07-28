@@ -1449,6 +1449,14 @@ var stations=[
     {
         "name":"MAQ",
         "code":"Mangalore"
+    },
+    {
+        "name":"CSTM",
+        "code":"Mumbai"
+    },
+    {
+        "name":"BCT",
+        "code":"Mumbai Central"
     }
 ];
 
