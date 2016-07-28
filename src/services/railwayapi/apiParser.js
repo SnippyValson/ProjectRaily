@@ -364,12 +364,14 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
                          {
                                 stat = stat + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
                                 stat=stat+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
-                                stat = stat+"<p> Source departure time : <say-as interpret-as='time'>"+src_departure_time[j]+"</say-as></p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>";//,<p> Days of run "+days[j]+"</p>";
+                                stat = stat+"<p> Source departure time : <say-as interpret-as='time'>"+src_departure_time[j]+"</say-as></p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>";
                          }
                          else
                       {
-                          trains_remaining = trains_remaining + "Train "+train_no[j]+ '\n';
-                          trains_remaining =trains_remaining+"Train name :"+stationHere.fillStationCodesTrainName(train_name[j])+" \nSource departure time :"+src_departure_time[j]+"\n Destination arrival time "+dest_arrival_time[j]+"\n Days of run "+days[j]+"\n";
+
+                          trains_remaining = trains_remaining + "<p>Train <say-as interpret-as='digits'>"+train_no[j]+ '</say-as> </p>';
+                          trains_remaining=trains_remaining+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
+                          trains_remaining = trains_remaining+"<p> Source departure time : <say-as interpret-as='time'>"+src_departure_time[j]+"</say-as></p>,<p> Destination arrival time "+dest_arrival_time[j]+"</p>";
 
                       }
                       train_string = train_string + "Train "+train_no[j]+ '\n';
