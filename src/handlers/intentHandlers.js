@@ -75,7 +75,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
             response.tell('Didn\'t get why you told YES. For help with with Raily, say help');
         else
         {
-            response.tellSSML("<speak><p>Here are the remaining train details</p> "+session.attributes.repeatText+'</speak>');
+            response.tellSSML("<speak><audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' /><p>Here are the remaining train details</p> "+session.attributes.repeatText+'</speak>');
         }
     };
     intentHandlers['AMAZON.NoIntent'] = function (intent, session, response) {

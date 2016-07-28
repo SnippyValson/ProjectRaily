@@ -591,12 +591,7 @@ console.log(url);
                             else
                                 status=status+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
                           }
-                     if(delayarr[j]=="Right time")
-                         delayarr[j]="Train arrived on right time.\n";
-                     if(delaydep[j]=="Right time")
-                         delaydep[j]="Train departure on right time.\n";
-                     result=result+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
-                     result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
+                     
                      if(m>4)
                         {
                           console.log('reach'+m);
@@ -616,6 +611,14 @@ console.log(url);
                               else
                                    remaining=remaining+",<p> Delayed departure *"+delaydep[j]+"*</p>, ";
                         }
+
+                     //optimising for card
+                     if(delayarr[j]=="Right time")
+                         delayarr[j]="Train arrived on right time.\n";
+                     if(delaydep[j]=="Right time")
+                         delaydep[j]="Train departure on right time.\n";
+                     result=result+" "+stationHere.fillStationCodesTrainName(train_name[j])+" ";
+                     result=result+"\n Scheduled arrival "+scharr[j]+"\n Delayed arrival "+delayarr[j]+"\n Scheduled departure "+schdep[j]+"\n actual departure "+actdep[j]+"\n delayed departure "+delaydep[j]+"\n";
                    }
                 if(i<4)
                        remaining="";
