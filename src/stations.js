@@ -1533,6 +1533,10 @@ var stations=[
     {
         "name":"Bhopal",
         "code":"BPL"
+    },
+    {
+        "name":"Patna",
+        "code":"PNBE"
     }
 ];
 
