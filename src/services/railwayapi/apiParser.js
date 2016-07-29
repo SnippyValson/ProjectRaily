@@ -1,8 +1,6 @@
 'use strict';
 var config = require('../../configs');
 var stationHere = require('../../stations');
-
-//var http = require('http');
 var request = require('./request/index.js');
 
 /**
@@ -88,8 +86,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
 
 
 /**
- * This function will return the stations in a route as a string.
- * Sample output : KANYAKUMARI,Source,14:10,1,  NAGARCOIL JN,14:30,14:35,1,  KULITTHURAI,15:14,15:15,1,  TRIVANDRUM CNTL,15:55,16:00,1,  KOLLAM JN,17:00,17:05,1,  KAYANKULAM,17:34,17:36,1 (Station     **name,Arriavl time,Departure time,Day of arrival.) 
+ * This function will return the stations in a route as an object.
  */
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
     var station_string="";
@@ -170,9 +167,8 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
 };
 
 /**
- * This function will return the seat availability as string.
- * Sample output : AVAILABLE 11  
- 
+ * This function will return the number of seats availabile in a train as an object.
+ *
 */
 exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, source, dest, date, _class, quota,eventCallback){
     var date_=new Date(date);
@@ -270,10 +266,8 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
 
 
 /**
- * This function will return the train numbers of trains between stations as a string.
- * Sample output : 12617  16382  16346  19577  16334  
- 
-*/
+ * This function will return the train numbers of trains between stations as an object.*
+ */
 exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallback){
          var mon= date.substring(5,7);
          var day= date.substring(8);
@@ -391,6 +385,9 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
    return stat;
 };
 
+/*
+ * This function will return the current status of a PNR number as an object.
+ */
 exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
     var result="";
     var stat="";
