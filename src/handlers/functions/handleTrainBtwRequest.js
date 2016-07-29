@@ -82,12 +82,14 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 
 			if(speechOutput['heading']!=null)
 			{
-				if(takenToday!=0) //Check if we've assumed the date to be today
-				{
-					speechOutput['speech']+='<break strength="medium"/>If you want to search for another day, just say the new date!';
-					response.askWithCardSSML('<speak>'+speechOutput['speech']+'</speak>','<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status'],sessionAttributes);
-				}
-				response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+					if(speechOutput['remaining']=="")
+						response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+					else
+					{
+						sessionAttributes.repeat="ON";
+						sessionAttributes.repeatText=speechOutput['remaining'];
+						response.askWithCardSSML('<speak>'+speechOutput['speech']+' <p> Do you want to hear about all the other trains?</p></speak>','<speak>'+speechOutput['speech']+'</speak>' , speechOutput['heading'], speechOutput['status'],sessionAttributes);
+					}
 			}
 			else
 			{

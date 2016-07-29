@@ -9,23 +9,16 @@ var handle6=require('./functions/handlePNRStatusRequest');
 
 var registerIntentHandlers = function (intentHandlers, skillContext) {
 
-    intentHandlers.handleTrainStatusIntent = function (intent, session, response) {
-        handle1.handleTrainStatusRequest(intent, session, response,"name");
-    };
-
     intentHandlers.handleTrainNumberStatusIntent = function (intent, session, response) {
         handle1.handleTrainStatusRequest(intent, session, response,"number");
     };
 
-    intentHandlers.handleTrainRouteIntent = function (intent, session, response) {
-        handle2.handleTrainRouteRequest(intent, session, response);
-    };
     intentHandlers.handleTrainNumberRouteIntent = function (intent, session, response) {
         handle2.handleTrainRouteRequest(intent, session, response,"number");
     };
 
     intentHandlers.handleSeatAvailabilityIntent = function (intent, session, response) {
-        handle3.handleSeatAvailabilityRequest(intent, session, response,"name");
+        handle3.handleSeatAvailabilityRequest(intent, session, response);
     };
 
     intentHandlers.handleSeatAvailabilityNumberIntent = function (intent, session, response) {
@@ -46,16 +39,16 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     intentHandlers.handleMultipleCasesIntent = function (intent, session, response) {
 
         if(session.attributes.requestType==undefined)
-            response.tell('For help with with Raily, ask help');
+            response.tell('For help with with Raily, say help');
         else
         {
             switch(session.attributes.requestType)
             {
                 case "handleSeatAvailabilityRequest":
-                    handle3.handleSeatAvailabilityRequest(intent, session, response,"name");
+                    handle3.handleSeatAvailabilityRequest(intent, session, response);
                     break;
                 case "handleTrainBtwRequest":
-                    handle5.handleTrainBtwRequest(intent, session, response);
+                    handle4.handleTrainBtwRequest(intent, session, response);
                     break;
             }
         }
@@ -75,6 +68,22 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     };
     intentHandlers['AMAZON.CancelIntent'] = function (intent, session, response) {
         var speechOutput = "Goodbye";
+        response.tell(speechOutput);
+    };
+    intentHandlers['AMAZON.YesIntent'] = function (intent, session, response) {
+        if(session.attributes.repeat==undefined)
+            response.tell('Didn\'t get why you told YES. For help with with Raily, say help');
+        else
+        {
+            response.tellSSML("<speak><audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' /><p>Here are the remaining train details</p> "+session.attributes.repeatText+'</speak>');
+        }
+    };
+    intentHandlers['AMAZON.NoIntent'] = function (intent, session, response) {
+        var speechOutput
+        if(session.attributes.repeat==undefined)
+            speechOutput = 'Didn\'t get why you told NO. For help with with Raily, say help';
+        else
+            speechOutput = "Okay";
         response.tell(speechOutput);
     };
 

@@ -9,6 +9,7 @@ exports.handleTrainArrivalsRequest=function(intent, session, response) {
 
 	var station=intent.slots.Station.value;
 	var durationHours;
+	var sessionAttributes=session.attributes;
 	if(intent.slots.duration !== undefined && intent.slots.duration !== null)
 	{	
 		durationHours=intent.slots.duration.value;
@@ -28,7 +29,14 @@ exports.handleTrainArrivalsRequest=function(intent, session, response) {
 
 			if(speechOutput['heading']!=null)
 			{
-				response.tellWithCardSSML(speechOutput['speech'], speechOutput['heading'] , speechOutput['status']);
+				if(speechOutput['remaining']=="")
+					response.tellWithCardSSML('<speak>'+speechOutput['speech']+'</speak>', speechOutput['heading'] , speechOutput['status']);
+				else
+				{
+					sessionAttributes.repeat="ON";
+					sessionAttributes.repeatText=speechOutput['remaining'];
+					response.askWithCardSSML('<speak>'+speechOutput['speech']+' <p> Do you want to hear about all the other trains?</p></speak>','<speak>'+speechOutput['speech']+'</speak>' , speechOutput['heading'], speechOutput['status'],sessionAttributes);
+				}
 			}
 			else
 			{

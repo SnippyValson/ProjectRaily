@@ -4,7 +4,7 @@ var config=require('../../configs');
 var station=require('../../stations');
 var railways=require('../../services/railwayapi/apiParser');
 
-exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
+exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 	var dateForJson;
 	var trainNumber;
 	var stationOne;
@@ -19,18 +19,7 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response,type) {
 	var interText;
 	sessionAttributes.requestType="handleSeatAvailabilityRequest";
 
-	// if(session.attributes.TrainNumber!=undefined)
-	// 	sessionAttributes.TrainNumber=session.attributes.TrainNumber;
-	// if(session.attributes.Dat!=undefined)
-	// 	sessionAttributes.Dat=session.attributes.Dat;
-	// if(session.attributes.StationOne!=undefined)
-	// 	sessionAttributes.StationOne=session.attributes.StationOne;
-	// if(session.attributes.StationTwo!=undefined)
-	// 	sessionAttributes.StationTwo=session.attributes.StationTwo;
-	// if(session.attributes.StationTwo!=undefined)
-	// 	sessionAttributes.ClassTrain=session.attributes.StationTwo;
-	// if(session.attributes.StationTwo!=undefined)
-	// 	sessionAttributes.Quota=session.attributes.StationTwo;
+
 
 	if(intent.slots.TrainNumber.value != undefined )
 	{
