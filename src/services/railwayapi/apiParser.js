@@ -17,7 +17,6 @@ var i=0,j=0,flag=0;
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
  */
 exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback){
-    var state="";
     var status= "";
     var result="";
     var result1="";
@@ -37,7 +36,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
     request(url, function (error, response, body) {
        if(error)
           {
-              console.log("Got error: ", e);
+              console.log("Got error: ", error);
               status= "<p>Sorry, we could not process your request</p>";
               result= "Sorry, we could not process your request\n";
               result1={speech:status,status:result,heading:null};
@@ -84,7 +83,7 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
      });
     
    return status;
-}
+};
 
 
 
@@ -95,7 +94,6 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
 exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
     var station_string="";
     var speech_station_string="";
-    var state = "";
     var result="";
     var status="";
     var result1="";
@@ -169,7 +167,7 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
            }    
      });
  return status;
-}
+};
 
 /**
  * This function will return the seat availability as string.
@@ -200,7 +198,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     console.log(train_no);
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
-    var status = ""; 
+    status = "";
     request(url,{timeout: 7000}, function (error, response, body) {
        if(error)
           {  
@@ -267,7 +265,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
          }
     });
   return status;
-}
+};
 
 
 
@@ -391,7 +389,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
          }
     });
    return stat;
-}
+};
 
 exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
     var result="";
@@ -494,7 +492,7 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
           }
     });
    return stat;
-}
+};
 
 exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eventCallback){
     var result="";
@@ -633,7 +631,7 @@ console.log(url);
           }
     });
    return status;
-}
+};
 
 function convertTime(time)
 {
