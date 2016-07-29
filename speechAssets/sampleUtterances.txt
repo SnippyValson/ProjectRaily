@@ -37,12 +37,14 @@ handleTrainNumberRouteIntent give train number {TrainNumber} route
 handleTrainNumberRouteIntent what's the route of the train number {TrainNumber}
 handleTrainNumberRouteIntent Provide the list of stations through which the train number {TrainNumber} passes
 handleTrainNumberRouteIntent Give the list of stations through which the {TrainNumber} passes
-handleTrainNumberRouteIntent list of stations through which the {TrainNumber} passes
+handleTrainNumberRouteIntent list of stations through which train {TrainNumber} passes
 handleTrainNumberRouteIntent list of stations in the route of the {TrainNumber}
 handleTrainNumberRouteIntent Give the list of stations in the route of the {TrainNumber}
 handleTrainNumberRouteIntent Provide the list of stations in the route of the {TrainNumber}
 
 handleSeatAvailabilityNumberIntent seat availability of train {TrainNumber}
+handleSeatAvailabilityNumberIntent seat availability of train {TrainNumber} on {Dat} from {StationOne} to {StationTwo} in {ClassTrain} class with {Quota} quota
+handleSeatAvailabilityNumberIntent seat availability of train number {TrainNumber}
 handleSeatAvailabilityNumberIntent {ClassTrain} class
 handleSeatAvailabilityNumberIntent class is {ClassTrain}
 handleSeatAvailabilityNumberIntent i want {ClassTrain} class
@@ -70,6 +72,9 @@ handleTrainArrivalsIntent trains arriving at {Station} within the duration of {d
 
 handleTrainBtwIntent trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent trains between {StationOne} and {StationTwo} on {Dat}
+handleTrainBtwIntent trains between stations
+handleTrainBtwIntent trains from {StationOne} is my choice
+handleTrainBtwIntent trains to {StationTwo}
 handleTrainBtwIntent trains between {StationOne} and {StationTwo} {Dat}
 handleTrainBtwIntent list of trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent list of trains between {StationOne} and {StationTwo} on {Dat}
@@ -87,6 +92,7 @@ handleTrainBtwIntent give the details of trains between {StationOne} and {Statio
 handleTrainBtwIntent give the details of trains between {StationOne} and {StationTwo} on {Dat}
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo}
 handleTrainBtwIntent provide the details of trains between {StationOne} and {StationTwo} on {Dat}
+
 
 handlePNRStatusIntent PNR status of {pnrNumber}
 handlePNRStatusIntent PNR status {pnrNumber}

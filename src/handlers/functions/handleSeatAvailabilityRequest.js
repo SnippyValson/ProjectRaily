@@ -17,6 +17,7 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 	var quotaCode;
 	var sessionAttributes=session.attributes;
 	var interText;
+	var interTextRepromt;
 	sessionAttributes.requestType="handleSeatAvailabilityRequest";
 
 
@@ -84,26 +85,30 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 		if(trainTemp==-1)
 			response.tell('Invalid train number');
 		interText="<speak>On what date?</speak>";
-		response.askSSML(interText,interText,sessionAttributes);
+		interTextRepromt="On what date?";
+		response.askSSML(interText,interTextRepromt,sessionAttributes);
 	}
 	else if (stationOne==undefined)
 	{
 		if(stationTwo==undefined)
 		{
 			interText='<speak>From where? And to  where?</speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interTextRepromt='From where? And to  where?';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 		else
 		{
 			interText='<speak>From where are you boarding?</speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interTextRepromt='From where are you boarding?';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 
 	}
 	else if (stationTwo==undefined)
 	{
 		interText='<speak>Where is your journey to?</speak>';
-		response.askSSML(interText,interText,sessionAttributes);
+		interTextRepromt='Where is your journey to?';
+		response.askSSML(interText,interTextRepromt,sessionAttributes);
 	}
 	else if (classTrain==undefined)
 	{
@@ -112,20 +117,23 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 		if(stationOneCode==-1 || stationTwoCode==-1)
 		{
 			interText='<speak>Sorry! The station names are invalid, please repeat your starting and ending point.</speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interTextRepromt='Sorry! The station names are invalid, please repeat your starting and ending point.';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 		else
 		{
 			//Get classes available
-			interText='<speak>Which class do you want? <p>Sleeper class,First class AC,AC Two tier,AC three tier, Seater class or, AC chair car </p></speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interText='<speak>Which class do you want? <p>Sleeper class,AC first class,AC Two tier,AC three tier, Seater class or, AC chair car </p></speak>';
+			interTextRepromt='Which class do you want?';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 	}
 	else if (quota==undefined)
 	{
 		//Get quotas available
 		interText='<speak><p>Normally people choose General Quota</p>Which Quota do you want?</speak>';
-		response.askSSML(interText,interText,sessionAttributes);
+		interTextRepromt='Which Quota do you want?';
+		response.askSSML(interText,interTextRepromt,sessionAttributes);
 	}
 	else
 	{
@@ -138,12 +146,14 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 		if(classTrainCode==-1)
 		{
 			interText='<speak>Please tell again the class you need.</speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interTextRepromt='Please tell again the class you need.';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 		if(quotaCode==-1)
 		{
 			interText='<speak>Please tell again the quota you need.</speak>';
-			response.askSSML(interText,interText,sessionAttributes);
+			interTextRepromt='Please tell again the quota you need.';
+			response.askSSML(interText,interTextRepromt,sessionAttributes);
 		}
 
 		if(stationOneCode!=-1 && stationTwoCode!=-1)
@@ -177,9 +187,11 @@ function convertClassCode(classTrain)
 	switch(classTrain.toUpperCase())
 	{
 		case "SLEEPER": return "SL";
-		case "FIRST CLASS AC": return "1A";
+		case "AC FIRST": return "1A";
 		case "AC TWO TIER": return "2A";
+		case "AC 2 TIER": return "2A";
 		case "AC THREE TIER": return "3A";
+		case "AC 3 TIER": return "3A";
 		case "SEATER": return "2S";
 		case "AC CHAIR CAR": return "CC";
 		default: return -1;

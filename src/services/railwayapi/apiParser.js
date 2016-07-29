@@ -209,7 +209,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                                 return;
                           }
                 }
-              status= "<p>Railway server is slow</p> <p>Do you want to try again</p>";
+              status= "<p>Sorry! Railway server is slow</p>";
               result={speech:status,status:status,heading:null};
               eventCallback(result);
               return;
@@ -234,7 +234,15 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
           {
                 var index3=0;
                 var index4=0;
-                var status=stringResult.availability[0].status;
+                var status;
+                if(stringResult.availability[0]==undefined)
+                {
+                  status= "<p>Sorry! Railway server is slow</p> ";
+                  result={speech:status,status:status,heading:null};
+                  eventCallback(result);  
+                  return status;
+                }
+                status=stringResult.availability[0].status;
                 var class_name=stringResult.class.class_name;
                 var quota_name=stringResult.quota.quota_name;
                 console.log(status);
