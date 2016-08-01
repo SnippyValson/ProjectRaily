@@ -219,6 +219,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
     status = "";
+    console.log(tim_out);
     request(url,{timeout: tim_out}, function (error, response, body) {
        if(error)
           {  
@@ -571,6 +572,7 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
     var result1="";
     var remaining="";
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
+    status+="Within "+hrs+" hours at "+stationHere.getStationName(station_code)+", the following trains will arrive";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 console.log(url);
     request(url,{timeout: tim_out}, function (error, response, body) {
