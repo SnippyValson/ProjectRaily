@@ -272,7 +272,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 var quota_name=stringResult.quota.quota_name;
                 console.log(status);
               var train_name=stationHere.fillStationCodesTrainName(stringResult.train_name);
-              var head="Status of train "+train_name+" ";
+              var head="<p>Seat availability of  train "+train_name+" </p>";
                 if(status.indexOf('RAC')>-1)
                    {
                          index3=status.indexOf("/RAC");
