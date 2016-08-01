@@ -271,14 +271,15 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 var class_name=stringResult.class.class_name;
                 var quota_name=stringResult.quota.quota_name;
                 console.log(status);
+              var train_name=stationHere.fillStationCodesTrainName(stringResult.train_name);
+              var head="Status of train "+train_name+" ";
                 if(status.indexOf('RAC')>-1)
                    {
                          index3=status.indexOf("/RAC");
                          var rac=status.substring(index3+4);
                          status=head+rac+" seats are in RAC for "+class_name+","+quota_name;
                    }
-                var train_name=stationHere.fillStationCodesTrainName(stringResult.train_name);
-                var head="Status of train "+train_name+" ";
+
                 if(status.indexOf('AVAILABLE')>-1)
                    {
                         var index_=status.indexOf('AVAILABLE');
