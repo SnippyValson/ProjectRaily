@@ -328,6 +328,7 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
          var url=config.getBaseUrl()+"between/source/"+source+"/dest/"+dest+"/date/"+date+"/apikey/"+apiKey+"/";
          console.log(url);
          var stat="";
+         var status="";
          var train_string="";
          var result="";
          var result1="";
@@ -455,6 +456,7 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
     var stat="";
     var result1="";
     var train_name="Hi";
+    var status="";
      if(pnr_no.toString().length!=10)
       {
             result="Not a valid PNR number";
