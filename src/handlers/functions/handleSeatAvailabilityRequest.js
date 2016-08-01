@@ -190,8 +190,10 @@ function convertClassCode(classTrain)
 		case "AC FIRST": return "1A";
 		case "AC TWO TIER": return "2A";
 		case "AC 2 TIER": return "2A";
+		case "AC2 TIER": return "2A";
 		case "AC THREE TIER": return "3A";
 		case "AC 3 TIER": return "3A";
+		case "AC3 TIER": return "3A";
 		case "SEATER": return "2S";
 		case "AC CHAIR CAR": return "CC";
 		default: return -1;
