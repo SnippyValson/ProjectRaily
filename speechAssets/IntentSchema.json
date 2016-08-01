@@ -1,29 +1,11 @@
 {
   "intents": [
     {
-      "intent": "handleTrainStatusIntent",
-      "slots": [
-        {
-          "name": "Train",
-          "type": "LIST_OF_TRAINS"
-        }
-      ]
-    },
-    {
       "intent": "handleTrainNumberStatusIntent",
       "slots": [
         {
           "name": "TrainNumber",
           "type": "AMAZON.NUMBER"
-        }
-      ]
-    },
-    {
-      "intent": "handleTrainRouteIntent",
-      "slots": [
-        {
-          "name": "Train",
-          "type": "LIST_OF_TRAINS"
         }
       ]
     },

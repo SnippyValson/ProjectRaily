@@ -39,7 +39,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     intentHandlers.handleMultipleCasesIntent = function (intent, session, response) {
 
         if(session.attributes.requestType==undefined)
-            response.tell('For help with with Raily, say help');
+            response.ask('For help with with Raily, say help');
         else
         {
             switch(session.attributes.requestType)
@@ -72,7 +72,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
     };
     intentHandlers['AMAZON.YesIntent'] = function (intent, session, response) {
         if(session.attributes.repeat==undefined)
-            response.tell('Didn\'t get why you told YES. For help with with Raily, say help');
+            response.ask('Didn\'t get why you told YES. For help with with Raily, say help');
         else
         {
             response.tellSSML("<speak><audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' /><p>Here are the remaining train details</p> "+session.attributes.repeatText+'</speak>');
@@ -84,7 +84,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
             speechOutput = 'Didn\'t get why you told NO. For help with with Raily, say help';
         else
             speechOutput = "Okay";
-        response.tell(speechOutput);
+        response.ask(speechOutput);
     };
 
 };

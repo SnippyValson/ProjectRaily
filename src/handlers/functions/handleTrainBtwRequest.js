@@ -11,6 +11,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	var takenToday=0;
 	var errorText;
 	var sessionAttributes=session.attributes;
+
 	sessionAttributes.requestType="handleTrainBtwRequest";
 
 	if(intent.slots.StationOne.value==undefined && intent.slots.StationTwo.value==undefined && session.attributes.StationOne==undefined && session.attributes.StationTwo==undefined )
@@ -20,6 +21,7 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 	}
 	else if(intent.slots.StationOne.value==undefined && session.attributes.StationOne==undefined )
 	{
+
 		errorText='Where do you start your journey from?';
 		response.askSSML(errorText,errorText,sessionAttributes);
 	}
@@ -93,14 +95,14 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 			}
 			else
 			{
-				response.ask(speechOutput['speech']);
+				response.askSSML(speechOutput['speech']);
 			}
 		});
 	}
 	else
 	{
 		errorText='Stations not suported or Incorrect station name';
-		response.ask(errorText,errorText,sessionAttributes);
+		response.askSSML(errorText,errorText,sessionAttributes);
 	}
 
 

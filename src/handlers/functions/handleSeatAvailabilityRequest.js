@@ -174,7 +174,7 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 		}
 		else
 		{
-			response.ask('Stations not suported or Incorrect station name');
+			response.askSSML('Stations not suported or Incorrect station name');
 		}
 	}
 

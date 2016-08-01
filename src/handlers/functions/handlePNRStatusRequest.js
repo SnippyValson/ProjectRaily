@@ -34,7 +34,7 @@ exports.handlePNRStatusRequest=function(intent, session, response) {
         }
         else
         {
-            response.ask(speechOutput['speech']);
+            response.askSSML(speechOutput['speech']);
         }
     });
 
