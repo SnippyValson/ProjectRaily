@@ -39,17 +39,7 @@
     "alexaproject"
   ],
   "dependencies": {
-    "primus": "*",
-    "async": "~0.8.0",
-    "express": "4.2.x",
-    "winston": "git://github.com/flatiron/winston#master",
-    "bigpipe": "bigpipe/pagelet",
-    "plates": "https://github.com/flatiron/plates/tarball/master"
-  },
-  "devDependencies": {
-    "vows": "^0.7.0",
-    "assume": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
-    "pre-commit": "*"
+    "require": "*"
   },
   "preferGlobal": true,
   "private": true,
