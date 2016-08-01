@@ -714,3 +714,64 @@ function convertTime(time)
 
 }
 
+exports.getJsonClass=function getJsonClass(train_no,eventCallback){
+    var station_string="";
+    var state = "";
+    var result="";
+    var status="";
+    var result1="";
+    var t= config.getCorrectedTrainNo(train_no);
+    if(t==-1)
+    {
+        result="Not a valid train number";
+        status="<p>Not a valid train number</p>";
+        result1={speech:status,status:result,heading:null};
+        eventCallback(result1);
+        return;
+    }
+    else
+        train_no=t;
+    var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
+
+    console.log(url);
+    request(url, function (error, response, body) {
+        if(error)
+        {
+            status= "Sorry, we could not process your request.";
+            result={speech:status,status:status,heading:null};
+            eventCallback(result);
+            return;
+        }
+        var stringResult = JSON.parse(body);
+        if (stringResult.response_code=='403')
+        {
+            status="<p>Please try again</p>";
+            result1=null;
+            result={speech:status,status:result1,heading:null};
+            if(flag==1)
+                eventCallback(result);
+            if(flag<1)
+            {
+                flag++;
+                getJsonTrainRoute(train_no,eventCallback);
+
+            }
+        }
+        else
+        {
+            var station_names=[];
+            var station_arrival=[];
+            var station_dep=[];
+            var day=[];
+            for (i=0; i<stringResult.train.classes.length; i++){
+                if(stringResult.train.classes[i].available=='Y')
+                    result=result+stringResult.train.classes[i]['class-code']+" ";
+
+            }
+
+            eventCallback(result);
+        }
+    });
+    return status;
+}
+
