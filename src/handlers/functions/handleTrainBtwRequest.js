@@ -95,14 +95,14 @@ exports.handleTrainBtwRequest=function(intent, session, response) {
 			}
 			else
 			{
-				response.ask(speechOutput['speech']);
+				response.askSSML(speechOutput['speech']);
 			}
 		});
 	}
 	else
 	{
 		errorText='Stations not suported or Incorrect station name';
-		response.ask(errorText,errorText,sessionAttributes);
+		response.askSSML(errorText,errorText,sessionAttributes);
 	}
 
 

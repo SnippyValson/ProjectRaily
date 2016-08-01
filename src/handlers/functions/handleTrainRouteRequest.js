@@ -28,7 +28,7 @@ exports.handleTrainRouteRequest=function(intent, session, response,type) {
     	}
     	else
     	{
-    		response.ask(speechOutput['speech']);
+    		response.askSSML(speechOutput['speech']);
     	}
 	});
     

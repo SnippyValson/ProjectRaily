@@ -40,13 +40,13 @@ exports.handleTrainArrivalsRequest=function(intent, session, response) {
 			}
 			else
 			{
-				response.ask(speechOutput['speech']);
+				response.askSSML(speechOutput['speech']);
 			}
 		});
 	}
 	else
 	{
-		response.ask('Station not suported or Incorrect station name');
+		response.askSSML('Station not suported or Incorrect station name');
 	}
 
 
