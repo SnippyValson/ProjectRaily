@@ -272,12 +272,12 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 var quota_name=stringResult.quota.quota_name;
                 console.log(status);
               var train_name=stationHere.fillStationCodesTrainName(stringResult.train_name);
-              var head="<p>Seat availability of  train "+train_name+" </p>";
+              var head="On "+date+" <p>Seat availability of  train "+train_name+" </p>";
                 if(status.indexOf('RAC')>-1)
                    {
                          index3=status.indexOf("/RAC");
                          var rac=status.substring(index3+4);
-                         status=head+rac+" seats are in RAC for "+class_name+","+quota_name;
+                         status=rac+" seats are in RAC for "+class_name+","+quota_name;
                    }
 
                 if(status.indexOf('AVAILABLE')>-1)
@@ -305,7 +305,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 else if(stringResult.response_code=='204')
                      status="Invalid class quota combination";
                 else
-                    speech_status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
+                    speech_status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+head+status;
                  
                 result={speech:speech_status,status:"On "+date+"\n"+status,heading:"Seat availability of Train: "+train_no+" "+train_name};
                 eventCallback(result);       
