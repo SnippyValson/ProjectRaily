@@ -285,6 +285,8 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
+                else if(stringResult.response_code=='204')
+                     status="Invalid class quota combination";
                 else
                     speech_status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                  
