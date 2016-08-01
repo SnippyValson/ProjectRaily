@@ -9,7 +9,7 @@ var request = require('./request/index.js');
 
 
 var apiKey=config.getAPIKey();
-var i=0,j=0,flag=0;
+var i=0,j=0,flag=0,tim_out=10000;
 /**
  * This function will return the train status as a string.
  * Sample output : Train departed from KARUKKUTTY(KUC) and late by 24 minutes.
@@ -21,8 +21,8 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
     var t= config.getCorrectedTrainNo(train_no);
     if(t==-1)
       {
-            result="Not a valid train number";
-            status="Not a valid train number";
+            result=train_no+" is not a valid train number";
+            status="<say-as interpret-as='digits'>"+train_no+"</say-as> is not a valid train number";
             result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
@@ -31,9 +31,21 @@ exports.getJsonLiveStatus= function getJsonLiveStatus(train_no,doj,eventCallback
             train_no=t;   
     var url =config.getBaseUrl()+"live/train/"+train_no+"/doj/"+doj+"/apikey/"+apiKey+"/";
     console.log(url);
-    request(url, function (error, response, body) {
+    request(url,{timeout: tim_out}, function (error, response, body) {
        if(error)
           {
+               
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
               console.log("Got error: ", error);
               status= "<p>Sorry, we could not process your request</p>";
               result= "Sorry, we could not process your request\n";
@@ -97,8 +109,8 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
     var t= config.getCorrectedTrainNo(train_no);
     if(t==-1)
       {
-            result="Not a valid train number";
-            status="<p>Not a valid train number</p>";
+            result=train_no+" is not a valid train number";
+            status="<say-as interpret-as='digits'>"+train_no+"</say-as><p> is not a valid train number</p>";
             result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
@@ -107,9 +119,21 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
             train_no=t;   
     var url =config.getBaseUrl()+'route/train/'+train_no+'/apikey/'+ apiKey+'/';
     console.log(url);
-    request(url, function (error, response, body) {
+    request(url,{timeout: tim_out}, function (error, response, body) {
        if(error)
           {
+               
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
               status= "Sorry, we could not process your request.";
               result={speech:status,status:status,heading:null};
               eventCallback(result);
@@ -183,8 +207,8 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var t= config.getCorrectedTrainNo(train_no);
     if(t==-1)
       {
-            result="Not a valid train number";
-            status="<p>Not a valid train number</p>";
+            result=train_no+"is not a valid train number";
+            status="<say-as interpret-as='digits'>"+train_no+"</say-as><p> is not a valid train number</p>";
             result1={speech:status,status:result,heading:null};
             eventCallback(result1);
             return;
@@ -195,7 +219,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
     var url =config.getBaseUrl() +'check_seat/train/'+train_no+'/source/'+ source +'/dest/'+dest+'/date/'+ date+'/class/'+_class+'/quota/'+quota+'/apikey/'+ apiKey+'/';
     console.log(url);
     status = "";
-    request(url,{timeout: 7000}, function (error, response, body) {
+    request(url,{timeout: tim_out}, function (error, response, body) {
        if(error)
           {  
               if(error.code === 'ETIMEDOUT')
@@ -289,9 +313,21 @@ exports.getJsonTrainBtw =function getJsonTrainBtw(source, dest, date, eventCallb
          var train_string="";
          var result="";
          var result1="";
-         request(url, function (error, response, body) {
+         request(url,{timeout: tim_out}, function (error, response, body) {
          if(error)
             {
+                   
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
                   stat= "Sorry, we could not process your request.";
                   result={speech:stat,status:stat,heading:null};
                   eventCallback(result);
@@ -404,16 +440,28 @@ exports.getJsonPNRstatus=function getJsonPNRstatus(pnr_no, eventCallback){
      if(pnr_no.toString().length!=10)
       {
             result="Not a valid PNR number";
-            stat="Not a valid PNR number";
+            stat="<say-as interpret-as='digits'>"+pnr_no+"</say-as> is not a valid PNR number";
             var result1={speech:stat,status:result,heading:null};
             eventCallback(result1);
             return;
      }     
      var url =config.getBaseUrl() +'pnr_status/pnr/'+pnr_no+'/apikey/'+ apiKey+'/';
      console.log(url);
-     request(url, function (error, response, body) {
+     request(url,{timeout: tim_out},function (error, response, body) {
          if(error)
             {
+                   
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
                   stat= "Sorry, we could not process your request.";
                   result={speech:stat,status:stat,heading:null};
                   eventCallback(result);
@@ -508,9 +556,21 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
 console.log(url);
-    request(url, function (error, response, body) {
+    request(url,{timeout: tim_out}, function (error, response, body) {
          if(error)
             {
+                   
+              if(error.code === 'ETIMEDOUT')
+                {
+                       if(error.connect === true)
+                          {     
+                                status="<p>Railway server is slow</p> <p>Do you want to try again</p>";
+                                var ne=-1;
+                                result={speech:status,status:status,heading:ne};
+                                eventCallback(result);
+                                return;
+                          }
+                }
                   stat= "Sorry, we could not process your request.";
                   result1={speech:stat,status:stat,heading:null,remaining:""};
                   eventCallback(result1);
