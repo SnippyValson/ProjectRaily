@@ -270,6 +270,12 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                 var class_name=stringResult.class.class_name;
                 var quota_name=stringResult.quota.quota_name;
                 console.log(status);
+                if(status.indexOf('RAC')>-1)
+                   {
+                         index3=status.indexOf("/RAC");
+                         var rac=status.substring(index3+4);
+                         status=rac+" seats are in RAC for "+class_name+","+quota_name;
+                   }
                 if(status.indexOf('AVAILABLE')>-1)
                    {
                         var index_=status.indexOf('AVAILABLE');
@@ -282,6 +288,13 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                         index4=status.indexOf("\n",index3);
                         var waiting=status.substring(index3+3,index3+8);
                         status=waiting+" seats are in waiting list for "+class_name+","+quota_name;
+                   }
+                if(status.charAt(0)=='R'&&status.charAt(1)=='S'&&status.charAt(2)=='W')
+                   {
+                        index3=status.indexOf("/WL");
+                        index4=status.indexOf("\n",index3);
+                        var rswl=status.substring(index3+3,index3+8);
+                        status=rswl+" seats are in RSWL for "+class_name+","+quota_name;
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
