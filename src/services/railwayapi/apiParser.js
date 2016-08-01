@@ -182,7 +182,7 @@ exports.getJsonTrainRoute=function getJsonTrainRoute(train_no,eventCallback){
                if(stringResult.response_code!='200')
                      station_string="There was an error processing your request.";
                 else
-                    speech_station_string="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+station_string;
+                    speech_station_string="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' /><p>Route of Train Number: "+train_no+"</p> "+station_string;
                result={speech:speech_station_string,status:station_string,heading:"Route of Train Number: "+train_no};
                eventCallback(result);
            }    
@@ -285,6 +285,8 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
+                else if(stringResult.response_code=='204')
+                     status="Invalid class quota combination";
                 else
                     speech_status="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />"+status;
                  
