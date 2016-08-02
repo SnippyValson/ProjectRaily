@@ -130,10 +130,24 @@ exports.handleSeatAvailabilityRequest=function(intent, session, response) {
 	}
 	else if (quota==undefined)
 	{
-		//Get quotas available
-		interText='<speak><p>Normally people choose General Quota</p>Which Quota do you want?</speak>';
-		interTextRepromt='Which Quota do you want?';
-		response.askSSML(interText,interTextRepromt,sessionAttributes);
+		railways.getJsonClass(session.attributes.TrainNumber,convertClassCode(classTrain), function (events){
+				// Create speech output
+				var speechOutput =  events;
+
+				if(speechOutput=="no")
+				{
+					var inte="Sorry! the "+classTrain+" class is not available. Please tell another class.";
+					response.askSSML('<speak>'+inte+'</speak>', inte , sessionAttributes);
+				}
+				else
+				{
+					//Get quotas available
+					interText='<speak><p>Normally people choose General Quota</p>Which Quota do you want?</speak>';
+					interTextRepromt='Which Quota do you want?';
+					response.askSSML(interText,interTextRepromt,sessionAttributes);
+				}
+			});
+		
 	}
 	else
 	{

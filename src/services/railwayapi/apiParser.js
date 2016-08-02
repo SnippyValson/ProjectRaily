@@ -738,12 +738,13 @@ function convertTime(time)
 
 }
 
-exports.getJsonClass=function getJsonClass(train_no,eventCallback){
+exports.getJsonClass=function getJsonClass(train_no,classTrain,eventCallback){
     var station_string="";
     var state = "";
     var result="";
     var status="";
     var result1="";
+    var finalResult="no";
     var t= config.getCorrectedTrainNo(train_no);
     if(t==-1)
     {
@@ -792,8 +793,10 @@ exports.getJsonClass=function getJsonClass(train_no,eventCallback){
                     result=result+stringResult.train.classes[i]['class-code']+" ";
 
             }
+            if(result.indexOf(classTrain)>-1)
+              finalResult="yes";
 
-            eventCallback(result);
+            eventCallback(finalResult);
         }
     });
     return status;
