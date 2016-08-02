@@ -278,6 +278,7 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                          index3=status.indexOf("/RAC");
                          var rac=status.substring(index3+4);
                          status=rac+" seats are in RAC for "+class_name+","+quota_name;
+                         status+=" . RAC means Reservation against Cancellation";
                    }
 
                 if(status.indexOf('AVAILABLE')>-1)
