@@ -10,7 +10,7 @@ exports.handleTrainArrivalsRequest=function(intent, session, response) {
 	var station=intent.slots.Station.value;
 	var durationHours;
 	var sessionAttributes=session.attributes;
-	if(intent.slots.duration !== undefined && intent.slots.duration !== null)
+	if(intent.slots.duration != undefined )
 	{	
 		durationHours=intent.slots.duration.value;
 	}

@@ -574,6 +574,8 @@ exports.getJsonTrainArrivals=function getJsonTrainArrivals(station_code,hrs, eve
     var stat;
     var result1="";
     var remaining="";
+    if (hrs==undefined)
+      hrs=2;
     status+="<audio src='https://s3.ap-south-1.amazonaws.com/railysamples/output2.mp3' />";
     status+="Within "+hrs+" hours at "+stationHere.getStationName(station_code)+", the following trains will arrive";
     var url =config.getBaseUrl() +'arrivals/station/'+station_code+'/hours/'+hrs+'/apikey/'+ apiKey+'/';
