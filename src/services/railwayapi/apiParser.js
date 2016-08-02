@@ -284,21 +284,21 @@ exports.getJsonSeatAvailability = function getJsonSeatAvailability(train_no, sou
                    {
                         var index_=status.indexOf('AVAILABLE');
                         var available=status.substring(index_+10);
-                        status=head+available+" seats are available in "+class_name+","+quota_name;
+                        status=available+" seats are available in "+class_name+","+quota_name;
                    } 
                 if(status.charAt(0)=='G'&&status.charAt(1)=='N'&&status.charAt(2)=='W')
                    {
                         index3=status.indexOf("/WL");
                         index4=status.indexOf("\n",index3);
                         var waiting=status.substring(index3+3,index3+8);
-                        status=head+waiting+" seats are in waiting list for "+class_name+","+quota_name;
+                        status=waiting+" seats are in waiting list for "+class_name+","+quota_name;
                    }
                 if(status.charAt(0)=='R'&&status.charAt(1)=='S'&&status.charAt(2)=='W')
                    {
                         index3=status.indexOf("/WL");
                         index4=status.indexOf("\n",index3);
                         var rswl=status.substring(index3+3,index3+8);
-                        status=head+rswl+" seats are in RSWL for "+class_name+","+quota_name;
+                        status=rswl+" seats are in RSWL for "+class_name+","+quota_name;
                    }
                 if(stringResult.response_code!='200')
                      status="There was an error processing your request.";
